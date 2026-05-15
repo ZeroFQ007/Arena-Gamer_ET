@@ -1,0 +1,14 @@
+### 1. Crear un torneo de Valorant
+POST http://localhost:8088/api/v1/tournaments
+Content-Type: application/json
+
+{
+  "name": "Copa Nocturna CyberGamer",
+  "game": "Valorant",
+  "maxTeams": 16
+}
+
+###
+
+### 2. Ver todos los torneos (GET)
+GET http://localhost:8088/api/v1/tournaments
