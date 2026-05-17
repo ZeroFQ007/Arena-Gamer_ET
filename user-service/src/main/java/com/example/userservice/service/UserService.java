@@ -1,9 +1,12 @@
 package com.example.userservice.service;
 
+import com.example.userservice.dto.SendNotificationRequest;
 import com.example.userservice.model.User;
 import com.example.userservice.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClient;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -12,9 +15,14 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final RestClient restClient;
 
-    public UserService(UserRepository userRepository) {
+    @Value("${services.notification-service.url}")
+    private String notificationServiceUrl;
+
+    public UserService(UserRepository userRepository, RestClient restClient) {
         this.userRepository = userRepository;
+        this.restClient = restClient;
     }
 
     public List<User> findAll() {
@@ -36,7 +44,24 @@ public class UserService {
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT, "El email ya está registrado: " + user.getEmail());
         }
-        return userRepository.save(user);
+        User saved = userRepository.save(user);
+
+        var notification = new SendNotificationRequest(
+                saved.getEmail(),
+                "Bienvenido " + saved.getUsername() + "! Tu cuenta ha sido creada en Arena Gamer.",
+                "EMAIL"
+        );
+        try {
+            restClient.post()
+                    .uri(notificationServiceUrl + "/api/v1/notifications/send")
+                    .body(notification)
+                    .retrieve()
+                    .toBodilessEntity();
+        } catch (Exception e) {
+            System.err.println("Error al notificar creación de usuario: " + e.getMessage());
+        }
+
+        return saved;
     }
 
     public User update(Long id, User datos) {

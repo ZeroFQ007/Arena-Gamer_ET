@@ -18,3 +18,7 @@ spring:
     console:
       enabled: true
       path: /h2-console
+
+services:
+  notification-service:
+    url: http://localhost:8089

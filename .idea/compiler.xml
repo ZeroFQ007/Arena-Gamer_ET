@@ -7,10 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="loyaltyservice" />
-        <module name="userservice" />
         <module name="hardware-monitor" />
         <module name="tournament-service" />
         <module name="notification-service" />
+        <module name="userservice" />
       </profile>
       <profile name="Annotation profile for Arena-Gamer-Parent" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -23,9 +23,13 @@
         <module name="station-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="common" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="common" options="-parameters" />
       <module name="hardware-monitor" options="-parameters" />
       <module name="loyaltyservice" options="-parameters" />
       <module name="notification-service" options="-parameters" />

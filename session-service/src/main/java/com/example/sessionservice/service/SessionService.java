@@ -29,12 +29,10 @@ public class SessionService {
     }
 
     public Session startSession(Session session) {
-        // Verificar que la estación no tenga una sesión activa
         sessionRepository.findByStationIdAndStatus(session.getStationId(), Session.SessionStatus.ACTIVE)
                 .ifPresent(s -> { throw new ResponseStatusException(
                         HttpStatus.CONFLICT, "La estación ya tiene una sesión activa"); });
 
-        // Verificar que el usuario no tenga una sesión activa
         sessionRepository.findByUserIdAndStatus(session.getUserId(), Session.SessionStatus.ACTIVE)
                 .ifPresent(s -> { throw new ResponseStatusException(
                         HttpStatus.CONFLICT, "El usuario ya tiene una sesión activa"); });

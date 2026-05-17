@@ -1,5 +1,6 @@
 package com.cybergamer.tournament_service.service;
 
+import com.cybergamer.tournament_service.client.UserClient;
 import com.cybergamer.tournament_service.dto.CreateTournamentDTO;
 import com.cybergamer.tournament_service.entity.Tournament;
 import com.cybergamer.tournament_service.repository.TournamentRepository;
@@ -11,26 +12,26 @@ import java.util.List;
 public class TournamentService {
 
     private final TournamentRepository tournamentRepository;
+    private final UserClient userClient;
 
-    public TournamentService(TournamentRepository tournamentRepository) {
+    public TournamentService(TournamentRepository tournamentRepository, UserClient userClient) {
         this.tournamentRepository = tournamentRepository;
+        this.userClient = userClient;
     }
 
-    // Método para crear un torneo nuevo
     public Tournament createTournament(CreateTournamentDTO dto) {
+        userClient.getUserById(dto.getUserId());
+
         Tournament tournament = new Tournament();
         tournament.setName(dto.getName());
         tournament.setGame(dto.getGame());
         tournament.setMaxTeams(dto.getMaxTeams());
-
-        // Valores por defecto al crear
         tournament.setCurrentTeams(0);
         tournament.setStatus("OPEN");
 
         return tournamentRepository.save(tournament);
     }
 
-    // Método para ver todos los torneos disponibles
     public List<Tournament> getAllTournaments() {
         return tournamentRepository.findAll();
     }
