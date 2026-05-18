@@ -5,6 +5,7 @@ import com.example.userservice.model.User;
 import com.example.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.server.ResponseStatusException;
@@ -16,13 +17,15 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final RestClient restClient;
+    private final PasswordEncoder passwordEncoder;
 
     @Value("${services.notification-service.url}")
     private String notificationServiceUrl;
 
-    public UserService(UserRepository userRepository, RestClient restClient) {
+    public UserService(UserRepository userRepository, RestClient restClient, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.restClient = restClient;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<User> findAll() {
@@ -44,6 +47,7 @@ public class UserService {
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT, "El email ya está registrado: " + user.getEmail());
         }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         User saved = userRepository.save(user);
 
         var notification = new SendNotificationRequest(
