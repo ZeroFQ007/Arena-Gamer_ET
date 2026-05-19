@@ -1,26 +1,18 @@
 package com.example.arenareservas.client;
 
-import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestClient;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Map;
 
-@Component
-public class InventoryClient {
+@FeignClient(
+    name = "inventory-service",
+    url = "${inventory.service.url:http://localhost:9001}/api/v1/productos",
+    fallback = InventoryClientFallback.class
+)
+public interface InventoryClient {
 
-    private final RestClient restClient;
-
-    public InventoryClient() {
-        this.restClient = RestClient.builder()
-                .baseUrl("http://localhost:9001/api/v1/productos")
-                .build();
-    }
-
-    public void actualizarStock(Long productoId, Map<String, Integer> body) {
-        restClient.patch()
-                .uri("/{id}/stock", productoId)
-                .body(body)
-                .retrieve()
-                .toBodilessEntity();
-    }
+    @PatchMapping("/{id}/stock")
+    void actualizarStock(@PathVariable("id") Long productoId, Map<String, Integer> body);
 }

@@ -1,4 +1,4 @@
-server:
+git pull origin mainserver:
   port: 8081
 
 spring:
