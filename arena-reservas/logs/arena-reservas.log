@@ -20,3 +20,25 @@
 2026-05-19T00:31:23.811-04:00  INFO 32908 --- [arena-reservas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-05-19T00:31:23.814-04:00  INFO 32908 --- [arena-reservas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2026-05-19T00:31:23.821-04:00  INFO 32908 --- [arena-reservas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-19T01:54:51.818-04:00  INFO 35272 --- [arena-reservas] [main] c.e.a.ArenaReservasApplicationTests      : Starting ArenaReservasApplicationTests using Java 21.0.11 with PID 35272 (started by mipip in C:\Users\mipip\IdeaProjects\Arena-Gamer\arena-reservas)
+2026-05-19T01:54:51.819-04:00 DEBUG 35272 --- [arena-reservas] [main] c.e.a.ArenaReservasApplicationTests      : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-05-19T01:54:51.819-04:00  INFO 35272 --- [arena-reservas] [main] c.e.a.ArenaReservasApplicationTests      : The following 1 profile is active: "h2"
+2026-05-19T01:54:52.346-04:00  INFO 35272 --- [arena-reservas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-19T01:54:52.385-04:00  INFO 35272 --- [arena-reservas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 2 JPA repository interfaces.
+2026-05-19T01:54:52.557-04:00  INFO 35272 --- [arena-reservas] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=fdba68eb-9d0d-3815-8da6-21028c3b8354
+2026-05-19T01:54:52.945-04:00  INFO 35272 --- [arena-reservas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-19T01:54:52.998-04:00  INFO 35272 --- [arena-reservas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-05-19T01:54:53.022-04:00  INFO 35272 --- [arena-reservas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-19T01:54:53.187-04:00  INFO 35272 --- [arena-reservas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-19T01:54:53.208-04:00  INFO 35272 --- [arena-reservas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-19T01:54:53.320-04:00  INFO 35272 --- [arena-reservas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:reservas_db user=SA
+2026-05-19T01:54:53.321-04:00  INFO 35272 --- [arena-reservas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-19T01:54:53.336-04:00  WARN 35272 --- [arena-reservas] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-19T01:54:53.855-04:00  INFO 35272 --- [arena-reservas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-19T01:54:53.895-04:00  INFO 35272 --- [arena-reservas] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-19T01:54:54.257-04:00  WARN 35272 --- [arena-reservas] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-19T01:54:54.867-04:00  INFO 35272 --- [arena-reservas] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:reservas_db'
+2026-05-19T01:54:54.956-04:00  INFO 35272 --- [arena-reservas] [main] c.e.a.ArenaReservasApplicationTests      : Started ArenaReservasApplicationTests in 3.409 seconds (process running for 4.008)
+2026-05-19T01:54:55.561-04:00  INFO 35272 --- [arena-reservas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-19T01:54:55.562-04:00  INFO 35272 --- [arena-reservas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-05-19T01:54:55.564-04:00  INFO 35272 --- [arena-reservas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
