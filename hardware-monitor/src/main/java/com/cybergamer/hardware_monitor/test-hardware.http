@@ -1,0 +1,14 @@
+### Enviar reporte de la PC VIP-01
+POST http://localhost:8090/api/v1/hardware/report
+Content-Type: application/json
+
+{
+  "pcId": "VIP-01",
+  "cpuTemp": 65.5,
+  "gpuTemp": 70.2
+}
+
+###
+
+### Ver el estado de todas las PCs
+GET http://localhost:8090/api/v1/hardware/status

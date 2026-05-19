@@ -1,0 +1,14 @@
+### 1. Simular que el Torneo MS pide enviar un correo
+POST http://localhost:8089/api/v1/notifications/send
+Content-Type: application/json
+
+{
+  "recipient": "jugador1@gmail.com",
+  "message": "¡Tu inscripción al Torneo de Valorant fue exitosa!",
+  "channel": "EMAIL"
+}
+
+###
+
+### 2. Ver el historial de mensajes enviados
+GET http://localhost:8089/api/v1/notifications/logs

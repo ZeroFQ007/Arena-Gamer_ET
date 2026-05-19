@@ -2,17 +2,17 @@ package com.example.sessionservice.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "sessions")
-@Getter
-@Setter
-@NoArgsConstructor
 public class Session {
 
     @Id
@@ -23,15 +23,9 @@ public class Session {
     @Column(nullable = false)
     private Long userId;
 
-    @Column(length = 100)
-    private String username;
-
     @NotNull(message = "El ID de estación no puede ser nulo")
     @Column(nullable = false)
     private Long stationId;
-
-    @Column(length = 100)
-    private String stationName;
 
     @Column(nullable = false)
     private LocalDateTime startTime;

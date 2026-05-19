@@ -1,114 +1,94 @@
 package com.example.userservice.service;
 
-import com.example.userservice.dto.UserCommand;
-import com.example.userservice.dto.UserResult;
+import com.example.userservice.dto.SendNotificationRequest;
 import com.example.userservice.model.User;
 import com.example.userservice.repository.UserRepository;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClient;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@Slf4j
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private final RestClient restClient;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    @Value("${services.notification-service.url}")
+    private String notificationServiceUrl;
+
+    public UserService(UserRepository userRepository, RestClient restClient, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.restClient = restClient;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    public List<UserResult> findAll() {
-        log.debug("Obteniendo todos los usuarios");
-        return userRepository.findAll().stream()
-                .map(this::toResult)
-                .toList();
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 
-    public UserResult findById(Long id) {
-        log.debug("Buscando usuario con id: {}", id);
+    public User findById(Long id) {
         return userRepository.findById(id)
-                .map(this::toResult)
-                .orElseThrow(() -> {
-                    log.warn("Usuario no encontrado con id: {}", id);
-                    return new ResponseStatusException(
-                            HttpStatus.NOT_FOUND, "Usuario no encontrado con id: " + id);
-                });
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Usuario no encontrado con id: " + id));
     }
 
-    public UserResult create(UserCommand command) {
-        log.info("Creando usuario: {}", command.username());
-        if (userRepository.existsByUsername(command.username())) {
-            log.warn("Username ya en uso: {}", command.username());
+    public User create(User user) {
+        if (userRepository.existsByUsername(user.getUsername())) {
             throw new ResponseStatusException(
-                    HttpStatus.CONFLICT, "El username ya está en uso: " + command.username());
+                    HttpStatus.CONFLICT, "El username ya está en uso: " + user.getUsername());
         }
-        if (userRepository.existsByEmail(command.email())) {
-            log.warn("Email ya registrado: {}", command.email());
+        if (userRepository.existsByEmail(user.getEmail())) {
             throw new ResponseStatusException(
-                    HttpStatus.CONFLICT, "El email ya está registrado: " + command.email());
+                    HttpStatus.CONFLICT, "El email ya está registrado: " + user.getEmail());
         }
-        User user = new User();
-        user.setUsername(command.username());
-        user.setEmail(command.email());
-        user.setRole(User.Role.valueOf(command.role()));
-        user.setActive(true);
-        UserResult result = toResult(userRepository.save(user));
-        log.info("Usuario creado exitosamente: ID={}", result.id());
-        return result;
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        User saved = userRepository.save(user);
+
+        var notification = new SendNotificationRequest(
+                saved.getEmail(),
+                "Bienvenido " + saved.getUsername() + "! Tu cuenta ha sido creada en Arena Gamer.",
+                "EMAIL"
+        );
+        try {
+            restClient.post()
+                    .uri(notificationServiceUrl + "/api/v1/notifications/send")
+                    .body(notification)
+                    .retrieve()
+                    .toBodilessEntity();
+        } catch (Exception e) {
+            System.err.println("Error al notificar creación de usuario: " + e.getMessage());
+        }
+
+        return saved;
     }
 
-    public UserResult update(Long id, UserCommand command) {
-        log.info("Actualizando usuario: ID={}", id);
-        User existente = userRepository.findById(id)
-                .orElseThrow(() -> {
-                    log.warn("Usuario no encontrado para actualizar: ID={}", id);
-                    return new ResponseStatusException(
-                            HttpStatus.NOT_FOUND, "Usuario no encontrado con id: " + id);
-                });
-        existente.setUsername(command.username());
-        existente.setEmail(command.email());
-        existente.setRole(User.Role.valueOf(command.role()));
-        UserResult result = toResult(userRepository.save(existente));
-        log.info("Usuario actualizado exitosamente: ID={}", id);
-        return result;
+    public User update(Long id, User datos) {
+        User existente = findById(id);
+        existente.setUsername(datos.getUsername());
+        existente.setEmail(datos.getEmail());
+        existente.setRole(datos.getRole());
+        return userRepository.save(existente);
     }
 
     public void delete(Long id) {
-        log.info("Eliminando usuario: ID={}", id);
         if (!userRepository.existsById(id)) {
-            log.warn("Usuario no encontrado para eliminar: ID={}", id);
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "Usuario no encontrado con id: " + id);
         }
         userRepository.deleteById(id);
-        log.info("Usuario eliminado exitosamente: ID={}", id);
     }
 
-    public List<UserResult> findByRole(User.Role role) {
-        log.debug("Buscando usuarios con rol: {}", role);
-        return userRepository.findByRole(role).stream()
-                .map(this::toResult)
-                .toList();
+    public List<User> findByRole(User.Role role) {
+        return userRepository.findByRole(role);
     }
 
-    public List<UserResult> findActivos() {
-        log.debug("Buscando usuarios activos");
-        return userRepository.findByActiveTrue().stream()
-                .map(this::toResult)
-                .toList();
-    }
-
-    private UserResult toResult(User user) {
-        return new UserResult(
-                user.getId(),
-                user.getUsername(),
-                user.getEmail(),
-                user.getRole().name(),
-                user.isActive()
-        );
+    public List<User> findActivos() {
+        return userRepository.findByActiveTrue();
     }
 }

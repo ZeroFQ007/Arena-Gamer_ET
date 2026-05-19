@@ -19,29 +19,16 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        if (userRepository.count() == 0) {
-            User u1 = new User();
-            u1.setUsername("shadow99");
-            u1.setEmail("shadow99@gmail.com");
-            u1.setPassword(passwordEncoder.encode("player123"));
-            u1.setRole(User.Role.PLAYER);
+        User fabry = new User("Fabry27", "Fabry27@gmail.com", User.Role.PLAYER);
+        fabry.setPassword(passwordEncoder.encode("fabry123"));
+        userRepository.save(fabry);
 
-            User u2 = new User();
-            u2.setUsername("nitro_king");
-            u2.setEmail("nitro@arenagamer.cl");
-            u2.setPassword(passwordEncoder.encode("player123"));
-            u2.setRole(User.Role.PLAYER);
+        User tomas = new User("Tomas69", "Tomas69@arenagamer.cl", User.Role.PLAYER);
+        tomas.setPassword(passwordEncoder.encode("tomas123"));
+        userRepository.save(tomas);
 
-            User u3 = new User();
-            u3.setUsername("admin_leo");
-            u3.setEmail("leo@arenagamer.cl");
-            u3.setPassword(passwordEncoder.encode("staff123"));
-            u3.setRole(User.Role.STAFF);
-
-            userRepository.save(u1);
-            userRepository.save(u2);
-            userRepository.save(u3);
-        }
+        User mohammed = new User("MohammedAli", "mohammedAli@arenagamer.cl", User.Role.STAFF);
+        mohammed.setPassword(passwordEncoder.encode("staff123"));
+        userRepository.save(mohammed);
     }
 }
-

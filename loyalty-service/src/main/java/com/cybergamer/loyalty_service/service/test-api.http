@@ -1,0 +1,19 @@
+### Prueba de sumar puntos (POST)
+POST http://localhost:8087/api/v1/loyalty/earn
+Content-Type: application/json
+
+{
+  "userId": "gamer-777",
+  "amount": 600,
+  "reason": "Compra de 5 horas"
+}
+###
+
+### Prueba de canjear puntos (POST)
+POST http://localhost:8087/api/v1/loyalty/redeem
+Content-Type: application/json
+
+{
+  "userId": "gamer-777",
+  "rewardId": 1
+}
