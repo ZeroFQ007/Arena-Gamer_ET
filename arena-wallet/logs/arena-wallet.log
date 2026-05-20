@@ -42,3 +42,33 @@
 2026-05-19T01:55:01.771-04:00  INFO 36420 --- [arena-wallet] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-05-19T01:55:01.773-04:00  INFO 36420 --- [arena-wallet] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2026-05-19T01:55:01.774-04:00  INFO 36420 --- [arena-wallet] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-05-19T17:49:57.729-04:00  INFO 18576 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : Starting ArenaWalletApplication using Java 21.0.10 with PID 18576 (C:\Users\Lenovo\Arena-Gamer\arena-wallet\target\classes started by Lenovo in C:\Users\Lenovo\Arena-Gamer\arena-wallet)
+2026-05-19T17:49:57.732-04:00 DEBUG 18576 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-05-19T17:49:57.739-04:00  INFO 18576 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : The following 1 profile is active: "h2"
+2026-05-19T17:49:57.941-04:00  INFO 18576 --- [arena-wallet] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-05-19T17:49:57.942-04:00  INFO 18576 --- [arena-wallet] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-05-19T17:50:02.228-04:00  INFO 18576 --- [arena-wallet] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-19T17:50:03.105-04:00  INFO 18576 --- [arena-wallet] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 831 ms. Found 2 JPA repository interfaces.
+2026-05-19T17:50:04.754-04:00  INFO 18576 --- [arena-wallet] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=efca4a74-8524-3167-b6f0-f065d882c541
+2026-05-19T17:50:07.878-04:00  INFO 18576 --- [arena-wallet] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2026-05-19T17:50:07.916-04:00  INFO 18576 --- [arena-wallet] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-19T17:50:07.919-04:00  INFO 18576 --- [arena-wallet] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-05-19T17:50:08.151-04:00  INFO 18576 --- [arena-wallet] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-19T17:50:08.153-04:00  INFO 18576 --- [arena-wallet] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 10205 ms
+2026-05-19T17:50:08.380-04:00  INFO 18576 --- [arena-wallet] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-19T17:50:09.149-04:00  INFO 18576 --- [arena-wallet] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:wallet_db user=SA
+2026-05-19T17:50:09.160-04:00  INFO 18576 --- [arena-wallet] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-19T17:50:09.208-04:00  INFO 18576 --- [arena-wallet] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:wallet_db'
+2026-05-19T17:50:09.807-04:00  INFO 18576 --- [arena-wallet] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-19T17:50:09.979-04:00  INFO 18576 --- [arena-wallet] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-05-19T17:50:10.096-04:00  INFO 18576 --- [arena-wallet] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-19T17:50:10.844-04:00  INFO 18576 --- [arena-wallet] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-19T17:50:11.049-04:00  WARN 18576 --- [arena-wallet] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-19T17:50:14.233-04:00  INFO 18576 --- [arena-wallet] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-19T17:50:14.531-04:00  INFO 18576 --- [arena-wallet] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-19T17:50:16.529-04:00  WARN 18576 --- [arena-wallet] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-19T17:50:19.432-04:00  WARN 18576 --- [arena-wallet] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2026-05-19T17:50:20.581-04:00  INFO 18576 --- [arena-wallet] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-05-19T17:50:20.916-04:00  INFO 18576 --- [arena-wallet] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path ''
+2026-05-19T17:50:21.950-04:00  INFO 18576 --- [arena-wallet] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-05-19T17:50:21.970-04:00  INFO 18576 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : Started ArenaWalletApplication in 27.787 seconds (process running for 29.875)
