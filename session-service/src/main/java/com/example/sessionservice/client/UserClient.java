@@ -15,7 +15,7 @@ public class UserClient {
     public UserClient(RestClient.Builder builder) {
         this.restClient = builder
                 .baseUrl("http://localhost:8081")
-                .defaultHeader("Authorization", "Basic YWRtaW5fbGVvOnN0YWZmMTIz")
+                .defaultHeader("Authorization", "Basic bW9oYW1tZWRBbGlAYXJlbmFnYW1lci5jbDpzdGFmZjEyMw==")
                 .build();
     }
 

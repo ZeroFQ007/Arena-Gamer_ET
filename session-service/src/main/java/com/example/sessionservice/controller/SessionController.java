@@ -1,5 +1,6 @@
 package com.example.sessionservice.controller;
 
+import com.example.sessionservice.dto.SessionResponse;
 import com.example.sessionservice.model.Session;
 import com.example.sessionservice.service.SessionService;
 import jakarta.validation.Valid;
@@ -20,13 +21,13 @@ public class SessionController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Session>> getAll() {
-        return ResponseEntity.ok(sessionService.findAll());
+    public ResponseEntity<List<SessionResponse>> getAll() {
+        return ResponseEntity.ok(sessionService.findAllWithDetails());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Session> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(sessionService.findById(id));
+    public ResponseEntity<SessionResponse> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(sessionService.findByIdWithDetails(id));
     }
 
     @PostMapping

@@ -15,6 +15,10 @@ public class LoyaltyService {
         this.loyaltyRepository = loyaltyRepository;
     }
 
+    public Optional<LoyaltyAccount> getAccount(String userId) {
+        return loyaltyRepository.findByUserId(userId);
+    }
+
     public String addPoints(String userId, Integer amount) {
         Optional<LoyaltyAccount> existingAccount = loyaltyRepository.findByUserId(userId);
 

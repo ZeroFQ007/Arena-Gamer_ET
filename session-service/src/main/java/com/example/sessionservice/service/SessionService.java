@@ -2,8 +2,11 @@ package com.example.sessionservice.service;
 
 import com.example.sessionservice.client.LoyaltyClient;
 import com.example.sessionservice.client.StationClient;
+import com.example.sessionservice.client.StationResponse;
 import com.example.sessionservice.client.UserClient;
+import com.example.sessionservice.client.UserResponse;
 import com.example.sessionservice.client.WalletClient;
+import com.example.sessionservice.dto.SessionResponse;
 import com.example.sessionservice.model.Session;
 import com.example.sessionservice.repository.SessionRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +21,7 @@ import java.util.List;
 @Service
 public class SessionService {
 
-    private static final double TARIFA_POR_MINUTO = 10.0; // $10 CLP por minuto
+    private static final double TARIFA_POR_MINUTO = 10.0;
 
     private final SessionRepository sessionRepository;
     private final StationClient stationClient;
@@ -38,6 +41,38 @@ public class SessionService {
         this.loyaltyClient = loyaltyClient;
     }
 
+    public SessionResponse toResponse(Session session) {
+        String username = userClient.findById(session.getUserId())
+                .map(UserResponse::username)
+                .orElse("Desconocido");
+
+        String stationName = stationClient.findById(session.getStationId())
+                .map(StationResponse::name)
+                .orElse("Desconocida");
+
+        return new SessionResponse(
+                session.getId(),
+                session.getUserId(),
+                username,
+                session.getStationId(),
+                stationName,
+                session.getStartTime(),
+                session.getEndTime(),
+                session.getStatus().name(),
+                session.getDurationMinutes()
+        );
+    }
+
+    public List<SessionResponse> findAllWithDetails() {
+        return sessionRepository.findAll().stream()
+                .map(this::toResponse)
+                .toList();
+    }
+
+    public SessionResponse findByIdWithDetails(Long id) {
+        return toResponse(findById(id));
+    }
+
     public List<Session> findAll() {
         return sessionRepository.findAll();
     }
@@ -49,7 +84,6 @@ public class SessionService {
     }
 
     public Session startSession(Session session) {
-        // 1. Validar que el usuario existe en user-service
         log.info("[SESSION] Verificando existencia de usuario id={}", session.getUserId());
         if (!userClient.existsUser(session.getUserId())) {
             log.warn("[SESSION] Usuario id={} no encontrado en user-service", session.getUserId());
@@ -58,7 +92,6 @@ public class SessionService {
                     "Usuario con id " + session.getUserId() + " no existe");
         }
 
-        // 2. Validar que la estación existe y está disponible en station-service
         log.info("[SESSION] Verificando disponibilidad de estación id={}", session.getStationId());
         stationClient.findById(session.getStationId()).ifPresentOrElse(
                 station -> {
@@ -76,7 +109,6 @@ public class SessionService {
                 }
         );
 
-        // 3. Validar que no haya sesión activa en la misma estación o para el mismo usuario
         sessionRepository.findByStationIdAndStatus(session.getStationId(), Session.SessionStatus.ACTIVE)
                 .ifPresent(s -> { throw new ResponseStatusException(
                         HttpStatus.CONFLICT, "La estación ya tiene una sesión activa"); });
@@ -108,7 +140,6 @@ public class SessionService {
         Session saved = sessionRepository.save(session);
         log.info("[SESSION] Sesión id={} finalizada. Duración: {} min", id, duracion);
 
-        // 4. Cobrar sesión en arena-wallet
         double costo = duracion * TARIFA_POR_MINUTO;
         log.info("[SESSION] Iniciando cobro de ${} al usuario id={}", costo, session.getUserId());
         boolean cobrado = walletClient.cobrarSesion(session.getUserId(), costo);
@@ -116,7 +147,6 @@ public class SessionService {
             log.warn("[SESSION] No se pudo cobrar sesión al usuario id={}. Sesión igual queda FINISHED.", session.getUserId());
         }
 
-        // 5. Acreditar puntos en loyalty-service (1 punto cada 10 minutos)
         loyaltyClient.acreditarPuntos(session.getUserId(), duracion);
 
         return saved;

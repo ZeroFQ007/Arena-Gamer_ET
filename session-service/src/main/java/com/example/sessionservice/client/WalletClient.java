@@ -1,6 +1,7 @@
 package com.example.sessionservice.client;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -15,17 +16,12 @@ public class WalletClient {
     public WalletClient(RestClient.Builder builder) {
         this.restClient = builder
                 .baseUrl("http://localhost:8085")
+                .requestFactory(new HttpComponentsClientHttpRequestFactory())
                 .build();
     }
 
-    /**
-     * Descuenta el costo de la sesión de la billetera del usuario.
-     * Busca la billetera por idUsuario y llama al endpoint de recarga con monto negativo.
-     * Retorna true si el cobro fue exitoso, false en caso de fallo.
-     */
     public boolean cobrarSesion(Long userId, Double monto) {
         try {
-            // Paso 1: obtener todas las billeteras y filtrar por userId
             WalletResponse[] billeteras = restClient.get()
                     .uri("/api/v1/billeteras")
                     .retrieve()
@@ -49,7 +45,6 @@ public class WalletClient {
                 return false;
             }
 
-            // Paso 2: descontar saldo (monto negativo = descuento)
             restClient.patch()
                     .uri("/api/v1/billeteras/" + billeteraId + "/descuento")
                     .body(Map.of("monto", monto))
