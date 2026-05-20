@@ -55,6 +55,7 @@ public class BilleteraController {
         return ResponseEntity.ok(toResponse(billeteraService.actualizar(id, cmd)));
     }
 
+    /** Recarga de saldo (monto positivo, iniciada por el usuario) */
     @PatchMapping("/{id}/recargas")
     public ResponseEntity<BilleteraResponse> recargarSaldo(
             @PathVariable Long id,
@@ -64,10 +65,24 @@ public class BilleteraController {
         }
         Double monto = body.get("monto");
         if (monto == null || monto <= 0) {
-            throw new IllegalArgumentException(
-                    "El monto a recargar debe ser positivo");
+            throw new IllegalArgumentException("El monto a recargar debe ser positivo");
         }
         return ResponseEntity.ok(toResponse(billeteraService.recargarSaldo(id, monto)));
+    }
+
+    /** Descuento de saldo (llamado por session-service al finalizar sesión) */
+    @PatchMapping("/{id}/descuento")
+    public ResponseEntity<BilleteraResponse> descontarSaldo(
+            @PathVariable Long id,
+            @RequestBody Map<String, Double> body) {
+        if (body == null || !body.containsKey("monto")) {
+            throw new IllegalArgumentException("El campo 'monto' es obligatorio");
+        }
+        Double monto = body.get("monto");
+        if (monto == null || monto <= 0) {
+            throw new IllegalArgumentException("El monto a descontar debe ser positivo");
+        }
+        return ResponseEntity.ok(toResponse(billeteraService.descontarSaldo(id, monto)));
     }
 
     @GetMapping("/{id}/historial")

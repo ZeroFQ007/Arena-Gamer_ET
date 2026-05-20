@@ -1,7 +1,12 @@
 package com.example.sessionservice.service;
 
+import com.example.sessionservice.client.LoyaltyClient;
+import com.example.sessionservice.client.StationClient;
+import com.example.sessionservice.client.UserClient;
+import com.example.sessionservice.client.WalletClient;
 import com.example.sessionservice.model.Session;
 import com.example.sessionservice.repository.SessionRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -9,13 +14,28 @@ import org.springframework.web.server.ResponseStatusException;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Slf4j
 @Service
 public class SessionService {
 
-    private final SessionRepository sessionRepository;
+    private static final double TARIFA_POR_MINUTO = 10.0; // $10 CLP por minuto
 
-    public SessionService(SessionRepository sessionRepository) {
+    private final SessionRepository sessionRepository;
+    private final StationClient stationClient;
+    private final UserClient userClient;
+    private final WalletClient walletClient;
+    private final LoyaltyClient loyaltyClient;
+
+    public SessionService(SessionRepository sessionRepository,
+                          StationClient stationClient,
+                          UserClient userClient,
+                          WalletClient walletClient,
+                          LoyaltyClient loyaltyClient) {
         this.sessionRepository = sessionRepository;
+        this.stationClient = stationClient;
+        this.userClient = userClient;
+        this.walletClient = walletClient;
+        this.loyaltyClient = loyaltyClient;
     }
 
     public List<Session> findAll() {
@@ -29,6 +49,34 @@ public class SessionService {
     }
 
     public Session startSession(Session session) {
+        // 1. Validar que el usuario existe en user-service
+        log.info("[SESSION] Verificando existencia de usuario id={}", session.getUserId());
+        if (!userClient.existsUser(session.getUserId())) {
+            log.warn("[SESSION] Usuario id={} no encontrado en user-service", session.getUserId());
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    "Usuario con id " + session.getUserId() + " no existe");
+        }
+
+        // 2. Validar que la estación existe y está disponible en station-service
+        log.info("[SESSION] Verificando disponibilidad de estación id={}", session.getStationId());
+        stationClient.findById(session.getStationId()).ifPresentOrElse(
+                station -> {
+                    if (!station.available()) {
+                        throw new ResponseStatusException(
+                                HttpStatus.CONFLICT,
+                                "La estación id=" + session.getStationId() + " no está disponible");
+                    }
+                    log.info("[SESSION] Estación '{}' disponible, procediendo a iniciar sesión", station.name());
+                },
+                () -> {
+                    throw new ResponseStatusException(
+                            HttpStatus.NOT_FOUND,
+                            "Estación con id " + session.getStationId() + " no existe");
+                }
+        );
+
+        // 3. Validar que no haya sesión activa en la misma estación o para el mismo usuario
         sessionRepository.findByStationIdAndStatus(session.getStationId(), Session.SessionStatus.ACTIVE)
                 .ifPresent(s -> { throw new ResponseStatusException(
                         HttpStatus.CONFLICT, "La estación ya tiene una sesión activa"); });
@@ -39,29 +87,51 @@ public class SessionService {
 
         session.setStartTime(LocalDateTime.now());
         session.setStatus(Session.SessionStatus.ACTIVE);
-        return sessionRepository.save(session);
+        Session saved = sessionRepository.save(session);
+        log.info("[SESSION] Sesión id={} iniciada — usuario={} en estación={}",
+                saved.getId(), saved.getUserId(), saved.getStationId());
+        return saved;
     }
 
     public Session finishSession(Long id) {
         Session session = findById(id);
         if (session.getStatus() != Session.SessionStatus.ACTIVE) {
-            throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST, "La sesión no está activa");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "La sesión no está activa");
         }
+
         session.setEndTime(LocalDateTime.now());
         session.setStatus(Session.SessionStatus.FINISHED);
-        return sessionRepository.save(session);
+
+        int duracion = session.getDurationMinutes() != null ? session.getDurationMinutes() : 30;
+        session.setDurationMinutes(duracion);
+
+        Session saved = sessionRepository.save(session);
+        log.info("[SESSION] Sesión id={} finalizada. Duración: {} min", id, duracion);
+
+        // 4. Cobrar sesión en arena-wallet
+        double costo = duracion * TARIFA_POR_MINUTO;
+        log.info("[SESSION] Iniciando cobro de ${} al usuario id={}", costo, session.getUserId());
+        boolean cobrado = walletClient.cobrarSesion(session.getUserId(), costo);
+        if (!cobrado) {
+            log.warn("[SESSION] No se pudo cobrar sesión al usuario id={}. Sesión igual queda FINISHED.", session.getUserId());
+        }
+
+        // 5. Acreditar puntos en loyalty-service (1 punto cada 10 minutos)
+        loyaltyClient.acreditarPuntos(session.getUserId(), duracion);
+
+        return saved;
     }
 
     public Session cancelSession(Long id) {
         Session session = findById(id);
         if (session.getStatus() != Session.SessionStatus.ACTIVE) {
-            throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST, "La sesión no está activa");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "La sesión no está activa");
         }
         session.setEndTime(LocalDateTime.now());
         session.setStatus(Session.SessionStatus.CANCELLED);
-        return sessionRepository.save(session);
+        Session saved = sessionRepository.save(session);
+        log.info("[SESSION] Sesión id={} cancelada para usuario id={}", id, session.getUserId());
+        return saved;
     }
 
     public List<Session> findByUserId(Long userId) {
