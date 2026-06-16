@@ -1,5 +1,6 @@
 package com.example.userservice.exception;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,5 +38,9 @@ public class GlobalExceptionHandler {
                 .body(new ErrorResponse("Error interno del servidor"));
     }
 
-    public record ErrorResponse(String message) {}
+    @Schema(description = "Respuesta de error del servidor")
+    public record ErrorResponse(
+            @Schema(description = "Mensaje de error", example = "Usuario no encontrado")
+            String message
+    ) {}
 }
