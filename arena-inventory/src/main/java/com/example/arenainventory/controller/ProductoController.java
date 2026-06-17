@@ -5,6 +5,11 @@ import com.example.arenainventory.dto.ProductoRequest;
 import com.example.arenainventory.dto.ProductoResponse;
 import com.example.arenainventory.dto.ProductoResult;
 import com.example.arenainventory.service.ProductoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+@Tag(name = "Productos", description = "Operaciones para gestionar el inventario de productos de Arena Gamer")
 @RestController
 @RequestMapping("/api/v1/productos")
 public class ProductoController {
@@ -23,8 +29,11 @@ public class ProductoController {
         this.productoService = productoService;
     }
 
+    @Operation(summary = "Listar productos", description = "Obtiene todos los productos, opcionalmente filtrados por categoría")
+    @ApiResponse(responseCode = "200", description = "Productos obtenidos correctamente")
     @GetMapping
     public ResponseEntity<List<ProductoResponse>> listar(
+            @Parameter(description = "Categoría a filtrar: CONSOLA, PERIFERICO o JUEGO", example = "CONSOLA")
             @RequestParam(required = false) String categoria) {
         List<ProductoResult> resultado = (categoria != null && !categoria.isBlank())
                 ? productoService.listarPorCategoria(categoria)
@@ -32,11 +41,23 @@ public class ProductoController {
         return ResponseEntity.ok(resultado.stream().map(this::toResponse).toList());
     }
 
+    @Operation(summary = "Buscar producto por id")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Producto encontrado"),
+            @ApiResponse(responseCode = "404", description = "Producto no encontrado")
+    })
     @GetMapping("/{id}")
-    public ResponseEntity<ProductoResponse> obtenerPorId(@PathVariable Long id) {
+    public ResponseEntity<ProductoResponse> obtenerPorId(
+            @Parameter(description = "ID del producto", example = "1")
+            @PathVariable Long id) {
         return ResponseEntity.ok(toResponse(productoService.obtenerPorId(id)));
     }
 
+    @Operation(summary = "Crear producto", description = "Registra un nuevo producto en el inventario")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Producto creado correctamente"),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos")
+    })
     @PostMapping
     public ResponseEntity<ProductoResponse> crear(
             @Valid @RequestBody ProductoRequest request) {
@@ -47,8 +68,14 @@ public class ProductoController {
                 .body(toResponse(productoService.crear(cmd)));
     }
 
+    @Operation(summary = "Actualizar producto", description = "Actualiza los datos de un producto existente")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Producto actualizado correctamente"),
+            @ApiResponse(responseCode = "404", description = "Producto no encontrado")
+    })
     @PutMapping("/{id}")
     public ResponseEntity<ProductoResponse> actualizar(
+            @Parameter(description = "ID del producto", example = "1")
             @PathVariable Long id,
             @Valid @RequestBody ProductoRequest request) {
         ProductoCommand cmd = new ProductoCommand(
@@ -57,8 +84,15 @@ public class ProductoController {
         return ResponseEntity.ok(toResponse(productoService.actualizar(id, cmd)));
     }
 
+    @Operation(summary = "Actualizar stock", description = "Descuenta o aumenta el stock de un producto (usado por arena-reservas al confirmar)")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Stock actualizado correctamente"),
+            @ApiResponse(responseCode = "400", description = "El campo 'cantidad' es obligatorio"),
+            @ApiResponse(responseCode = "404", description = "Producto no encontrado")
+    })
     @PatchMapping("/{id}/stock")
     public ResponseEntity<ProductoResponse> actualizarStock(
+            @Parameter(description = "ID del producto", example = "1")
             @PathVariable Long id,
             @RequestBody Map<String, Integer> body) {
         if (body == null || !body.containsKey("cantidad")) {
@@ -68,8 +102,15 @@ public class ProductoController {
                 toResponse(productoService.actualizarStock(id, body.get("cantidad"))));
     }
 
+    @Operation(summary = "Eliminar producto")
+    @ApiResponses({
+            @ApiResponse(responseCode = "204", description = "Producto eliminado correctamente"),
+            @ApiResponse(responseCode = "404", description = "Producto no encontrado")
+    })
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+    public ResponseEntity<Void> eliminar(
+            @Parameter(description = "ID del producto", example = "1")
+            @PathVariable Long id) {
         productoService.eliminar(id);
         return ResponseEntity.noContent().build();
     }
