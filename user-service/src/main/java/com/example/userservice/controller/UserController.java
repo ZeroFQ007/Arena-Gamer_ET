@@ -33,7 +33,7 @@ public class UserController {
         this.userLinkAssembler = userLinkAssembler;
     }
 
-    @Operation(summary = "Listar usuarios", description = "Obtiene todos los usuarios registrados con enlaces HATEOAS en _links")
+    @Operation(summary = "Listar usuarios", description = "Obtiene todos los usuarios registrados con enlaces HATEOAS en _links para cada usuario y la colección")
     @ApiResponse(responseCode = "200", description = "Usuarios obtenidos correctamente")
     @GetMapping
     public ResponseEntity<CollectionModel<EntityModel<User>>> getAll() {
@@ -47,7 +47,7 @@ public class UserController {
         return ResponseEntity.ok(collection);
     }
 
-    @Operation(summary = "Buscar usuario por id", description = "Devuelve el usuario con enlaces HATEOAS en _links")
+    @Operation(summary = "Buscar usuario por id", description = "Devuelve el usuario con enlaces HATEOAS en _links (self, all, update)")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Usuario encontrado"),
             @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
