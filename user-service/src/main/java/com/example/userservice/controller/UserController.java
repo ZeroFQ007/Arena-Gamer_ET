@@ -1,6 +1,7 @@
 package com.example.userservice.controller;
 
 import com.example.userservice.model.User;
+import com.example.userservice.service.UserLinkAssembler;
 import com.example.userservice.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -8,11 +9,16 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Tag(name = "Usuarios", description = "Operaciones para gestionar usuarios de Arena Gamer")
 @RestController
@@ -20,28 +26,38 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final UserLinkAssembler userLinkAssembler;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserLinkAssembler userLinkAssembler) {
         this.userService = userService;
+        this.userLinkAssembler = userLinkAssembler;
     }
 
-    @Operation(summary = "Listar usuarios", description = "Obtiene todos los usuarios registrados")
+    @Operation(summary = "Listar usuarios", description = "Obtiene todos los usuarios registrados con enlaces HATEOAS en _links")
     @ApiResponse(responseCode = "200", description = "Usuarios obtenidos correctamente")
     @GetMapping
-    public ResponseEntity<List<User>> getAll() {
-        return ResponseEntity.ok(userService.findAll());
+    public ResponseEntity<CollectionModel<EntityModel<User>>> getAll() {
+        List<EntityModel<User>> users = userService.findAll().stream()
+                .map(userLinkAssembler::toModel)
+                .toList();
+
+        CollectionModel<EntityModel<User>> collection = CollectionModel.of(users);
+        collection.add(linkTo(methodOn(UserController.class).getAll()).withSelfRel());
+
+        return ResponseEntity.ok(collection);
     }
 
-    @Operation(summary = "Buscar usuario por id")
+    @Operation(summary = "Buscar usuario por id", description = "Devuelve el usuario con enlaces HATEOAS en _links")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Usuario encontrado"),
             @ApiResponse(responseCode = "404", description = "Usuario no encontrado")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<User> getById(
+    public ResponseEntity<EntityModel<User>> getById(
             @Parameter(description = "ID del usuario", example = "1")
             @PathVariable Long id) {
-        return ResponseEntity.ok(userService.findById(id));
+        User user = userService.findById(id);
+        return ResponseEntity.ok(userLinkAssembler.toModel(user));
     }
 
     @Operation(summary = "Crear usuario", description = "Registra un nuevo usuario en el sistema")
