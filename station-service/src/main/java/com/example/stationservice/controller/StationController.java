@@ -1,17 +1,23 @@
 package com.example.stationservice.controller;
 
 import com.example.stationservice.model.Station;
+import com.example.stationservice.service.StationLinkAssembler;
 import com.example.stationservice.service.StationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Tag(name = "Estaciones", description = "Operaciones para gestionar estaciones de Arena Gamer")
 @RestController
@@ -19,28 +25,38 @@ import java.util.List;
 public class StationController {
 
     private final StationService stationService;
+    private final StationLinkAssembler stationLinkAssembler;
 
-    public StationController(StationService stationService) {
+    public StationController(StationService stationService, StationLinkAssembler stationLinkAssembler) {
         this.stationService = stationService;
+        this.stationLinkAssembler = stationLinkAssembler;
     }
 
-    @Operation(summary = "Listar estaciones", description = "Obtiene todas las estaciones registradas")
+    @Operation(summary = "Listar estaciones", description = "Obtiene todas las estaciones registradas con enlaces HATEOAS en _links")
     @ApiResponse(responseCode = "200", description = "Estaciones obtenidas correctamente")
     @GetMapping
-    public ResponseEntity<List<Station>> getAll() {
-        return ResponseEntity.ok(stationService.findAll());
+    public ResponseEntity<CollectionModel<EntityModel<Station>>> getAll() {
+        List<EntityModel<Station>> stations = stationService.findAll().stream()
+                .map(stationLinkAssembler::toModel)
+                .toList();
+
+        CollectionModel<EntityModel<Station>> collection = CollectionModel.of(stations);
+        collection.add(linkTo(methodOn(StationController.class).getAll()).withSelfRel());
+
+        return ResponseEntity.ok(collection);
     }
 
-    @Operation(summary = "Buscar estación por id")
+    @Operation(summary = "Buscar estación por id", description = "Devuelve la estación con enlaces HATEOAS en _links (self, all, update)")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Estación encontrada"),
             @ApiResponse(responseCode = "404", description = "Estación no encontrada")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<Station> getById(
+    public ResponseEntity<EntityModel<Station>> getById(
             @Parameter(description = "ID de la estación", example = "1")
             @PathVariable Long id) {
-        return ResponseEntity.ok(stationService.findById(id));
+        Station station = stationService.findById(id);
+        return ResponseEntity.ok(stationLinkAssembler.toModel(station));
     }
 
     @Operation(summary = "Crear estación", description = "Registra una nueva estación (requiere STAFF)")
