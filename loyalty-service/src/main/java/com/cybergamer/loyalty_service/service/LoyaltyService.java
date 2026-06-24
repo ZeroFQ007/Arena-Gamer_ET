@@ -3,6 +3,8 @@ package com.cybergamer.loyalty_service.service;
 import com.cybergamer.loyalty_service.entity.LoyaltyAccount;
 import com.cybergamer.loyalty_service.repository.LoyaltyRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 
 import java.util.Optional;
 
@@ -19,7 +21,7 @@ public class LoyaltyService {
         return loyaltyRepository.findByUserId(userId);
     }
 
-    public String addPoints(String userId, Integer amount) {
+    public LoyaltyAccount addPoints(String userId, Integer amount) {
         Optional<LoyaltyAccount> existingAccount = loyaltyRepository.findByUserId(userId);
 
         LoyaltyAccount account;
@@ -42,23 +44,24 @@ public class LoyaltyService {
             account.setTier("PLATA");
         }
 
-        loyaltyRepository.save(account);
-
-        return "Éxito. Nuevo saldo de " + userId + ": " + newBalance + " puntos (" + account.getTier() + ")";
+        return loyaltyRepository.save(account);
     }
 
-    public String redeemPoints(String userId, Long rewardId) {
+    public LoyaltyAccount redeemPoints(String userId, Long rewardId) {
         Optional<LoyaltyAccount> accountOpt = loyaltyRepository.findByUserId(userId);
 
         if (accountOpt.isEmpty()) {
-            return "Error: El usuario no existe o no tiene puntos acumulados.";
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "El usuario no existe o no tiene puntos acumulados");
         }
 
         LoyaltyAccount account = accountOpt.get();
         int cost = 500;
 
         if (account.getPointsBalance() < cost) {
-            return "Error: Puntos insuficientes. Tienes " + account.getPointsBalance() + " y necesitas " + cost + ".";
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Puntos insuficientes. Tienes " + account.getPointsBalance() + " y necesitas " + cost);
         }
 
         int newBalance = account.getPointsBalance() - cost;
@@ -70,8 +73,6 @@ public class LoyaltyService {
             account.setTier("PLATA");
         }
 
-        loyaltyRepository.save(account);
-
-        return "Canje exitoso del premio ID: " + rewardId + ". Te quedan " + newBalance + " puntos (" + account.getTier() + ").";
+        return loyaltyRepository.save(account);
     }
 }
