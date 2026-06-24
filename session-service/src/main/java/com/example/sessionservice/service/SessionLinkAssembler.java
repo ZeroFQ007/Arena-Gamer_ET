@@ -20,7 +20,7 @@ public class SessionLinkAssembler {
         model.add(linkTo(methodOn(SessionController.class)
                 .getAll()).withRel("all"));
 
-        if (session.status() == com.example.sessionservice.model.Session.SessionStatus.ACTIVE) {
+        if ("ACTIVE".equals(session.status())) {
             model.add(linkTo(methodOn(SessionController.class)
                     .finishSession(session.id())).withRel("finish"));
             model.add(linkTo(methodOn(SessionController.class)
