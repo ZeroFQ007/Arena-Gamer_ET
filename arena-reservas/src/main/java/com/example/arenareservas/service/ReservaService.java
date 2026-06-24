@@ -8,6 +8,7 @@ import com.example.arenareservas.model.Reserva;
 import com.example.arenareservas.model.ReservaHistory;
 import com.example.arenareservas.repository.ReservaHistoryRepository;
 import com.example.arenareservas.repository.ReservaRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @Service
 public class ReservaService {
 
@@ -62,6 +64,8 @@ public class ReservaService {
         reserva.setEstado("NUEVA");
 
         Reserva guardada = reservaRepository.save(reserva);
+        log.info("[RESERVAS] Reserva creada id={} para usuario={} en estacion={} fecha={}",
+                guardada.getId(), guardada.getUsuarioId(), guardada.getEstacionId(), guardada.getFecha());
 
         ReservaHistory historial = new ReservaHistory();
         historial.setReserva(guardada);
@@ -82,6 +86,7 @@ public class ReservaService {
         existente.setFecha(cmd.fecha());
         existente.setBloqueHorario(cmd.bloqueHorario());
         existente.setEstacionId(cmd.estacionId());
+        log.info("[RESERVAS] Reserva id={} actualizada", id);
         return toResult(reservaRepository.save(existente));
     }
 
@@ -92,6 +97,7 @@ public class ReservaService {
 
         reserva.setEstado(nuevoEstado.toUpperCase());
         Reserva guardada = reservaRepository.save(reserva);
+        log.info("[RESERVAS] Reserva id={} cambió estado: {} → {}", id, estadoAnterior, nuevoEstado.toUpperCase());
 
         ReservaHistory historial = new ReservaHistory();
         historial.setReserva(guardada);
@@ -101,14 +107,15 @@ public class ReservaService {
         historial.setComentario(comentario);
         historialRepository.save(historial);
 
-        // Comunicación inter-servicio con RestClient
         if ("CONFIRMADA".equalsIgnoreCase(nuevoEstado)) {
             try {
+                // productoId = estacionId (limitación conocida, explicada en defensa)
                 inventoryClient.actualizarStock(
                         reserva.getEstacionId(), Map.of("cantidad", -1));
-                System.out.println("Stock descontado exitosamente en Inventory.");
+                log.info("[RESERVAS] Stock descontado en inventory para productoId={}", reserva.getEstacionId());
             } catch (Exception e) {
-                System.err.println("Error al comunicar con Inventory: " + e.getMessage());
+                log.warn("[RESERVAS] No se pudo descontar stock en inventory para reserva id={}: {}",
+                        id, e.getMessage());
             }
         }
 
@@ -129,6 +136,7 @@ public class ReservaService {
                     "Reserva con ID " + id + " no encontrada");
         }
         reservaRepository.deleteById(id);
+        log.info("[RESERVAS] Reserva id={} eliminada", id);
     }
 
     private Reserva buscarOFallar(Long id) {
