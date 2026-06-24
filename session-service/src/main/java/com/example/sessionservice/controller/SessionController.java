@@ -2,6 +2,7 @@ package com.example.sessionservice.controller;
 
 import com.example.sessionservice.dto.SessionResponse;
 import com.example.sessionservice.model.Session;
+import com.example.sessionservice.service.SessionLinkAssembler;
 import com.example.sessionservice.service.SessionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -9,11 +10,16 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Tag(name = "Sesiones", description = "Operaciones para gestionar sesiones de juego en Arena Gamer")
 @RestController
@@ -21,28 +27,38 @@ import java.util.List;
 public class SessionController {
 
     private final SessionService sessionService;
+    private final SessionLinkAssembler sessionLinkAssembler;
 
-    public SessionController(SessionService sessionService) {
+    public SessionController(SessionService sessionService, SessionLinkAssembler sessionLinkAssembler) {
         this.sessionService = sessionService;
+        this.sessionLinkAssembler = sessionLinkAssembler;
     }
 
-    @Operation(summary = "Listar sesiones", description = "Obtiene todas las sesiones con username y nombre de estación")
+    @Operation(summary = "Listar sesiones", description = "Obtiene todas las sesiones con enlaces HATEOAS en _links")
     @ApiResponse(responseCode = "200", description = "Sesiones obtenidas correctamente")
     @GetMapping
-    public ResponseEntity<List<SessionResponse>> getAll() {
-        return ResponseEntity.ok(sessionService.findAllWithDetails());
+    public ResponseEntity<CollectionModel<EntityModel<SessionResponse>>> getAll() {
+        List<EntityModel<SessionResponse>> sessions = sessionService.findAllWithDetails().stream()
+                .map(sessionLinkAssembler::toModel)
+                .toList();
+
+        CollectionModel<EntityModel<SessionResponse>> collection = CollectionModel.of(sessions);
+        collection.add(linkTo(methodOn(SessionController.class).getAll()).withSelfRel());
+
+        return ResponseEntity.ok(collection);
     }
 
-    @Operation(summary = "Buscar sesión por id")
+    @Operation(summary = "Buscar sesión por id", description = "Devuelve la sesión con enlaces HATEOAS en _links (self, all, finish, cancel)")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Sesión encontrada"),
             @ApiResponse(responseCode = "404", description = "Sesión no encontrada")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<SessionResponse> getById(
+    public ResponseEntity<EntityModel<SessionResponse>> getById(
             @Parameter(description = "ID de la sesión", example = "1")
             @PathVariable Long id) {
-        return ResponseEntity.ok(sessionService.findByIdWithDetails(id));
+        SessionResponse session = sessionService.findByIdWithDetails(id);
+        return ResponseEntity.ok(sessionLinkAssembler.toModel(session));
     }
 
     @Operation(summary = "Iniciar sesión de juego", description = "Crea una nueva sesión verificando usuario y estación")
