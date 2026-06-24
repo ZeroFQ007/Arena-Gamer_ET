@@ -4,6 +4,7 @@ import com.example.arenainventory.dto.ProductoCommand;
 import com.example.arenainventory.dto.ProductoRequest;
 import com.example.arenainventory.dto.ProductoResponse;
 import com.example.arenainventory.dto.ProductoResult;
+import com.example.arenainventory.service.ProductoLinkAssembler;
 import com.example.arenainventory.service.ProductoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -11,6 +12,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,39 +21,54 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 @Tag(name = "Productos", description = "Operaciones para gestionar el inventario de productos de Arena Gamer")
 @RestController
 @RequestMapping("/api/v1/productos")
 public class ProductoController {
 
     private final ProductoService productoService;
+    private final ProductoLinkAssembler productoLinkAssembler;
 
-    public ProductoController(ProductoService productoService) {
+    public ProductoController(ProductoService productoService, ProductoLinkAssembler productoLinkAssembler) {
         this.productoService = productoService;
+        this.productoLinkAssembler = productoLinkAssembler;
     }
 
-    @Operation(summary = "Listar productos", description = "Obtiene todos los productos, opcionalmente filtrados por categoría")
+    @Operation(summary = "Listar productos", description = "Obtiene todos los productos con enlaces HATEOAS en _links")
     @ApiResponse(responseCode = "200", description = "Productos obtenidos correctamente")
     @GetMapping
-    public ResponseEntity<List<ProductoResponse>> listar(
+    public ResponseEntity<CollectionModel<EntityModel<ProductoResponse>>> listar(
             @Parameter(description = "Categoría a filtrar: CONSOLA, PERIFERICO o JUEGO", example = "CONSOLA")
             @RequestParam(required = false) String categoria) {
         List<ProductoResult> resultado = (categoria != null && !categoria.isBlank())
                 ? productoService.listarPorCategoria(categoria)
                 : productoService.listarTodos();
-        return ResponseEntity.ok(resultado.stream().map(this::toResponse).toList());
+
+        List<EntityModel<ProductoResponse>> productos = resultado.stream()
+                .map(this::toResponse)
+                .map(productoLinkAssembler::toModel)
+                .toList();
+
+        CollectionModel<EntityModel<ProductoResponse>> collection = CollectionModel.of(productos);
+        collection.add(linkTo(methodOn(ProductoController.class).listar(null)).withSelfRel());
+
+        return ResponseEntity.ok(collection);
     }
 
-    @Operation(summary = "Buscar producto por id")
+    @Operation(summary = "Buscar producto por id", description = "Devuelve el producto con enlaces HATEOAS en _links (self, all, update-stock)")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Producto encontrado"),
             @ApiResponse(responseCode = "404", description = "Producto no encontrado")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<ProductoResponse> obtenerPorId(
+    public ResponseEntity<EntityModel<ProductoResponse>> obtenerPorId(
             @Parameter(description = "ID del producto", example = "1")
             @PathVariable Long id) {
-        return ResponseEntity.ok(toResponse(productoService.obtenerPorId(id)));
+        ProductoResponse producto = toResponse(productoService.obtenerPorId(id));
+        return ResponseEntity.ok(productoLinkAssembler.toModel(producto));
     }
 
     @Operation(summary = "Crear producto", description = "Registra un nuevo producto en el inventario")
