@@ -5,16 +5,20 @@ import com.cybergamer.tournament_service.client.UserClient;
 import com.cybergamer.tournament_service.dto.CreateTournamentDTO;
 import com.cybergamer.tournament_service.entity.Tournament;
 import com.cybergamer.tournament_service.repository.TournamentRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 @Service
 public class TournamentService {
 
-    private static final Logger log = Logger.getLogger(TournamentService.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(TournamentService.class);
+
     private final TournamentRepository tournamentRepository;
     private final UserClient userClient;
     private final NotificationClient notificationClient;
@@ -28,6 +32,7 @@ public class TournamentService {
     }
 
     public Tournament createTournament(CreateTournamentDTO dto) {
+        log.info("[TOURNAMENT] Verificando usuario id={} antes de crear torneo", dto.getUserId());
         userClient.getUserById(dto.getUserId());
 
         Tournament tournament = new Tournament();
@@ -38,6 +43,7 @@ public class TournamentService {
         tournament.setStatus("OPEN");
 
         Tournament saved = tournamentRepository.save(tournament);
+        log.info("[TOURNAMENT] Torneo '{}' creado con id={}", saved.getName(), saved.getId());
 
         try {
             String mensaje = String.format(
@@ -49,15 +55,23 @@ public class TournamentService {
                     "message", mensaje,
                     "channel", "EMAIL"
             ));
-            log.info("Notificacion enviada por creacion de torneo: " + saved.getName());
+            log.info("[TOURNAMENT] Notificacion enviada por creacion de torneo '{}'", saved.getName());
         } catch (Exception e) {
-            log.warning("Error al notificar creacion de torneo: " + e.getMessage());
+            log.warn("[TOURNAMENT] No se pudo notificar creacion del torneo '{}': {}", saved.getName(), e.getMessage());
         }
 
         return saved;
     }
 
+    public Tournament findById(Long id) {
+        return tournamentRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Torneo con id " + id + " no encontrado"));
+    }
+
     public List<Tournament> getAllTournaments() {
-        return tournamentRepository.findAll();
+        List<Tournament> torneos = tournamentRepository.findAll();
+        log.info("[TOURNAMENT] Consultando lista de torneos — total: {}", torneos.size());
+        return torneos;
     }
 }
