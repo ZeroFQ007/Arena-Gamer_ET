@@ -4,6 +4,7 @@ import com.example.arenawallet.dto.BilleteraCommand;
 import com.example.arenawallet.dto.BilleteraRequest;
 import com.example.arenawallet.dto.BilleteraResponse;
 import com.example.arenawallet.dto.BilleteraResult;
+import com.example.arenawallet.service.BilleteraLinkAssembler;
 import com.example.arenawallet.service.BilleteraService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -11,6 +12,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -19,6 +22,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 @Tag(name = "Billeteras", description = "Operaciones para gestionar billeteras virtuales en Arena Gamer")
 @RestController
 @RequestMapping("/api/v1/billeteras")
@@ -26,30 +32,39 @@ import java.util.Map;
 public class BilleteraController {
 
     private final BilleteraService billeteraService;
+    private final BilleteraLinkAssembler billeteraLinkAssembler;
 
-    public BilleteraController(BilleteraService billeteraService) {
+    public BilleteraController(BilleteraService billeteraService, BilleteraLinkAssembler billeteraLinkAssembler) {
         this.billeteraService = billeteraService;
+        this.billeteraLinkAssembler = billeteraLinkAssembler;
     }
 
-    @Operation(summary = "Listar billeteras", description = "Obtiene todas las billeteras registradas")
+    @Operation(summary = "Listar billeteras", description = "Obtiene todas las billeteras con enlaces HATEOAS en _links")
     @ApiResponse(responseCode = "200", description = "Billeteras obtenidas correctamente")
     @GetMapping
-    public ResponseEntity<List<BilleteraResponse>> listar() {
-        return ResponseEntity.ok(
-                billeteraService.listarTodas().stream()
-                        .map(this::toResponse).toList());
+    public ResponseEntity<CollectionModel<EntityModel<BilleteraResponse>>> listar() {
+        List<EntityModel<BilleteraResponse>> billeteras = billeteraService.listarTodas().stream()
+                .map(this::toResponse)
+                .map(billeteraLinkAssembler::toModel)
+                .toList();
+
+        CollectionModel<EntityModel<BilleteraResponse>> collection = CollectionModel.of(billeteras);
+        collection.add(linkTo(methodOn(BilleteraController.class).listar()).withSelfRel());
+
+        return ResponseEntity.ok(collection);
     }
 
-    @Operation(summary = "Buscar billetera por id")
+    @Operation(summary = "Buscar billetera por id", description = "Devuelve la billetera con enlaces HATEOAS en _links (self, all, historial, recargar)")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Billetera encontrada"),
             @ApiResponse(responseCode = "404", description = "Billetera no encontrada")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<BilleteraResponse> obtenerPorId(
+    public ResponseEntity<EntityModel<BilleteraResponse>> obtenerPorId(
             @Parameter(description = "ID de la billetera", example = "1")
             @PathVariable Long id) {
-        return ResponseEntity.ok(toResponse(billeteraService.obtenerPorId(id)));
+        BilleteraResponse billetera = toResponse(billeteraService.obtenerPorId(id));
+        return ResponseEntity.ok(billeteraLinkAssembler.toModel(billetera));
     }
 
     @Operation(summary = "Crear billetera", description = "Registra una nueva billetera verificando que el usuario exista en user-service")
