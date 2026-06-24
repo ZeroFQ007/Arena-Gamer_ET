@@ -4,16 +4,18 @@ import com.cybergamer.hardware_monitor.client.NotificationClient;
 import com.cybergamer.hardware_monitor.dto.PcReportDTO;
 import com.cybergamer.hardware_monitor.entity.PcStatus;
 import com.cybergamer.hardware_monitor.repository.HardwareRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.logging.Logger;
 
 @Service
 public class HardwareService {
 
-    private static final Logger log = Logger.getLogger(HardwareService.class.getName());
+    private static final Logger log = LoggerFactory.getLogger(HardwareService.class);
+
     private final HardwareRepository hardwareRepository;
     private final NotificationClient notificationClient;
 
@@ -24,6 +26,8 @@ public class HardwareService {
     }
 
     public PcStatus updatePcStatus(PcReportDTO dto) {
+        log.info("[HARDWARE] Recibiendo reporte de PC: {}", dto.getPcId());
+
         PcStatus status = hardwareRepository.findByPcId(dto.getPcId())
                 .orElse(new PcStatus());
 
@@ -34,13 +38,15 @@ public class HardwareService {
         status.setLastCheck(LocalDateTime.now());
 
         PcStatus saved = hardwareRepository.save(status);
+        log.info("[HARDWARE] Estado guardado para PC {} — CPU: {}°C | GPU: {}°C",
+                dto.getPcId(), dto.getCpuTemp(), dto.getGpuTemp());
 
         if (dto.getCpuTemp() > 85 || dto.getGpuTemp() > 90) {
             String mensaje = String.format(
                     "ALERTA: PC %s reporta temperatura critica. CPU: %.1f°C | GPU: %.1f°C",
                     dto.getPcId(), dto.getCpuTemp(), dto.getGpuTemp()
             );
-            log.warning("Temperatura critica en " + dto.getPcId());
+            log.warn("[HARDWARE] Temperatura critica detectada en PC {} — enviando alerta", dto.getPcId());
             notificationClient.sendAlert("staff@arenagamer.cl", mensaje);
         }
 
@@ -48,6 +54,8 @@ public class HardwareService {
     }
 
     public List<PcStatus> getAllStatuses() {
-        return hardwareRepository.findAll();
+        List<PcStatus> statuses = hardwareRepository.findAll();
+        log.info("[HARDWARE] Consultando estado de {} equipos", statuses.size());
+        return statuses;
     }
 }
