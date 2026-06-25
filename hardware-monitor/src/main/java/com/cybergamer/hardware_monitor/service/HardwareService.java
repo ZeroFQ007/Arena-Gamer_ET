@@ -4,17 +4,15 @@ import com.cybergamer.hardware_monitor.client.NotificationClient;
 import com.cybergamer.hardware_monitor.dto.PcReportDTO;
 import com.cybergamer.hardware_monitor.entity.PcStatus;
 import com.cybergamer.hardware_monitor.repository.HardwareRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Slf4j
 @Service
 public class HardwareService {
-
-    private static final Logger log = LoggerFactory.getLogger(HardwareService.class);
 
     private final HardwareRepository hardwareRepository;
     private final NotificationClient notificationClient;

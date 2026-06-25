@@ -4,9 +4,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.stream.Collectors;
 
@@ -29,6 +32,28 @@ public class GlobalExceptionHandler {
         log.warn("Error de validación: {}", message);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(new ErrorResponse(message));
+    }
+
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<?> handleUnauthorized(AuthenticationException e) {
+        log.warn("Error de autenticación: {}", e.getMessage());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(new ErrorResponse("Credenciales inválidas"));
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<?> handleForbidden(AccessDeniedException e) {
+        log.warn("Acceso denegado: {}", e.getMessage());
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(new ErrorResponse("Acceso denegado"));
+    }
+
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<?> handleResponseStatus(ResponseStatusException e) {
+        HttpStatus status = (HttpStatus) e.getStatusCode();
+        log.warn("{}: {}", status, e.getReason());
+        return ResponseEntity.status(status)
+                .body(new ErrorResponse(e.getReason()));
     }
 
     @ExceptionHandler(Exception.class)

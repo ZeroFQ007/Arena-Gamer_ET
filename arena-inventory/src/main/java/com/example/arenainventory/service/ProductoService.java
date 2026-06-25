@@ -5,10 +5,12 @@ import com.example.arenainventory.dto.ProductoResult;
 import com.example.arenainventory.exception.ProductoNotFoundException;
 import com.example.arenainventory.model.Producto;
 import com.example.arenainventory.repository.ProductoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class ProductoService {
 
@@ -19,27 +21,35 @@ public class ProductoService {
     }
 
     public List<ProductoResult> listarTodos() {
-        return productoRepository.findAll().stream()
+        List<ProductoResult> productos = productoRepository.findAll().stream()
                 .map(this::toResult).toList();
+        log.info("Listando todos los productos: {} registros", productos.size());
+        return productos;
     }
 
     public List<ProductoResult> listarPorCategoria(String categoria) {
         try {
             Producto.Categoria cat = Producto.Categoria.valueOf(categoria.toUpperCase());
-            return productoRepository.findByCategoria(cat).stream()
+            List<ProductoResult> productos = productoRepository.findByCategoria(cat).stream()
                     .map(this::toResult).toList();
+            log.info("Productos filtrados por categoria {}: {}", cat, productos.size());
+            return productos;
         } catch (IllegalArgumentException e) {
+            log.warn("Categoría inválida ingresada: {}", categoria);
             throw new IllegalArgumentException(
                     "Categoría inválida. Use: CONSOLA, PERIFERICO o JUEGO");
         }
     }
 
     public ProductoResult obtenerPorId(Long id) {
-        return toResult(buscarOFallar(id));
+        ProductoResult resultado = toResult(buscarOFallar(id));
+        log.info("Producto obtenido: id={}", id);
+        return resultado;
     }
 
     public ProductoResult crear(ProductoCommand cmd) {
         if (cmd.stock() != null && cmd.stock() < 0) {
+            log.warn("Intento de crear producto con stock negativo");
             throw new IllegalArgumentException(
                     "El stock inicial no puede ser negativo");
         }
@@ -48,7 +58,9 @@ public class ProductoService {
         producto.setCategoria(cmd.categoria());
         producto.setStock(cmd.stock());
         producto.setPrecioAlquiler(cmd.precioAlquiler());
-        return toResult(productoRepository.save(producto));
+        ProductoResult resultado = toResult(productoRepository.save(producto));
+        log.info("Producto creado: id={}, nombre={}", resultado.id(), resultado.nombre());
+        return resultado;
     }
 
     public ProductoResult actualizar(Long id, ProductoCommand cmd) {
@@ -57,11 +69,14 @@ public class ProductoService {
         existente.setCategoria(cmd.categoria());
         existente.setStock(cmd.stock());
         existente.setPrecioAlquiler(cmd.precioAlquiler());
-        return toResult(productoRepository.save(existente));
+        ProductoResult resultado = toResult(productoRepository.save(existente));
+        log.info("Producto actualizado: id={}, nombre={}", id, resultado.nombre());
+        return resultado;
     }
 
     public ProductoResult actualizarStock(Long id, Integer cantidad) {
         if (cantidad == null || cantidad == 0) {
+            log.warn("Intento de actualizar stock con cantidad inválida: {}", cantidad);
             throw new IllegalArgumentException(
                     "La cantidad debe ser distinta de cero");
         }
@@ -69,19 +84,25 @@ public class ProductoService {
         int nuevoStock = producto.getStock() + cantidad;
 
         if (nuevoStock < 0) {
+            log.warn("Stock insuficiente para producto id={}: disponible={}, requerido={}",
+                    id, producto.getStock(), -cantidad);
             throw new IllegalArgumentException(
                     "Stock insuficiente. Disponible: " + producto.getStock());
         }
         producto.setStock(nuevoStock);
-        return toResult(productoRepository.save(producto));
+        ProductoResult resultado = toResult(productoRepository.save(producto));
+        log.info("Stock actualizado: producto id={}, nuevo stock={}", id, nuevoStock);
+        return resultado;
     }
 
     public void eliminar(Long id) {
         if (!productoRepository.existsById(id)) {
+            log.warn("Intento de eliminar producto inexistente: id={}", id);
             throw new ProductoNotFoundException(
                     "No se puede eliminar: ID " + id + " no existe");
         }
         productoRepository.deleteById(id);
+        log.info("Producto eliminado: id={}", id);
     }
 
     // ── Helpers ──────────────────────────────────────────────────────────────

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.stream.Collectors;
 
@@ -29,6 +30,14 @@ public class GlobalExceptionHandler {
         log.warn("Error de validación: {}", message);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(new ErrorResponse(message));
+    }
+
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<?> handleResponseStatus(ResponseStatusException e) {
+        HttpStatus status = (HttpStatus) e.getStatusCode();
+        log.warn("{}: {}", status, e.getReason());
+        return ResponseEntity.status(status)
+                .body(new ErrorResponse(e.getReason()));
     }
 
     @ExceptionHandler(Exception.class)
