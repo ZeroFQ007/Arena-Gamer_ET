@@ -30,4 +30,11 @@ public class UserClient {
             return Optional.ofNullable(response);
         } catch (Exception e) {
             log.error("Usuario no encontrado con id: {}", userId);
-            return
+            return Optional.empty();
+        }
+    }
+
+    public boolean existsUser(Long userId) {
+        return findById(userId).isPresent();
+    }
+}

@@ -1,40 +1,69 @@
-2026-06-17T01:13:23.936-04:00  INFO 13064 --- [arena-reservas] [restartedMain] c.e.a.ArenaReservasApplication           : Starting ArenaReservasApplication using Java 21.0.10 with PID 13064 (C:\Users\Lenovo\IdeaProjects\arena-reservas\target\classes started by Lenovo in C:\Users\Lenovo\IdeaProjects)
-2026-06-17T01:13:23.954-04:00 DEBUG 13064 --- [arena-reservas] [restartedMain] c.e.a.ArenaReservasApplication           : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-06-17T01:13:23.956-04:00  INFO 13064 --- [arena-reservas] [restartedMain] c.e.a.ArenaReservasApplication           : The following 1 profile is active: "h2"
-2026-06-17T01:13:24.090-04:00  INFO 13064 --- [arena-reservas] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-06-17T01:13:24.090-04:00  INFO 13064 --- [arena-reservas] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-06-17T01:13:26.489-04:00  INFO 13064 --- [arena-reservas] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-17T01:13:26.617-04:00  INFO 13064 --- [arena-reservas] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 114 ms. Found 2 JPA repository interfaces.
-2026-06-17T01:13:27.350-04:00  INFO 13064 --- [arena-reservas] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f23ec0cd-de44-3d6e-848d-bf87f0b03609
-2026-06-17T01:13:28.994-04:00  INFO 13064 --- [arena-reservas] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9000 (http)
-2026-06-17T01:13:29.017-04:00  INFO 13064 --- [arena-reservas] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-06-17T01:13:29.018-04:00  INFO 13064 --- [arena-reservas] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
-2026-06-17T01:13:29.188-04:00  INFO 13064 --- [arena-reservas] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-06-17T01:13:29.189-04:00  INFO 13064 --- [arena-reservas] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5099 ms
-2026-06-17T01:13:29.328-04:00  INFO 13064 --- [arena-reservas] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-06-17T01:13:29.864-04:00  INFO 13064 --- [arena-reservas] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:reservas_db user=SA
-2026-06-17T01:13:29.870-04:00  INFO 13064 --- [arena-reservas] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-06-17T01:13:29.909-04:00  INFO 13064 --- [arena-reservas] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:reservas_db'
-2026-06-17T01:13:30.590-04:00  INFO 13064 --- [arena-reservas] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-06-17T01:13:30.913-04:00  INFO 13064 --- [arena-reservas] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
-2026-06-17T01:13:31.133-04:00  INFO 13064 --- [arena-reservas] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-06-17T01:13:32.382-04:00  INFO 13064 --- [arena-reservas] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-17T01:13:32.519-04:00  WARN 13064 --- [arena-reservas] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-06-17T01:13:35.432-04:00  INFO 13064 --- [arena-reservas] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-17T01:13:35.639-04:00  INFO 13064 --- [arena-reservas] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-17T01:13:38.715-04:00  WARN 13064 --- [arena-reservas] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-06-17T01:13:39.212-04:00  INFO 13064 --- [arena-reservas] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2026-06-17T01:13:48.343-04:00  INFO 13064 --- [arena-reservas] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
-2026-06-17T01:13:50.293-04:00  INFO 13064 --- [arena-reservas] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9000 (http) with context path ''
-2026-06-17T01:13:51.383-04:00  INFO 13064 --- [arena-reservas] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
-2026-06-17T01:13:51.435-04:00  INFO 13064 --- [arena-reservas] [restartedMain] c.e.a.ArenaReservasApplication           : Started ArenaReservasApplication in 30.106 seconds (process running for 34.621)
-2026-06-17T01:14:14.440-04:00  INFO 13064 --- [arena-reservas] [http-nio-9000-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-17T01:14:14.440-04:00  INFO 13064 --- [arena-reservas] [http-nio-9000-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-06-17T01:14:14.440-04:00  INFO 13064 --- [arena-reservas] [http-nio-9000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2026-06-17T01:14:16.336-04:00  INFO 13064 --- [arena-reservas] [http-nio-9000-exec-8] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 1345 ms
-2026-06-17T01:14:28.874-04:00  WARN 13064 --- [arena-reservas] [http-nio-9000-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
-2026-06-17T01:22:14.603-04:00  INFO 13064 --- [arena-reservas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-06-17T01:22:14.612-04:00  WARN 13064 --- [arena-reservas] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+2026-06-27T14:18:27.737-04:00  INFO 6600 --- [arena-reservas] [restartedMain] c.e.a.ArenaReservasApplication           : Starting ArenaReservasApplication using Java 21.0.10 with PID 6600 (C:\Users\Lenovo\IdeaProjects\arena-reservas\target\classes started by Lenovo in C:\Users\Lenovo\IdeaProjects)
+2026-06-27T14:18:27.750-04:00 DEBUG 6600 --- [arena-reservas] [restartedMain] c.e.a.ArenaReservasApplication           : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-06-27T14:18:27.753-04:00  INFO 6600 --- [arena-reservas] [restartedMain] c.e.a.ArenaReservasApplication           : The following 1 profile is active: "h2"
+2026-06-27T14:18:27.935-04:00  INFO 6600 --- [arena-reservas] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-27T14:18:27.936-04:00  INFO 6600 --- [arena-reservas] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-27T14:18:30.925-04:00  INFO 6600 --- [arena-reservas] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-27T14:18:31.041-04:00  INFO 6600 --- [arena-reservas] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 97 ms. Found 2 JPA repository interfaces.
+2026-06-27T14:18:31.974-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=82cf4c63-95bf-3205-aa15-e6e3f35d259c
+2026-06-27T14:18:34.262-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9000 (http)
+2026-06-27T14:18:34.294-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-27T14:18:34.295-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-06-27T14:18:34.512-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-27T14:18:34.513-04:00  INFO 6600 --- [arena-reservas] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6576 ms
+2026-06-27T14:18:34.926-04:00  INFO 6600 --- [arena-reservas] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-27T14:18:35.641-04:00  INFO 6600 --- [arena-reservas] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:reservas_db user=SA
+2026-06-27T14:18:35.645-04:00  INFO 6600 --- [arena-reservas] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-27T14:18:35.678-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:reservas_db'
+2026-06-27T14:18:36.245-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-27T14:18:36.451-04:00  INFO 6600 --- [arena-reservas] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-06-27T14:18:36.573-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-27T14:18:37.375-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-27T14:18:37.506-04:00  WARN 6600 --- [arena-reservas] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-27T14:18:43.239-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-27T14:18:43.561-04:00  INFO 6600 --- [arena-reservas] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-27T14:18:46.296-04:00  WARN 6600 --- [arena-reservas] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-27T14:18:47.224-04:00  WARN 6600 --- [arena-reservas] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2026-06-27T14:18:52.149-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-06-27T14:18:52.398-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9000 (http) with context path ''
+2026-06-27T14:18:53.414-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-06-27T14:18:53.442-04:00  INFO 6600 --- [arena-reservas] [restartedMain] c.e.a.ArenaReservasApplication           : Started ArenaReservasApplication in 28.359 seconds (process running for 30.719)
+2026-06-27T15:05:35.464-04:00  INFO 6600 --- [arena-reservas] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 18 class path changes (0 additions, 0 deletions, 18 modifications)
+2026-06-27T15:05:35.493-04:00  INFO 6600 --- [arena-reservas] [Thread-1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-27T15:05:35.506-04:00  WARN 6600 --- [arena-reservas] [Thread-1] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
 Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
-2026-06-17T01:22:14.613-04:00  INFO 13064 --- [arena-reservas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-06-17T01:22:14.615-04:00  INFO 13064 --- [arena-reservas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-27T15:05:35.507-04:00  INFO 6600 --- [arena-reservas] [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-27T15:05:35.510-04:00  INFO 6600 --- [arena-reservas] [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-27T15:05:36.783-04:00  INFO 6600 --- [arena-reservas] [restartedMain] c.e.a.ArenaReservasApplication           : Starting ArenaReservasApplication using Java 21.0.10 with PID 6600 (C:\Users\Lenovo\IdeaProjects\arena-reservas\target\classes started by Lenovo in C:\Users\Lenovo\IdeaProjects)
+2026-06-27T15:05:36.784-04:00 DEBUG 6600 --- [arena-reservas] [restartedMain] c.e.a.ArenaReservasApplication           : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-06-27T15:05:36.784-04:00  INFO 6600 --- [arena-reservas] [restartedMain] c.e.a.ArenaReservasApplication           : The following 1 profile is active: "h2"
+2026-06-27T15:05:37.709-04:00  INFO 6600 --- [arena-reservas] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-27T15:05:37.762-04:00  INFO 6600 --- [arena-reservas] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 53 ms. Found 2 JPA repository interfaces.
+2026-06-27T15:05:38.036-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=82cf4c63-95bf-3205-aa15-e6e3f35d259c
+2026-06-27T15:05:38.708-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9000 (http)
+2026-06-27T15:05:38.710-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-27T15:05:38.711-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-06-27T15:05:38.795-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-27T15:05:38.795-04:00  INFO 6600 --- [arena-reservas] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2006 ms
+2026-06-27T15:05:38.898-04:00  INFO 6600 --- [arena-reservas] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-06-27T15:05:38.903-04:00  INFO 6600 --- [arena-reservas] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn20: url=jdbc:h2:mem:reservas_db user=SA
+2026-06-27T15:05:38.904-04:00  INFO 6600 --- [arena-reservas] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-06-27T15:05:38.904-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:reservas_db'
+2026-06-27T15:05:39.128-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-27T15:05:39.140-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-27T15:05:39.158-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-27T15:05:39.164-04:00  WARN 6600 --- [arena-reservas] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-27T15:05:39.407-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-27T15:05:39.425-04:00  INFO 6600 --- [arena-reservas] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-27T15:05:40.586-04:00  WARN 6600 --- [arena-reservas] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-27T15:05:41.189-04:00  WARN 6600 --- [arena-reservas] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2026-06-27T15:05:43.898-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-06-27T15:05:43.990-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9000 (http) with context path ''
+2026-06-27T15:05:45.006-04:00  INFO 6600 --- [arena-reservas] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-06-27T15:05:45.015-04:00  INFO 6600 --- [arena-reservas] [restartedMain] c.e.a.ArenaReservasApplication           : Started ArenaReservasApplication in 9.381 seconds (process running for 2842.291)
+2026-06-27T15:05:45.046-04:00  INFO 6600 --- [arena-reservas] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-06-27T15:15:18.143-04:00  INFO 6600 --- [arena-reservas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-27T15:15:18.145-04:00  WARN 6600 --- [arena-reservas] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2026-06-27T15:15:18.147-04:00  INFO 6600 --- [arena-reservas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-06-27T15:15:18.149-04:00  INFO 6600 --- [arena-reservas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.

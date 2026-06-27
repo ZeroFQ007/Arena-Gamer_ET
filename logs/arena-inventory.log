@@ -1,39 +1,69 @@
-2026-06-17T01:06:50.791-04:00  INFO 18660 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : Starting ArenaInventoryApplication using Java 21.0.10 with PID 18660 (C:\Users\Lenovo\IdeaProjects\arena-inventory\target\classes started by Lenovo in C:\Users\Lenovo\IdeaProjects)
-2026-06-17T01:06:50.805-04:00 DEBUG 18660 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-06-17T01:06:50.806-04:00  INFO 18660 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : The following 1 profile is active: "h2"
-2026-06-17T01:06:50.880-04:00  INFO 18660 --- [arena-inventory] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-06-17T01:06:50.880-04:00  INFO 18660 --- [arena-inventory] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-06-17T01:06:52.818-04:00  INFO 18660 --- [arena-inventory] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-17T01:06:52.933-04:00  INFO 18660 --- [arena-inventory] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 99 ms. Found 1 JPA repository interface.
-2026-06-17T01:06:53.588-04:00  INFO 18660 --- [arena-inventory] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=548532ec-ffe1-3f00-9caa-beb0ae5474b1
-2026-06-17T01:06:55.292-04:00  INFO 18660 --- [arena-inventory] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9001 (http)
-2026-06-17T01:06:55.306-04:00  INFO 18660 --- [arena-inventory] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-06-17T01:06:55.306-04:00  INFO 18660 --- [arena-inventory] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
-2026-06-17T01:06:55.400-04:00  INFO 18660 --- [arena-inventory] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-06-17T01:06:55.401-04:00  INFO 18660 --- [arena-inventory] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4520 ms
-2026-06-17T01:06:55.456-04:00  INFO 18660 --- [arena-inventory] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-06-17T01:06:55.967-04:00  INFO 18660 --- [arena-inventory] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:inventory_db user=SA
-2026-06-17T01:06:55.969-04:00  INFO 18660 --- [arena-inventory] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-06-17T01:06:55.979-04:00  INFO 18660 --- [arena-inventory] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:inventory_db'
-2026-06-17T01:06:56.298-04:00  INFO 18660 --- [arena-inventory] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-06-17T01:06:56.461-04:00  INFO 18660 --- [arena-inventory] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
-2026-06-17T01:06:56.521-04:00  INFO 18660 --- [arena-inventory] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-06-17T01:06:56.949-04:00  INFO 18660 --- [arena-inventory] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-17T01:06:57.024-04:00  WARN 18660 --- [arena-inventory] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-06-17T01:06:58.549-04:00  INFO 18660 --- [arena-inventory] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-17T01:06:58.634-04:00  INFO 18660 --- [arena-inventory] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-17T01:06:59.635-04:00  WARN 18660 --- [arena-inventory] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-06-17T01:07:01.231-04:00  INFO 18660 --- [arena-inventory] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2026-06-17T01:07:02.338-04:00  INFO 18660 --- [arena-inventory] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
-2026-06-17T01:07:02.697-04:00  INFO 18660 --- [arena-inventory] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9001 (http) with context path ''
-2026-06-17T01:07:03.721-04:00  INFO 18660 --- [arena-inventory] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
-2026-06-17T01:07:03.758-04:00  INFO 18660 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : Started ArenaInventoryApplication in 15.714 seconds (process running for 18.041)
-2026-06-17T01:08:23.801-04:00  INFO 18660 --- [arena-inventory] [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-17T01:08:23.803-04:00  INFO 18660 --- [arena-inventory] [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-06-17T01:08:23.806-04:00  INFO 18660 --- [arena-inventory] [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-2026-06-17T01:08:25.249-04:00  INFO 18660 --- [arena-inventory] [http-nio-9001-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 866 ms
-2026-06-17T01:09:29.039-04:00  INFO 18660 --- [arena-inventory] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-06-17T01:09:29.042-04:00  WARN 18660 --- [arena-inventory] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+2026-06-27T14:19:40.954-04:00  INFO 11152 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : Starting ArenaInventoryApplication using Java 21.0.10 with PID 11152 (C:\Users\Lenovo\IdeaProjects\arena-inventory\target\classes started by Lenovo in C:\Users\Lenovo\IdeaProjects)
+2026-06-27T14:19:40.966-04:00 DEBUG 11152 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-06-27T14:19:40.970-04:00  INFO 11152 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : The following 1 profile is active: "h2"
+2026-06-27T14:19:41.171-04:00  INFO 11152 --- [arena-inventory] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-27T14:19:41.172-04:00  INFO 11152 --- [arena-inventory] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-27T14:19:44.289-04:00  INFO 11152 --- [arena-inventory] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-27T14:19:44.409-04:00  INFO 11152 --- [arena-inventory] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 102 ms. Found 1 JPA repository interface.
+2026-06-27T14:19:45.194-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=ddd591b9-ae70-3c5a-b259-0c7913f8421c
+2026-06-27T14:19:47.412-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9001 (http)
+2026-06-27T14:19:47.430-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-27T14:19:47.431-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-06-27T14:19:47.583-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-27T14:19:47.584-04:00  INFO 11152 --- [arena-inventory] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6410 ms
+2026-06-27T14:19:47.727-04:00  INFO 11152 --- [arena-inventory] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-27T14:19:48.164-04:00  INFO 11152 --- [arena-inventory] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:inventory_db user=SA
+2026-06-27T14:19:48.169-04:00  INFO 11152 --- [arena-inventory] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-27T14:19:48.195-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:inventory_db'
+2026-06-27T14:19:48.721-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-27T14:19:48.913-04:00  INFO 11152 --- [arena-inventory] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-06-27T14:19:49.021-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-27T14:19:49.765-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-27T14:19:49.912-04:00  WARN 11152 --- [arena-inventory] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-27T14:19:52.932-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-27T14:19:53.162-04:00  INFO 11152 --- [arena-inventory] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-27T14:19:57.195-04:00  WARN 11152 --- [arena-inventory] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-27T14:20:02.412-04:00  WARN 11152 --- [arena-inventory] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2026-06-27T14:20:03.606-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-06-27T14:20:04.067-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9001 (http) with context path ''
+2026-06-27T14:20:05.098-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-06-27T14:20:05.129-04:00  INFO 11152 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : Started ArenaInventoryApplication in 26.834 seconds (process running for 29.573)
+2026-06-27T15:05:14.920-04:00  INFO 11152 --- [arena-inventory] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 15 class path changes (0 additions, 0 deletions, 15 modifications)
+2026-06-27T15:05:14.959-04:00  INFO 11152 --- [arena-inventory] [Thread-1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-27T15:05:14.972-04:00  WARN 11152 --- [arena-inventory] [Thread-1] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
 Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
-2026-06-17T01:09:29.043-04:00  INFO 18660 --- [arena-inventory] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-06-17T01:09:29.045-04:00  INFO 18660 --- [arena-inventory] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-27T15:05:14.974-04:00  INFO 11152 --- [arena-inventory] [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-27T15:05:14.977-04:00  INFO 11152 --- [arena-inventory] [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-27T15:05:16.239-04:00  INFO 11152 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : Starting ArenaInventoryApplication using Java 21.0.10 with PID 11152 (C:\Users\Lenovo\IdeaProjects\arena-inventory\target\classes started by Lenovo in C:\Users\Lenovo\IdeaProjects)
+2026-06-27T15:05:16.240-04:00 DEBUG 11152 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-06-27T15:05:16.240-04:00  INFO 11152 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : The following 1 profile is active: "h2"
+2026-06-27T15:05:17.212-04:00  INFO 11152 --- [arena-inventory] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-27T15:05:17.241-04:00  INFO 11152 --- [arena-inventory] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 1 JPA repository interface.
+2026-06-27T15:05:17.489-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=ddd591b9-ae70-3c5a-b259-0c7913f8421c
+2026-06-27T15:05:18.258-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9001 (http)
+2026-06-27T15:05:18.261-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-27T15:05:18.261-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-06-27T15:05:18.371-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-27T15:05:18.371-04:00  INFO 11152 --- [arena-inventory] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2126 ms
+2026-06-27T15:05:18.504-04:00  INFO 11152 --- [arena-inventory] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-06-27T15:05:18.509-04:00  INFO 11152 --- [arena-inventory] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn20: url=jdbc:h2:mem:inventory_db user=SA
+2026-06-27T15:05:18.510-04:00  INFO 11152 --- [arena-inventory] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-06-27T15:05:18.511-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:inventory_db'
+2026-06-27T15:05:18.768-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-27T15:05:18.780-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-27T15:05:18.794-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-27T15:05:18.799-04:00  WARN 11152 --- [arena-inventory] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-27T15:05:18.924-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-27T15:05:18.936-04:00  INFO 11152 --- [arena-inventory] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-27T15:05:19.877-04:00  WARN 11152 --- [arena-inventory] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-27T15:05:22.628-04:00  WARN 11152 --- [arena-inventory] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2026-06-27T15:05:23.725-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-06-27T15:05:23.854-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9001 (http) with context path ''
+2026-06-27T15:05:24.868-04:00  INFO 11152 --- [arena-inventory] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-06-27T15:05:24.880-04:00  INFO 11152 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : Started ArenaInventoryApplication in 9.768 seconds (process running for 2749.324)
+2026-06-27T15:05:24.914-04:00  INFO 11152 --- [arena-inventory] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-06-27T15:15:18.153-04:00  INFO 11152 --- [arena-inventory] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-27T15:15:18.157-04:00  WARN 11152 --- [arena-inventory] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2026-06-27T15:15:18.159-04:00  INFO 11152 --- [arena-inventory] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-06-27T15:15:18.169-04:00  INFO 11152 --- [arena-inventory] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.

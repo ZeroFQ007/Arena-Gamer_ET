@@ -1,40 +1,69 @@
-2026-06-17T01:27:12.582-04:00  INFO 3260 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : Starting ArenaWalletApplication using Java 21.0.10 with PID 3260 (C:\Users\Lenovo\IdeaProjects\arena-wallet\target\classes started by Lenovo in C:\Users\Lenovo\IdeaProjects)
-2026-06-17T01:27:12.589-04:00 DEBUG 3260 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-06-17T01:27:12.595-04:00  INFO 3260 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : The following 1 profile is active: "h2"
-2026-06-17T01:27:12.752-04:00  INFO 3260 --- [arena-wallet] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-06-17T01:27:12.752-04:00  INFO 3260 --- [arena-wallet] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-06-17T01:27:14.927-04:00  INFO 3260 --- [arena-wallet] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-17T01:27:15.033-04:00  INFO 3260 --- [arena-wallet] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 98 ms. Found 2 JPA repository interfaces.
-2026-06-17T01:27:15.627-04:00  INFO 3260 --- [arena-wallet] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=ca959d08-b7dd-3cbb-a64b-046b2200220e
-2026-06-17T01:27:19.292-04:00  INFO 3260 --- [arena-wallet] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
-2026-06-17T01:27:19.314-04:00  INFO 3260 --- [arena-wallet] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-06-17T01:27:19.314-04:00  INFO 3260 --- [arena-wallet] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
-2026-06-17T01:27:19.447-04:00  INFO 3260 --- [arena-wallet] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-06-17T01:27:19.447-04:00  INFO 3260 --- [arena-wallet] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6695 ms
-2026-06-17T01:27:19.578-04:00  INFO 3260 --- [arena-wallet] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-06-17T01:27:19.967-04:00  INFO 3260 --- [arena-wallet] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:wallet_db user=SA
-2026-06-17T01:27:19.971-04:00  INFO 3260 --- [arena-wallet] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-06-17T01:27:19.991-04:00  INFO 3260 --- [arena-wallet] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:wallet_db'
-2026-06-17T01:27:20.330-04:00  INFO 3260 --- [arena-wallet] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-06-17T01:27:20.442-04:00  INFO 3260 --- [arena-wallet] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
-2026-06-17T01:27:20.517-04:00  INFO 3260 --- [arena-wallet] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-06-17T01:27:21.010-04:00  INFO 3260 --- [arena-wallet] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-17T01:27:21.111-04:00  WARN 3260 --- [arena-wallet] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-06-17T01:27:22.807-04:00  INFO 3260 --- [arena-wallet] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-17T01:27:22.928-04:00  INFO 3260 --- [arena-wallet] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-17T01:27:24.272-04:00  WARN 3260 --- [arena-wallet] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-06-17T01:27:24.500-04:00  INFO 3260 --- [arena-wallet] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2026-06-17T01:27:27.868-04:00  INFO 3260 --- [arena-wallet] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
-2026-06-17T01:27:28.200-04:00  INFO 3260 --- [arena-wallet] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path ''
-2026-06-17T01:27:29.230-04:00  INFO 3260 --- [arena-wallet] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
-2026-06-17T01:27:29.246-04:00  INFO 3260 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : Started ArenaWalletApplication in 19.471 seconds (process running for 22.99)
-2026-06-17T01:30:14.140-04:00  INFO 3260 --- [arena-wallet] [http-nio-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-17T01:30:14.140-04:00  INFO 3260 --- [arena-wallet] [http-nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-06-17T01:30:14.140-04:00  INFO 3260 --- [arena-wallet] [http-nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2026-06-17T01:30:15.606-04:00  INFO 3260 --- [arena-wallet] [http-nio-8085-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 785 ms
-2026-06-17T01:30:22.563-04:00  WARN 3260 --- [arena-wallet] [http-nio-8085-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
-2026-06-17T01:30:36.346-04:00  INFO 3260 --- [arena-wallet] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-06-17T01:30:36.352-04:00  WARN 3260 --- [arena-wallet] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+2026-06-27T14:18:08.391-04:00  INFO 11160 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : Starting ArenaWalletApplication using Java 21.0.10 with PID 11160 (C:\Users\Lenovo\IdeaProjects\arena-wallet\target\classes started by Lenovo in C:\Users\Lenovo\IdeaProjects)
+2026-06-27T14:18:08.404-04:00 DEBUG 11160 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-06-27T14:18:08.408-04:00  INFO 11160 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : The following 1 profile is active: "h2"
+2026-06-27T14:18:08.610-04:00  INFO 11160 --- [arena-wallet] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-27T14:18:08.610-04:00  INFO 11160 --- [arena-wallet] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-27T14:18:12.400-04:00  INFO 11160 --- [arena-wallet] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-27T14:18:12.589-04:00  INFO 11160 --- [arena-wallet] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 162 ms. Found 2 JPA repository interfaces.
+2026-06-27T14:18:13.652-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=b5ccfe22-3706-3d62-99b0-1d0ccdd88d27
+2026-06-27T14:18:17.378-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2026-06-27T14:18:17.411-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-27T14:18:17.412-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-06-27T14:18:17.612-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-27T14:18:17.614-04:00  INFO 11160 --- [arena-wallet] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 9001 ms
+2026-06-27T14:18:17.876-04:00  INFO 11160 --- [arena-wallet] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-27T14:18:18.535-04:00  INFO 11160 --- [arena-wallet] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:wallet_db user=SA
+2026-06-27T14:18:18.541-04:00  INFO 11160 --- [arena-wallet] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-27T14:18:18.573-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:wallet_db'
+2026-06-27T14:18:19.034-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-27T14:18:19.157-04:00  INFO 11160 --- [arena-wallet] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-06-27T14:18:19.242-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-27T14:18:19.775-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-27T14:18:19.908-04:00  WARN 11160 --- [arena-wallet] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-27T14:18:22.420-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-27T14:18:22.601-04:00  INFO 11160 --- [arena-wallet] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-27T14:18:25.520-04:00  WARN 11160 --- [arena-wallet] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-27T14:18:26.346-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-06-27T14:18:31.656-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-06-27T14:18:32.088-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path ''
+2026-06-27T14:18:33.127-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-06-27T14:18:33.152-04:00  INFO 11160 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : Started ArenaWalletApplication in 27.546 seconds (process running for 30.436)
+2026-06-27T15:05:54.994-04:00  INFO 11160 --- [arena-wallet] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 19 class path changes (0 additions, 0 deletions, 19 modifications)
+2026-06-27T15:05:55.039-04:00  INFO 11160 --- [arena-wallet] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-27T15:05:55.053-04:00  WARN 11160 --- [arena-wallet] [Thread-5] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
 Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
-2026-06-17T01:30:36.353-04:00  INFO 3260 --- [arena-wallet] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-06-17T01:30:36.355-04:00  INFO 3260 --- [arena-wallet] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-27T15:05:55.055-04:00  INFO 11160 --- [arena-wallet] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-27T15:05:55.059-04:00  INFO 11160 --- [arena-wallet] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-27T15:05:56.304-04:00  INFO 11160 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : Starting ArenaWalletApplication using Java 21.0.10 with PID 11160 (C:\Users\Lenovo\IdeaProjects\arena-wallet\target\classes started by Lenovo in C:\Users\Lenovo\IdeaProjects)
+2026-06-27T15:05:56.304-04:00 DEBUG 11160 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-06-27T15:05:56.305-04:00  INFO 11160 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : The following 1 profile is active: "h2"
+2026-06-27T15:05:57.183-04:00  INFO 11160 --- [arena-wallet] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-27T15:05:57.212-04:00  INFO 11160 --- [arena-wallet] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 2 JPA repository interfaces.
+2026-06-27T15:05:57.432-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=b5ccfe22-3706-3d62-99b0-1d0ccdd88d27
+2026-06-27T15:05:58.058-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2026-06-27T15:05:58.062-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-27T15:05:58.063-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-06-27T15:05:58.174-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-27T15:05:58.175-04:00  INFO 11160 --- [arena-wallet] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1867 ms
+2026-06-27T15:05:58.271-04:00  INFO 11160 --- [arena-wallet] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-06-27T15:05:58.276-04:00  INFO 11160 --- [arena-wallet] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn20: url=jdbc:h2:mem:wallet_db user=SA
+2026-06-27T15:05:58.277-04:00  INFO 11160 --- [arena-wallet] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-06-27T15:05:58.278-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:wallet_db'
+2026-06-27T15:05:58.496-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-27T15:05:58.511-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-27T15:05:58.527-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-27T15:05:58.532-04:00  WARN 11160 --- [arena-wallet] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-27T15:05:58.722-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-27T15:05:58.740-04:00  INFO 11160 --- [arena-wallet] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-27T15:05:59.783-04:00  WARN 11160 --- [arena-wallet] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-27T15:06:00.310-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-06-27T15:06:03.642-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-06-27T15:06:03.796-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path ''
+2026-06-27T15:06:04.812-04:00  INFO 11160 --- [arena-wallet] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-06-27T15:06:04.827-04:00  INFO 11160 --- [arena-wallet] [restartedMain] c.e.arenawallet.ArenaWalletApplication   : Started ArenaWalletApplication in 9.632 seconds (process running for 2882.113)
+2026-06-27T15:06:04.855-04:00  INFO 11160 --- [arena-wallet] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-06-27T15:15:18.149-04:00  INFO 11160 --- [arena-wallet] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-27T15:15:18.152-04:00  WARN 11160 --- [arena-wallet] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2026-06-27T15:15:18.154-04:00  INFO 11160 --- [arena-wallet] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-06-27T15:15:18.157-04:00  INFO 11160 --- [arena-wallet] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
