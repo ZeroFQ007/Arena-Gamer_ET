@@ -23,6 +23,7 @@
     </properties>
 
     <modules>
+        <module>api-gateway</module>
         <module>hardware-monitor</module>
         <module>loyalty-service</module>
         <module>notification-service</module>
