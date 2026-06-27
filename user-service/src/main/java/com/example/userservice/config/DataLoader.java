@@ -19,6 +19,10 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        if (userRepository.count() > 0) {
+            return;
+        }
+
         User fabry = new User("Fabry27", "Fabry27@gmail.com", User.Role.PLAYER);
         fabry.setPassword(passwordEncoder.encode("fabry123"));
         userRepository.save(fabry);
