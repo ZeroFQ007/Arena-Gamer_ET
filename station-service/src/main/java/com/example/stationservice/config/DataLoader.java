@@ -16,6 +16,10 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        if (stationRepository.count() > 0) {
+            return;
+        }
+
         stationRepository.save(new Station(null, "PC-01", Station.StationType.PC,
                 Station.StationStatus.OPERATIONAL, "RTX 4090 / i9-13900K / 32GB RAM", true));
         stationRepository.save(new Station(null, "PC-02", Station.StationType.PC,
