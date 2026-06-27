@@ -1,6 +1,7 @@
 package com.example.sessionservice.client;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -12,9 +13,10 @@ public class StationClient {
 
     private final RestClient restClient;
 
-    public StationClient(RestClient.Builder builder) {
+    public StationClient(RestClient.Builder builder,
+                         @Value("${services.station-service.url:http://localhost:8083}") String stationServiceUrl) {
         this.restClient = builder
-                .baseUrl("http://localhost:8083")
+                .baseUrl(stationServiceUrl)
                 .build();
     }
 
