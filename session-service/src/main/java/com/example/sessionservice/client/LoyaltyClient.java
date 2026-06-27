@@ -1,6 +1,7 @@
 package com.example.sessionservice.client;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -12,9 +13,10 @@ public class LoyaltyClient {
 
     private final RestClient restClient;
 
-    public LoyaltyClient(RestClient.Builder builder) {
+    public LoyaltyClient(RestClient.Builder builder,
+                         @Value("${services.loyalty-service.url:http://localhost:8087}") String loyaltyServiceUrl) {
         this.restClient = builder
-                .baseUrl("http://localhost:8087")
+                .baseUrl(loyaltyServiceUrl)
                 .build();
     }
 
@@ -40,7 +42,6 @@ public class LoyaltyClient {
                     puntos, userId, durationMinutes);
 
         } catch (Exception e) {
-            // No bloqueamos el cierre de sesión si loyalty falla
             log.warn("[LOYALTY] No se pudieron acreditar puntos a usuario id={}: {}", userId, e.getMessage());
         }
     }

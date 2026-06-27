@@ -131,6 +131,8 @@ services:
       - DB_PASSWORD=arena123
       - SERVICES_USER_SERVICE_URL=http://user-service:8081
       - SERVICES_STATION_SERVICE_URL=http://station-service:8083
+      - SERVICES_WALLET_SERVICE_URL=http://arena-wallet:8085
+      - SERVICES_LOYALTY_SERVICE_URL=http://loyalty-service:8087
     depends_on: [ mysql, user-service, station-service, arena-wallet, loyalty-service ]
 
   hardware-monitor:

@@ -1,6 +1,7 @@
 package com.example.sessionservice.client;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -13,9 +14,10 @@ public class WalletClient {
 
     private final RestClient restClient;
 
-    public WalletClient(RestClient.Builder builder) {
+    public WalletClient(RestClient.Builder builder,
+                        @Value("${services.wallet-service.url:http://localhost:8085}") String walletServiceUrl) {
         this.restClient = builder
-                .baseUrl("http://localhost:8085")
+                .baseUrl(walletServiceUrl)
                 .requestFactory(new HttpComponentsClientHttpRequestFactory())
                 .build();
     }
