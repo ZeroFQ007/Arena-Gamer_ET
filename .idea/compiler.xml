@@ -11,6 +11,7 @@
         <module name="station-service" />
         <module name="userservice" />
         <module name="hardware-monitor" />
+        <module name="api-gateway" />
         <module name="tournament-service" />
         <module name="user-service" />
         <module name="notification-service" />
@@ -58,6 +59,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
       <module name="arena-inventory" options="-parameters --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
       <module name="arena-reservas" options="-parameters --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
       <module name="arena-wallet" options="-parameters --add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED" />
