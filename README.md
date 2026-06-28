@@ -1,106 +1,301 @@
 # Arena Gamer Platform 🎮
 
-## Descripción
-Arena Gamer Platform es una solución de gestión para cibercafés y centros de gaming, construida con arquitectura de microservicios usando Spring Boot. Permite gestionar usuarios, estaciones de juego, sesiones, reservas, inventario, billeteras virtuales, torneos, hardware y fidelización de clientes.
+Sistema de gestión backend para cibercafés y centros de gaming, construido con una arquitectura de microservicios en Spring Boot. Automatiza sesiones de juego, reservas de estaciones, cobros mediante billeteras virtuales, fidelización de clientes, monitoreo de hardware y gestión de torneos.
 
-## Equipo de Desarrollo - Equipo N°12
-- Tomás Recabarren
-- Ali Simanca
-- Fabrizio Quintini
+## Equipo — N°12
+- **Tomás Recabarren**
+- **Ali Simanca**
+- **Fabrizio Quintini**
 
-## Tecnologías Utilizadas
-- Java 17/21
-- Spring Boot 3.2.0
-- Spring Data JPA + Hibernate
-- Spring Security (HTTP Basic Auth)
-- OpenFeign + RestClient (comunicación inter-servicio)
-- Resilience4j (Circuit Breaker / Fallback)
-- H2 Database (desarrollo)
-- MySQL (producción)
-- Lombok
-- Maven
+DSY1103 Desarrollo FullStack 1 — DUOC UC
 
-## Microservicios Implementados (10)
+---
 
-| Servicio | Puerto | Descripción |
-|----------|--------|-------------|
-| user-service | 8081 | Gestión de usuarios con autenticación |
-| station-service | 8083 | Gestión de estaciones de juego |
-| session-service | 8082 | Control de sesiones activas |
-| arena-inventory | 9001 | Inventario de productos y equipos |
-| arena-reservas | 9000 | Reservas de estaciones |
-| arena-wallet | 8085 | Billeteras virtuales de usuarios |
-| hardware-monitor | 8090 | Monitoreo de temperatura de equipos |
-| loyalty-service | 8087 | Sistema de puntos y fidelización |
-| notification-service | 8089 | Envío de notificaciones |
-| tournament-service | 8088 | Gestión de torneos |
+## Arquitectura
 
-## Comunicaciones Inter-Servicio
+El sistema está compuesto por **10 microservicios independientes** y un **API Gateway** que centraliza el acceso:
+
+```
+                          ┌─────────────────┐
+                          │   API Gateway   │
+                          │   (puerto 8080) │
+                          └────────┬────────┘
+                                   │
+        ┌──────────────┬──────────┼──────────┬──────────────┐
+        │              │          │          │              │
+   user-service   station-service │   arena-wallet   loyalty-service
+     (8081)           (8083)      │      (8085)          (8087)
+        │                         │
+        └──────────┬──────────────┘
+                    │
+            session-service
+                (8082)
+```
+
+| # | Servicio | Puerto | Descripción |
+|---|---|---|---|
+| 1 | **user-service** | 8081 | Gestión de usuarios y autenticación |
+| 2 | **station-service** | 8083 | Gestión de estaciones PC/consola |
+| 3 | **session-service** | 8082 | Control de sesiones activas de juego |
+| 4 | **arena-inventory** | 9001 | Inventario de productos alquilables |
+| 5 | **arena-reservas** | 9000 | Reservas de estaciones con historial |
+| 6 | **arena-wallet** | 8085 | Billeteras virtuales y transacciones |
+| 7 | **hardware-monitor** | 8090 | Monitoreo de temperatura CPU/GPU |
+| 8 | **loyalty-service** | 8087 | Puntos de fidelización |
+| 9 | **notification-service** | 8089 | Registro y envío de notificaciones |
+| 10 | **tournament-service** | 8088 | Gestión de torneos competitivos |
+| — | **api-gateway** | 8080 | Enrutamiento centralizado (Spring Cloud Gateway) |
+
+## Tecnologías
+
+- **Java 21** · **Spring Boot 3.2.0**
+- **Spring Data JPA + Hibernate** — persistencia
+- **Spring Security** — autenticación HTTP Basic
+- **Spring Cloud Gateway** — API Gateway
+- **OpenFeign** + **RestClient** — comunicación inter-servicio
+- **Resilience4j** — Circuit Breaker y Fallback
+- **Spring HATEOAS** — enlaces de navegación en las respuestas
+- **springdoc-openapi** — documentación Swagger/OpenAPI
+- **H2** (desarrollo) / **MySQL 8.4** (Docker / producción)
+- **JUnit 5 + Mockito** — pruebas unitarias
+- **Docker + Docker Compose** — contenerización
+- **Lombok**, **Maven** (monorepo multi-módulo)
+
+---
+
+## API Gateway
+
+Todo el tráfico puede pasar a través del Gateway en el puerto **8080**, que enruta automáticamente según el path hacia el microservicio correspondiente:
+
+```
+http://localhost:8080/api/users          → user-service (8081)
+http://localhost:8080/api/stations       → station-service (8083)
+http://localhost:8080/api/sessions       → session-service (8082)
+http://localhost:8080/api/v1/productos   → arena-inventory (9001)
+http://localhost:8080/api/v1/reservas    → arena-reservas (9000)
+http://localhost:8080/api/v1/billeteras  → arena-wallet (8085)
+http://localhost:8080/api/v1/loyalty     → loyalty-service (8087)
+http://localhost:8080/api/v1/hardware    → hardware-monitor (8090)
+http://localhost:8080/api/v1/notifications → notification-service (8089)
+http://localhost:8080/api/v1/tournaments → tournament-service (8088)
+```
+
+## Documentación Swagger / OpenAPI
+
+| Servicio | Swagger UI |
+|---|---|
+| user-service | http://localhost:8081/swagger-ui/index.html |
+| station-service | http://localhost:8083/swagger-ui/index.html |
+| session-service | http://localhost:8082/swagger-ui/index.html |
+| arena-inventory | http://localhost:9001/swagger-ui/index.html |
+| arena-reservas | http://localhost:9000/swagger-ui/index.html |
+| arena-wallet | http://localhost:8085/swagger-ui/index.html |
+| loyalty-service | http://localhost:8087/swagger-ui/index.html |
+| hardware-monitor | http://localhost:8090/swagger-ui/index.html |
+| notification-service | http://localhost:8089/swagger-ui/index.html |
+| tournament-service | http://localhost:8088/swagger-ui/index.html |
+
+## HATEOAS
+
+Las respuestas `GET` de los 10 microservicios incluyen enlaces de navegación `_links`:
+
+```json
+{
+  "id": 1,
+  "username": "Fabry27",
+  "_links": {
+    "self": { "href": "http://localhost:8081/api/users/1" },
+    "all": { "href": "http://localhost:8081/api/users" },
+    "update": { "href": "http://localhost:8081/api/users/1" }
+  }
+}
+```
+
+Los enlaces son **condicionales** según el estado del recurso — por ejemplo, una estación en `MAINTENANCE` no expone el link `update`, y una sesión `FINISHED` no expone `finish`/`cancel`.
+
+---
+
+## Comunicación entre microservicios
 
 | Origen | Destino | Tipo | Evento |
-|--------|---------|------|--------|
+|---|---|---|---|
 | session-service | user-service | RestClient | Verifica usuario al iniciar sesión |
-| session-service | station-service | RestClient | Verifica estación al iniciar sesión |
+| session-service | station-service | RestClient | Verifica estación disponible |
 | session-service | arena-wallet | RestClient | Descuenta saldo al finalizar sesión |
 | session-service | loyalty-service | RestClient | Acredita puntos al finalizar sesión |
 | arena-reservas | arena-inventory | Feign | Descuenta stock al confirmar reserva |
-| arena-wallet | user-service | Feign | Verifica usuario al crear billetera |
-| hardware-monitor | notification-service | RestClient | Alerta cuando CPU>85° o GPU>90° |
+| arena-wallet | user-service | Feign | Valida usuario al crear billetera |
+| hardware-monitor | notification-service | RestClient | Alerta si CPU>85° o GPU>90° |
 | tournament-service | notification-service | Feign + Fallback | Notifica creación de torneo |
 | tournament-service | user-service | Feign | Verifica usuario al crear torneo |
-| user-service | notification-service | RestClient | Notifica bienvenida al crear usuario |
+| user-service | notification-service | RestClient | Notificación de bienvenida |
 
-## Pasos para Ejecutar
+Todas las comunicaciones inter-contenedor en Docker usan el **nombre del servicio** (ej. `http://user-service:8081`) en vez de `localhost`, configurado vía variables de entorno (`@Value` con propiedades en `application.yml` y overrides en `compose.yml`).
 
-### Requisitos Previos
-- Java 21 instalado
+---
+
+## Docker
+
+### Requisitos
+- Docker Desktop
+- Docker Compose v2
+
+### Levantar todo el sistema
+
+```bash
+docker compose up -d --build
+docker compose ps
+```
+
+Esto levanta MySQL y los 10 microservicios, conectados entre sí por red Docker interna.
+
+### Ver logs
+
+```bash
+docker compose logs -f <nombre-servicio>
+```
+
+### Apagar
+
+```bash
+docker compose down       # detiene, conserva datos
+docker compose down -v    # detiene y borra el volumen de MySQL
+```
+
+### Sistemas operativos
+- **Windows:** Docker Desktop + WSL2
+- **Linux:** Docker Engine
+- **macOS:** Docker Desktop
+
+### Dockerfile (patrón usado en los 10 microservicios)
+
+```dockerfile
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+COPY target/*.jar app.jar
+RUN groupadd -r authgroup && useradd -r -g authgroup authuser
+USER authuser
+EXPOSE <puerto>
+ENTRYPOINT ["java", "-jar", "app.jar"]
+```
+
+Cada contenedor corre como usuario **no-root** (`authuser`) por seguridad.
+
+---
+
+## Ejecución local (sin Docker)
+
+### Requisitos
+- Java 21 (recomendado: distribución Microsoft `ms-21.0.10`)
 - IntelliJ IDEA
-- Maven
+- Maven (incluido vía `mvnw`)
 
-### Instrucciones
+### Pasos
 
 1. Clonar el repositorio:
 ```bash
 git clone https://github.com/TomasELegante/Arena-Gamer.git
 ```
 
-2. Abrir el proyecto en IntelliJ IDEA como proyecto Maven multi-módulo.
+2. Abrir como proyecto Maven multi-módulo en IntelliJ.
 
-3. Ejecutar cada microservicio en el siguiente orden:
-   - user-service (8081)
-   - station-service (8083)
-   - session-service (8082)
-   - arena-inventory (9001)
-   - arena-reservas (9000)
-   - arena-wallet (8085)
-   - notification-service (8089)
-   - loyalty-service (8087)
-   - hardware-monitor (8090)
-   - tournament-service (8088)
+3. Ejecutar los servicios en este orden:
 
-4. Verificar que todos los servicios estén activos usando las URLs:
-GET http://localhost:8081/api/users
-GET http://localhost:8083/api/stations
-GET http://localhost:8082/api/sessions
-GET http://localhost:9001/api/v1/productos
-GET http://localhost:9000/api/v1/reservas
-GET http://localhost:8085/api/v1/billeteras
-GET http://localhost:8089/api/v1/notifications/logs
-GET http://localhost:8087/api/v1/loyalty/1
-GET http://localhost:8090/api/v1/hardware/status
-GET http://localhost:8088/api/v1/tournaments
+| Orden | Servicio |
+|---|---|
+| 1° | user-service |
+| 2° | station-service |
+| 3° | notification-service |
+| 4° | arena-inventory |
+| 5° | arena-wallet |
+| 6° | loyalty-service |
+| 7° | session-service |
+| 8° | arena-reservas |
+| 9° | hardware-monitor |
+| 10° | tournament-service |
+| 11° | api-gateway |
 
-## Credenciales de Acceso
+4. Verificar con GET (perfil H2 por defecto, sin Docker):
 
-### user-service (HTTP Basic Auth)
-| Usuario | Email | Contraseña | Rol |
-|---------|-------|------------|-----|
-| Fabry27 | Fabry27@gmail.com | fabry123 | PLAYER |
-| Tomas69 | Tomas69@arenagamer.cl | tomas123 | PLAYER |
-| MohammedAli | mohammedAli@arenagamer.cl | staff123 | STAFF |
+```
+http://localhost:8081/api/users
+http://localhost:8083/api/stations
+http://localhost:8082/api/sessions
+http://localhost:9001/api/v1/productos
+http://localhost:9000/api/v1/reservas
+http://localhost:8085/api/v1/billeteras
+http://localhost:8087/api/v1/loyalty/1
+http://localhost:8090/api/v1/hardware/status
+http://localhost:8089/api/v1/notifications/logs
+http://localhost:8088/api/v1/tournaments
+http://localhost:8080/api/users  ← a través del Gateway
+```
 
-### station-service (HTTP Basic Auth)
-| Usuario | Contraseña | Rol |
-|---------|------------|-----|
+---
+
+## Credenciales
+
+### user-service (autenticación por **email**)
+| Email | Contraseña | Rol |
+|---|---|---|
+| Fabry27@gmail.com | fabry123 | PLAYER |
+| Tomas69@arenagamer.cl | tomas123 | PLAYER |
+| mohammedAli@arenagamer.cl | staff123 | STAFF |
+
+### station-service (autenticación por **username**, InMemory)
+| Username | Contraseña | Rol |
+|---|---|---|
 | admin_leo | staff123 | STAFF |
 | shadow99 | player123 | PLAYER |
+
+---
+
+## Pruebas Unitarias
+
+7 de 10 microservicios cuentan con pruebas unitarias usando **JUnit 5** y **Mockito**, siguiendo el patrón **Given-When-Then**:
+
+```bash
+mvnw.cmd test                          # todas las pruebas del módulo
+mvnw.cmd test -Dtest=NombreClaseTest    # una clase específica
+```
+
+### Plan de pruebas
+
+**Alcance:** lógica de negocio de los servicios (`*Service`), validaciones, y manejo de errores. No incluye base de datos real ni llamadas a servicios externos reales (se usan mocks).
+
+| Servicio | Test | Casos cubiertos |
+|---|---|---|
+| user-service | `UserServiceTest`, `UserControllerTest` | crear/buscar/actualizar/eliminar, duplicados |
+| station-service | `StationServiceTest` | CRUD, duplicados de nombre, filtros por tipo/disponibilidad |
+| session-service | `SessionServiceTest` | iniciar/finalizar/cancelar sesión, validaciones de estado |
+| arena-inventory | `ProductoServiceTest`, `ProductoControllerTest` | CRUD, actualización de stock |
+| arena-wallet | `BilleteraServiceTest`, `BilleteraControllerTest` | crear billetera, recarga, descuento, saldo insuficiente |
+| arena-reservas | `ReservaServiceTest` | conflictos de horario, fechas pasadas, cambio de estado |
+| loyalty-service | `LoyaltyServiceTest` | acreditar/canjear puntos, niveles de fidelización |
+
+---
+
+## Bug conocido (mejora pendiente)
+
+La conexión `arena-reservas → arena-inventory` usa `estacionId` como si fuera `productoId` del inventario, ya que ambos son conceptos distintos (estación física vs. producto alquilable). Una mejora futura agregaría un campo `productoId` explícito a la reserva para relacionar correctamente ambos recursos.
+
+---
+
+## Estructura del repositorio
+
+```
+Arena-Gamer/
+├── api-gateway/
+├── user-service/
+├── station-service/
+├── session-service/
+├── arena-inventory/
+├── arena-reservas/
+├── arena-wallet/
+├── hardware-monitor/
+├── loyalty-service/
+├── notification-service/
+├── tournament-service/
+├── compose.yml
+└── pom.xml
+```
