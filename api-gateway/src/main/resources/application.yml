@@ -8,52 +8,52 @@ spring:
     gateway:
       routes:
         - id: user-service
-          uri: http://localhost:8081
+          uri: ${USER_SERVICE_URL:http://localhost:8081}
           predicates:
             - Path=/api/users/**
 
         - id: station-service
-          uri: http://localhost:8083
+          uri: ${STATION_SERVICE_URL:http://localhost:8083}
           predicates:
             - Path=/api/stations/**
 
         - id: session-service
-          uri: http://localhost:8082
+          uri: ${SESSION_SERVICE_URL:http://localhost:8082}
           predicates:
             - Path=/api/sessions/**
 
         - id: arena-inventory
-          uri: http://localhost:9001
+          uri: ${INVENTORY_SERVICE_URL:http://localhost:9001}
           predicates:
             - Path=/api/v1/productos/**
 
         - id: arena-reservas
-          uri: http://localhost:9000
+          uri: ${RESERVAS_SERVICE_URL:http://localhost:9000}
           predicates:
             - Path=/api/v1/reservas/**
 
         - id: arena-wallet
-          uri: http://localhost:8085
+          uri: ${WALLET_SERVICE_URL:http://localhost:8085}
           predicates:
             - Path=/api/v1/billeteras/**
 
         - id: loyalty-service
-          uri: http://localhost:8087
+          uri: ${LOYALTY_SERVICE_URL:http://localhost:8087}
           predicates:
             - Path=/api/v1/loyalty/**
 
         - id: hardware-monitor
-          uri: http://localhost:8090
+          uri: ${HARDWARE_SERVICE_URL:http://localhost:8090}
           predicates:
             - Path=/api/v1/hardware/**
 
         - id: notification-service
-          uri: http://localhost:8089
+          uri: ${NOTIFICATION_SERVICE_URL:http://localhost:8089}
           predicates:
             - Path=/api/v1/notifications/**
 
         - id: tournament-service
-          uri: http://localhost:8088
+          uri: ${TOURNAMENT_SERVICE_URL:http://localhost:8088}
           predicates:
             - Path=/api/v1/tournaments/**
 

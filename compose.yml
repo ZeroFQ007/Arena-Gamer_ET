@@ -163,5 +163,36 @@ services:
       - DB_PASSWORD=arena123
     depends_on: [mysql, user-service, notification-service]
 
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+    container_name: api-gateway
+    ports: [ "8080:8080" ]
+    environment:
+      - USER_SERVICE_URL=http://user-service:8081
+      - STATION_SERVICE_URL=http://station-service:8083
+      - SESSION_SERVICE_URL=http://session-service:8082
+      - INVENTORY_SERVICE_URL=http://arena-inventory:9001
+      - RESERVAS_SERVICE_URL=http://arena-reservas:9000
+      - WALLET_SERVICE_URL=http://arena-wallet:8085
+      - LOYALTY_SERVICE_URL=http://loyalty-service:8087
+      - HARDWARE_SERVICE_URL=http://hardware-monitor:8090
+      - NOTIFICATION_SERVICE_URL=http://notification-service:8089
+      - TOURNAMENT_SERVICE_URL=http://tournament-service:8088
+    depends_on:
+      - user-service
+      - station-service
+      - session-service
+      - arena-inventory
+      - arena-reservas
+      - arena-wallet
+      - loyalty-service
+      - hardware-monitor
+      - notification-service
+      - tournament-service
+
 volumes:
   mysql_data:
+    
+    
