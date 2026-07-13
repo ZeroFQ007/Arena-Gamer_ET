@@ -1,7 +1,7 @@
-FROM eclipse-temurin:21-jdk AS build
+FROM eclipse-temurin:21-jdk-jammy AS build
 WORKDIR /app
 COPY . .
-RUN chmod +x user-service/mvnw && cd user-service && ./mvnw package -DskipTests
+RUN cd user-service && mvn package -DskipTests
 
 FROM eclipse-temurin:21-jre
 WORKDIR /app
