@@ -1,11 +1,6 @@
-FROM eclipse-temurin:21-jdk-jammy AS build
-WORKDIR /app
-COPY . .
-RUN cd user-service && mvn package -DskipTests
-
 FROM eclipse-temurin:21-jre
 WORKDIR /app
-COPY --from=build /app/user-service/target/*.jar app.jar
+COPY target/*.jar app.jar
 RUN groupadd -r authgroup && useradd -r -g authgroup authuser
 USER authuser
 EXPOSE 8081
