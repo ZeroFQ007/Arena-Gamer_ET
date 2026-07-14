@@ -23,6 +23,7 @@
     </properties>
 
     <modules>
+        <module>eureka-server</module>
         <module>api-gateway</module>
         <module>hardware-monitor</module>
         <module>loyalty-service</module>

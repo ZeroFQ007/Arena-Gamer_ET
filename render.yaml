@@ -1,0 +1,52 @@
+﻿services:
+  - type: web
+    name: eureka-server
+    runtime: docker
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: ./eureka-server/Dockerfile
+    dockerContext: ./eureka-server
+    healthCheckPath: /actuator/health
+    autoDeploy: true
+    envVars:
+      - key: EUREKA_HOSTNAME
+        value: eureka-server
+
+  - type: web
+    name: user-service
+    runtime: docker
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: ./user-service/Dockerfile
+    dockerContext: ./user-service
+    autoDeploy: true
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: mysql
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: "3306"
+      - key: DB_NAME
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: EUREKA_URI
+        sync: false
+
+  - type: web
+    name: api-gateway
+    runtime: docker
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: ./api-gateway/Dockerfile
+    dockerContext: ./api-gateway
+    autoDeploy: true
+    envVars:
+      - key: EUREKA_URI
+        sync: false
