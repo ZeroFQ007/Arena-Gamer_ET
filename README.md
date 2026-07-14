@@ -1,5 +1,4 @@
 # Arena Gamer Platform 🎮
-
 Sistema de gestión backend para cibercafés y centros de gaming, construido con una arquitectura de microservicios en Spring Boot. Automatiza sesiones de juego, reservas de estaciones, cobros mediante billeteras virtuales, fidelización de clientes, monitoreo de hardware y gestión de torneos.
 
 ## Equipo — N°12
@@ -13,7 +12,7 @@ DSY1103 Desarrollo FullStack 1 — DUOC UC
 
 ## Arquitectura
 
-El sistema está compuesto por **10 microservicios independientes** y un **API Gateway** que centraliza el acceso:
+El sistema está compuesto por **10 microservicios independientes**, un **API Gateway** y un **Eureka Server**:
 
 ```
                           ┌─────────────────┐
@@ -32,27 +31,29 @@ El sistema está compuesto por **10 microservicios independientes** y un **API G
                 (8082)
 ```
 
-| # | Servicio | Puerto | Descripción |
-|---|---|---|---|
-| 1 | **user-service** | 8081 | Gestión de usuarios y autenticación |
-| 2 | **station-service** | 8083 | Gestión de estaciones PC/consola |
-| 3 | **session-service** | 8082 | Control de sesiones activas de juego |
-| 4 | **arena-inventory** | 9001 | Inventario de productos alquilables |
-| 5 | **arena-reservas** | 9000 | Reservas de estaciones con historial |
-| 6 | **arena-wallet** | 8085 | Billeteras virtuales y transacciones |
-| 7 | **hardware-monitor** | 8090 | Monitoreo de temperatura CPU/GPU |
-| 8 | **loyalty-service** | 8087 | Puntos de fidelización |
-| 9 | **notification-service** | 8089 | Registro y envío de notificaciones |
-| 10 | **tournament-service** | 8088 | Gestión de torneos competitivos |
-| — | **api-gateway** | 8080 | Enrutamiento centralizado (Spring Cloud Gateway) |
+| # | Servicio | Puerto | Responsable | Descripción |
+|---|---|---|---|---|
+| 1 | **user-service** | 8081 | Fabrizio Quintini | Gestión de usuarios y autenticación |
+| 2 | **station-service** | 8083 | Fabrizio Quintini | Gestión de estaciones PC/consola |
+| 3 | **session-service** | 8082 | Fabrizio Quintini | Control de sesiones activas de juego |
+| 4 | **arena-inventory** | 9001 | Tomás Recabarren | Inventario de productos alquilables |
+| 5 | **arena-reservas** | 9000 | Tomás Recabarren | Reservas de estaciones con historial |
+| 6 | **arena-wallet** | 8085 | Tomás Recabarren | Billeteras virtuales y transacciones |
+| 7 | **hardware-monitor** | 8090 | Ali Simanca | Monitoreo de temperatura CPU/GPU |
+| 8 | **loyalty-service** | 8087 | Ali Simanca | Puntos de fidelización |
+| 9 | **notification-service** | 8089 | Ali Simanca | Registro y envío de notificaciones |
+| 10 | **tournament-service** | 8088 | Ali Simanca | Gestión de torneos competitivos |
+| — | **api-gateway** | 8080 | Fabrizio Quintini | Enrutamiento centralizado (Spring Cloud Gateway) |
+| — | **eureka-server** | 8761 | Ali Simanca | Service Discovery (Netflix Eureka) |
 
 ## Tecnologías
 
 - **Java 21** · **Spring Boot 3.2.0**
-- **Spring Data JPA + Hibernate** — persistencia
+- **Spring Data JPA + Hibernate** — persistencia con relaciones `@OneToMany` / `@ManyToOne`
 - **Spring Security** — autenticación HTTP Basic
-- **Spring Cloud Gateway** — API Gateway
-- **OpenFeign** + **RestClient** — comunicación inter-servicio
+- **Spring Cloud Gateway** — API Gateway con filtros globales y por ruta
+- **Netflix Eureka** — Service Discovery
+- **OpenFeign** + **RestClient** — comunicación inter-servicio con timeouts de 3 segundos
 - **Resilience4j** — Circuit Breaker y Fallback
 - **Spring HATEOAS** — enlaces de navegación en las respuestas
 - **springdoc-openapi** — documentación Swagger/OpenAPI
@@ -79,6 +80,12 @@ http://localhost:8080/api/v1/hardware    → hardware-monitor (8090)
 http://localhost:8080/api/v1/notifications → notification-service (8089)
 http://localhost:8080/api/v1/tournaments → tournament-service (8088)
 ```
+
+### Filtros del Gateway
+- **Global:** `X-Gateway-Source: arena-gamer-gateway` en todos los requests
+- **Global:** `X-Response-Gateway: arena-gamer-platform` en todas las respuestas
+- **Por ruta:** `X-Service-Name: <nombre-servicio>` identifica el microservicio destino
+- **GlobalErrorFilter:** registra rutas, IPs, métodos HTTP y tiempos de respuesta
 
 ## Documentación Swagger / OpenAPI
 
@@ -115,14 +122,29 @@ Los enlaces son **condicionales** según el estado del recurso — por ejemplo, 
 
 ---
 
+## Relaciones JPA
+
+El proyecto implementa relaciones entre entidades dentro del mismo microservicio:
+
+- **`Station` → `StationMaintenanceLog`**: relación `@OneToMany` — una estación tiene múltiples registros de mantenimiento
+- **`StationMaintenanceLog` → `Station`**: relación `@ManyToOne` — cada log pertenece a una estación
+
+```
+GET http://localhost:8083/api/stations/{id}/maintenance-logs
+```
+
+---
+
 ## Comunicación entre microservicios
+
+Todos los clientes REST del `session-service` tienen **timeout de 3 segundos** configurado:
 
 | Origen | Destino | Tipo | Evento |
 |---|---|---|---|
-| session-service | user-service | RestClient | Verifica usuario al iniciar sesión |
-| session-service | station-service | RestClient | Verifica estación disponible |
-| session-service | arena-wallet | RestClient | Descuenta saldo al finalizar sesión |
-| session-service | loyalty-service | RestClient | Acredita puntos al finalizar sesión |
+| session-service | user-service | RestClient + timeout 3s | Verifica usuario al iniciar sesión |
+| session-service | station-service | RestClient + timeout 3s | Verifica estación disponible |
+| session-service | arena-wallet | RestClient + timeout 3s | Descuenta saldo al finalizar sesión |
+| session-service | loyalty-service | RestClient + timeout 3s | Acredita puntos al finalizar sesión |
 | arena-reservas | arena-inventory | Feign | Descuenta stock al confirmar reserva |
 | arena-wallet | user-service | Feign | Valida usuario al crear billetera |
 | hardware-monitor | notification-service | RestClient | Alerta si CPU>85° o GPU>90° |
@@ -131,6 +153,16 @@ Los enlaces son **condicionales** según el estado del recurso — por ejemplo, 
 | user-service | notification-service | RestClient | Notificación de bienvenida |
 
 Todas las comunicaciones inter-contenedor en Docker usan el **nombre del servicio** (ej. `http://user-service:8081`) en vez de `localhost`, configurado vía variables de entorno (`@Value` con propiedades en `application.yml` y overrides en `compose.yml`).
+
+---
+
+## Eureka Server
+
+El sistema incluye un servidor de descubrimiento de servicios (Netflix Eureka):
+
+```
+http://localhost:8761
+```
 
 ---
 
@@ -203,21 +235,23 @@ git clone https://github.com/TomasELegante/Arena-Gamer.git
 
 | Orden | Servicio |
 |---|---|
-| 1° | user-service |
-| 2° | station-service |
-| 3° | notification-service |
-| 4° | arena-inventory |
-| 5° | arena-wallet |
-| 6° | loyalty-service |
-| 7° | session-service |
-| 8° | arena-reservas |
-| 9° | hardware-monitor |
-| 10° | tournament-service |
-| 11° | api-gateway |
+| 1° | eureka-server |
+| 2° | user-service |
+| 3° | station-service |
+| 4° | notification-service |
+| 5° | arena-inventory |
+| 6° | arena-wallet |
+| 7° | loyalty-service |
+| 8° | session-service |
+| 9° | arena-reservas |
+| 10° | hardware-monitor |
+| 11° | tournament-service |
+| 12° | api-gateway |
 
 4. Verificar con GET (perfil H2 por defecto, sin Docker):
 
 ```
+http://localhost:8761               ← Eureka Dashboard
 http://localhost:8081/api/users
 http://localhost:8083/api/stations
 http://localhost:8082/api/sessions
@@ -281,11 +315,32 @@ La conexión `arena-reservas → arena-inventory` usa `estacionId` como si fuera
 
 ---
 
+## Variables de entorno
+
+Ver `.env.example` en la raíz del proyecto para la configuración completa.
+
+## Colección de endpoints
+
+Ver `arena-gamer.http` en la raíz del proyecto para probar todos los endpoints directamente desde IntelliJ.
+
+## Documentación adicional
+
+Ver carpeta `/docs`:
+- `documentacion-tecnica.md`
+- `documentacion-funcional.md`
+- `matriz-requerimientos.md`
+- `plan-cierre-feedback.md`
+- `defensa-individual/quintini-fabrizio.md`
+- `defensa-individual/ali-simanca.md`
+
+---
+
 ## Estructura del repositorio
 
 ```
 Arena-Gamer/
 ├── api-gateway/
+├── eureka-server/
 ├── user-service/
 ├── station-service/
 ├── session-service/
@@ -296,6 +351,18 @@ Arena-Gamer/
 ├── loyalty-service/
 ├── notification-service/
 ├── tournament-service/
+├── docs/
+│   ├── documentacion-tecnica.md
+│   ├── documentacion-funcional.md
+│   ├── matriz-requerimientos.md
+│   ├── plan-cierre-feedback.md
+│   └── defensa-individual/
+│       ├── quintini-fabrizio.md
+│       └── ali-simanca.md
+├── arena-gamer.http
+├── .env.example
 ├── compose.yml
+├── docker-compose.yml
+├── render.yaml
 └── pom.xml
 ```
