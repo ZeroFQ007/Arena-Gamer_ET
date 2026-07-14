@@ -1,15 +1,16 @@
 package com.example.stationservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "stations")
 public class Station {
@@ -36,6 +37,19 @@ public class Station {
 
     @Column(nullable = false)
     private boolean available = true;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "station", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<StationMaintenanceLog> maintenanceLogs = new ArrayList<>();
+
+    public Station(Long id, String name, StationType type, StationStatus status, String specs, boolean available) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.status = status;
+        this.specs = specs;
+        this.available = available;
+    }
 
     public enum StationType {
         PC, CONSOLE

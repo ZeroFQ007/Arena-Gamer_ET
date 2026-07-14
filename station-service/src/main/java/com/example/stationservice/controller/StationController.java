@@ -1,6 +1,7 @@
 package com.example.stationservice.controller;
 
 import com.example.stationservice.model.Station;
+import com.example.stationservice.model.StationMaintenanceLog;
 import com.example.stationservice.service.StationLinkAssembler;
 import com.example.stationservice.service.StationService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -109,5 +110,14 @@ public class StationController {
     @GetMapping("/available")
     public ResponseEntity<List<Station>> getDisponibles() {
         return ResponseEntity.ok(stationService.findDisponibles());
+    }
+    @Operation(summary = "Ver logs de mantenimiento", description = "Obtiene el historial de mantenimiento de una estación")
+    @ApiResponse(responseCode = "200", description = "Logs obtenidos correctamente")
+    @GetMapping("/{id}/maintenance-logs")
+    public ResponseEntity<List<StationMaintenanceLog>> getMaintenanceLogs(
+            @Parameter(description = "ID de la estación", example = "1")
+            @PathVariable Long id) {
+        Station station = stationService.findById(id);
+        return ResponseEntity.ok(station.getMaintenanceLogs());
     }
 }
