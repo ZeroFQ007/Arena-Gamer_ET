@@ -2,6 +2,7 @@ package com.example.sessionservice.client;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -15,8 +16,12 @@ public class StationClient {
 
     public StationClient(RestClient.Builder builder,
                          @Value("${services.station-service.url:http://localhost:8083}") String stationServiceUrl) {
+        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
+        factory.setConnectTimeout(3000);
+        factory.setReadTimeout(3000);
         this.restClient = builder
                 .baseUrl(stationServiceUrl)
+                .requestFactory(factory)
                 .build();
     }
 
