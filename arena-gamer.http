@@ -1,0 +1,246 @@
+### ========================================
+### ARENA GAMER PLATFORM - API Collection
+### ========================================
+
+### === USER SERVICE (via Gateway) ===
+
+### Listar usuarios
+GET http://localhost:8080/api/users
+
+### Buscar usuario por id
+GET http://localhost:8080/api/users/1
+
+### Crear usuario
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "username": "nuevoJugador",
+  "email": "jugador@arenagamer.cl",
+  "password": "pass123",
+  "role": "PLAYER"
+}
+
+### Actualizar usuario
+PUT http://localhost:8080/api/users/1
+Content-Type: application/json
+Authorization: Basic bW9oYW1tZWRBbGlAYXJlbmFnYW1lci5jbDpzdGFmZjEyMw==
+
+{
+  "username": "jugadorActualizado",
+  "email": "jugador@arenagamer.cl",
+  "password": "pass123",
+  "role": "PLAYER"
+}
+
+### Eliminar usuario
+DELETE http://localhost:8080/api/users/1
+Authorization: Basic bW9oYW1tZWRBbGlAYXJlbmFnYW1lci5jbDpzdGFmZjEyMw==
+
+### Usuarios por rol
+GET http://localhost:8080/api/users/role/PLAYER
+
+### Usuarios activos
+GET http://localhost:8080/api/users/active
+
+### === STATION SERVICE (via Gateway) ===
+
+### Listar estaciones
+GET http://localhost:8080/api/stations
+
+### Buscar estación por id
+GET http://localhost:8080/api/stations/1
+
+### Crear estación
+POST http://localhost:8080/api/stations
+Content-Type: application/json
+Authorization: Basic YWRtaW5fbGVvOnN0YWZmMTIz
+
+{
+  "name": "PC-06",
+  "type": "PC",
+  "status": "OPERATIONAL",
+  "specs": "RTX 4080 / i7 / 16GB RAM",
+  "available": true
+}
+
+### Estaciones por tipo
+GET http://localhost:8080/api/stations/type/PC
+
+### Estaciones disponibles
+GET http://localhost:8080/api/stations/available
+
+### === SESSION SERVICE (via Gateway) ===
+
+### Listar sesiones
+GET http://localhost:8080/api/sessions
+
+### Buscar sesión por id
+GET http://localhost:8080/api/sessions/1
+
+### Iniciar sesión
+POST http://localhost:8080/api/sessions
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "stationId": 1,
+  "durationMinutes": 60
+}
+
+### Finalizar sesión
+PUT http://localhost:8080/api/sessions/1/finish
+
+### Cancelar sesión
+PUT http://localhost:8080/api/sessions/1/cancel
+
+### Sesiones activas
+GET http://localhost:8080/api/sessions/active
+
+### === ARENA INVENTORY (via Gateway) ===
+
+### Listar productos
+GET http://localhost:8080/api/v1/productos
+
+### Buscar producto por id
+GET http://localhost:8080/api/v1/productos/1
+
+### Crear producto
+POST http://localhost:8080/api/v1/productos
+Content-Type: application/json
+
+{
+  "nombre": "Xbox Series X",
+  "categoria": "CONSOLA",
+  "stock": 3,
+  "precioAlquiler": 3000.0
+}
+
+### Actualizar stock
+PATCH http://localhost:8080/api/v1/productos/1/stock
+Content-Type: application/json
+
+{
+  "cantidad": -1
+}
+
+### === ARENA RESERVAS (via Gateway) ===
+
+### Listar reservas
+GET http://localhost:8080/api/v1/reservas
+
+### Crear reserva
+POST http://localhost:8080/api/v1/reservas
+Content-Type: application/json
+
+{
+  "usuarioId": 1,
+  "estacionId": 1,
+  "fecha": "2026-08-01",
+  "bloqueHorario": "14:00-15:00"
+}
+
+### Cambiar estado de reserva
+PATCH http://localhost:8080/api/v1/reservas/1/estado
+Content-Type: application/json
+
+{
+  "estado": "CONFIRMADA",
+  "comentario": "Confirmada por staff"
+}
+
+### === ARENA WALLET (via Gateway) ===
+
+### Listar billeteras
+GET http://localhost:8080/api/v1/billeteras
+
+### Buscar billetera por id
+GET http://localhost:8080/api/v1/billeteras/1
+
+### Crear billetera
+POST http://localhost:8080/api/v1/billeteras
+Content-Type: application/json
+
+{
+  "idUsuario": 1,
+  "saldo": 10000.0,
+  "puntosFidelizacion": 0
+}
+
+### Recargar saldo
+PATCH http://localhost:8080/api/v1/billeteras/1/recargas
+Content-Type: application/json
+
+{
+  "monto": 5000.0
+}
+
+### === LOYALTY SERVICE (via Gateway) ===
+
+### Ver perfil de lealtad
+GET http://localhost:8080/api/v1/loyalty/1
+
+### Acreditar puntos
+POST http://localhost:8080/api/v1/loyalty/earn
+Content-Type: application/json
+
+{
+  "userId": "1",
+  "amount": 100,
+  "reason": "Sesión completada"
+}
+
+### Canjear puntos
+POST http://localhost:8080/api/v1/loyalty/redeem
+Content-Type: application/json
+
+{
+  "userId": "1",
+  "rewardId": 1
+}
+
+### === HARDWARE MONITOR (via Gateway) ===
+
+### Ver estado de equipos
+GET http://localhost:8080/api/v1/hardware/status
+
+### Reportar temperatura
+POST http://localhost:8080/api/v1/hardware/report
+Content-Type: application/json
+
+{
+  "pcId": "PC-01",
+  "cpuTemp": 75.0,
+  "gpuTemp": 80.0
+}
+
+### === NOTIFICATION SERVICE (via Gateway) ===
+
+### Ver logs de notificaciones
+GET http://localhost:8080/api/v1/notifications/logs
+
+### Enviar notificación
+POST http://localhost:8080/api/v1/notifications/send
+Content-Type: application/json
+
+{
+  "recipient": "jugador@arenagamer.cl",
+  "message": "Tu sesión ha finalizado",
+  "channel": "EMAIL"
+}
+
+### === TOURNAMENT SERVICE (via Gateway) ===
+
+### Listar torneos
+GET http://localhost:8080/api/v1/tournaments
+
+### Crear torneo
+POST http://localhost:8080/api/v1/tournaments
+Content-Type: application/json
+
+{
+  "name": "Torneo Valorant",
+  "game": "Valorant",
+  "maxTeams": 8,
+  "userId": 1
+}
