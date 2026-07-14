@@ -1,157 +1,362 @@
-2026-05-19T00:16:14.851-04:00  WARN 11136 --- [user-service] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5h29m7s772ms646µs700ns).
-2026-05-19T00:17:22.110-04:00  INFO 11136 --- [user-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-05-19T00:17:22.129-04:00  INFO 11136 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-05-19T00:17:22.146-04:00  INFO 11136 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-05-19T17:25:43.768-04:00  INFO 9524 --- [user-service] [main] c.e.userservice.UserServiceApplication   : Starting UserServiceApplication using Java 21.0.10 with PID 9524 (C:\Users\Lenovo\Arena-Gamer\user-service\target\classes started by Lenovo in C:\Users\Lenovo\Arena-Gamer\user-service)
-2026-05-19T17:25:43.768-04:00 DEBUG 9524 --- [user-service] [main] c.e.userservice.UserServiceApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-05-19T17:25:43.768-04:00  INFO 9524 --- [user-service] [main] c.e.userservice.UserServiceApplication   : The following 1 profile is active: "h2"
-2026-05-19T17:25:44.636-04:00  INFO 9524 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-05-19T17:25:44.699-04:00  INFO 9524 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56 ms. Found 1 JPA repository interface.
-2026-05-19T17:25:45.363-04:00  INFO 9524 --- [user-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
-2026-05-19T17:25:45.374-04:00  INFO 9524 --- [user-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-05-19T17:25:45.374-04:00  INFO 9524 --- [user-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
-2026-05-19T17:25:45.445-04:00  INFO 9524 --- [user-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-05-19T17:25:45.445-04:00  INFO 9524 --- [user-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1613 ms
-2026-05-19T17:25:45.476-04:00  INFO 9524 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-05-19T17:25:45.667-04:00  INFO 9524 --- [user-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db_users user=SA
-2026-05-19T17:25:45.667-04:00  INFO 9524 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-05-19T17:25:45.683-04:00  INFO 9524 --- [user-service] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:db_users'
-2026-05-19T17:25:45.858-04:00  INFO 9524 --- [user-service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-05-19T17:25:45.938-04:00  INFO 9524 --- [user-service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
-2026-05-19T17:25:45.986-04:00  INFO 9524 --- [user-service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-05-19T17:25:46.238-04:00  INFO 9524 --- [user-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-05-19T17:25:46.286-04:00  WARN 9524 --- [user-service] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-05-19T17:25:47.067-04:00  INFO 9524 --- [user-service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-05-19T17:25:47.115-04:00  INFO 9524 --- [user-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-05-19T17:25:47.544-04:00  WARN 9524 --- [user-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-05-19T17:25:47.924-04:00  INFO 9524 --- [user-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@29ddaa8e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4c678a1f, org.springframework.security.web.context.SecurityContextHolderFilter@74ab8610, org.springframework.security.web.header.HeaderWriterFilter@39acf187, org.springframework.web.filter.CorsFilter@217009bd, org.springframework.security.web.authentication.logout.LogoutFilter@3e984100, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2e096ac0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@296949c8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1be3a294, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6046fba0, org.springframework.security.web.session.SessionManagementFilter@5af1b221, org.springframework.security.web.access.ExceptionTranslationFilter@49741e80, org.springframework.security.web.access.intercept.AuthorizationFilter@6ac0fd1d]
-2026-05-19T17:25:48.210-04:00  INFO 9524 --- [user-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
-2026-05-19T17:25:48.226-04:00  INFO 9524 --- [user-service] [main] c.e.userservice.UserServiceApplication   : Started UserServiceApplication in 5.034 seconds (process running for 5.551)
-2026-05-19T17:27:00.776-04:00  INFO 20928 --- [user-service] [main] c.e.userservice.UserServiceApplication   : Starting UserServiceApplication using Java 21.0.10 with PID 20928 (C:\Users\Lenovo\Arena-Gamer\user-service\target\classes started by Lenovo in C:\Users\Lenovo\Arena-Gamer\user-service)
-2026-05-19T17:27:00.780-04:00 DEBUG 20928 --- [user-service] [main] c.e.userservice.UserServiceApplication   : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-05-19T17:27:00.782-04:00  INFO 20928 --- [user-service] [main] c.e.userservice.UserServiceApplication   : The following 1 profile is active: "h2"
-2026-05-19T17:27:02.726-04:00  INFO 20928 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-05-19T17:27:02.875-04:00  INFO 20928 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 125 ms. Found 1 JPA repository interface.
-2026-05-19T17:27:04.279-04:00  INFO 20928 --- [user-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
-2026-05-19T17:27:04.298-04:00  INFO 20928 --- [user-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-05-19T17:27:04.298-04:00  INFO 20928 --- [user-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
-2026-05-19T17:27:04.441-04:00  INFO 20928 --- [user-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-05-19T17:27:04.441-04:00  INFO 20928 --- [user-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3527 ms
-2026-05-19T17:27:04.526-04:00  INFO 20928 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-05-19T17:27:04.911-04:00  INFO 20928 --- [user-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db_users user=SA
-2026-05-19T17:27:04.914-04:00  INFO 20928 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-05-19T17:27:04.937-04:00  INFO 20928 --- [user-service] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:db_users'
-2026-05-19T17:27:05.210-04:00  INFO 20928 --- [user-service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-05-19T17:27:05.329-04:00  INFO 20928 --- [user-service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
-2026-05-19T17:27:05.393-04:00  INFO 20928 --- [user-service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-05-19T17:27:05.805-04:00  INFO 20928 --- [user-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-05-19T17:27:05.885-04:00  WARN 20928 --- [user-service] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-05-19T17:27:07.331-04:00  INFO 20928 --- [user-service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-05-19T17:27:07.426-04:00  INFO 20928 --- [user-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-05-19T17:27:08.126-04:00  WARN 20928 --- [user-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-05-19T17:27:08.761-04:00  INFO 20928 --- [user-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1c15a6aa, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7dc963be, org.springframework.security.web.context.SecurityContextHolderFilter@5d24703e, org.springframework.security.web.header.HeaderWriterFilter@3d2ff73a, org.springframework.web.filter.CorsFilter@61c4fc34, org.springframework.security.web.authentication.logout.LogoutFilter@7ca7bddd, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@712213ed, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@749ffdc7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@690e7b89, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6f9999f6, org.springframework.security.web.session.SessionManagementFilter@2686a801, org.springframework.security.web.access.ExceptionTranslationFilter@6e4bccc, org.springframework.security.web.access.intercept.AuthorizationFilter@3b3b2290]
-2026-05-19T17:27:09.349-04:00  INFO 20928 --- [user-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
-2026-05-19T17:27:09.349-04:00  INFO 20928 --- [user-service] [main] c.e.userservice.UserServiceApplication   : Started UserServiceApplication in 9.575 seconds (process running for 10.53)
-2026-06-25T06:14:49.857-04:00  INFO 12336 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Starting UserControllerTest using Java 21.0.11 with PID 12336 (started by mipip in C:\Users\mipip\IdeaProjects\Arena-Gamer-2da-parte\user-service)
-2026-06-25T06:14:49.858-04:00 DEBUG 12336 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-06-25T06:14:49.860-04:00  INFO 12336 --- [user-service] [main] c.e.u.controller.UserControllerTest      : The following 1 profile is active: "h2"
-2026-06-25T06:14:52.253-04:00  WARN 12336 --- [user-service] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+2026-07-13T00:18:46.736-04:00  INFO 13636 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Starting UserControllerTest using Java 21.0.10 with PID 13636 (started by Lenovo in C:\Users\Lenovo\IdeaProjects\user-service)
+2026-07-13T00:18:46.768-04:00 DEBUG 13636 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-13T00:18:46.773-04:00  INFO 13636 --- [user-service] [main] c.e.u.controller.UserControllerTest      : The following 1 profile is active: "h2"
+2026-07-13T00:18:57.706-04:00  WARN 13636 --- [user-service] [main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 20c082c9-9259-4c86-977d-4ea1eb60d55b
+Using generated security password: 8956f637-ef0a-40e3-927c-82366c7ab769
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2026-06-25T06:14:52.432-04:00  INFO 12336 --- [user-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@15363eba, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6d6e8dfc, org.springframework.security.web.context.SecurityContextHolderFilter@59be715a, org.springframework.security.web.header.HeaderWriterFilter@50e0541, org.springframework.web.filter.CorsFilter@2258ca14, org.springframework.security.web.csrf.CsrfFilter@484f7fad, org.springframework.security.web.authentication.logout.LogoutFilter@65977161, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@c5dc3db, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7c7335dc, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@2e5337d8, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5b628376, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@29c471f6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6859f102, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@ab40f46, org.springframework.security.web.access.ExceptionTranslationFilter@34ceefb5, org.springframework.security.web.access.intercept.AuthorizationFilter@6c633590]
-2026-06-25T06:14:52.476-04:00  INFO 12336 --- [user-service] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-06-25T06:14:52.477-04:00  INFO 12336 --- [user-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-06-25T06:14:52.477-04:00  INFO 12336 --- [user-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2026-06-25T06:14:52.510-04:00  INFO 12336 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Started UserControllerTest in 3.091 seconds (process running for 4.201)
-2026-06-25T06:14:52.614-04:00  WARN 12336 --- [user-service] [main] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/users/1' (previous null). Performing CorsConfiguration lookup. This is logged once only at WARN level, and every time at TRACE.
-2026-06-25T06:14:53.009-04:00  WARN 12336 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de crear usuario con email existente: gamer1@test.com
-2026-06-25T06:14:53.023-04:00  INFO 12336 --- [user-service] [main] c.e.userservice.service.UserService      : Usuarios activos: 1
-2026-06-25T06:14:53.026-04:00  WARN 12336 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de crear usuario con username existente: gamer1
-2026-06-25T06:14:53.030-04:00  INFO 12336 --- [user-service] [main] c.e.userservice.service.UserService      : Usuarios con role PLAYER: 1
-2026-06-25T06:14:53.035-04:00  INFO 12336 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario creado: id=1, username=gamer1
-2026-06-25T06:14:53.037-04:00 ERROR 12336 --- [user-service] [main] c.e.userservice.service.UserService      : Error al notificar creación de usuario: Cannot invoke "org.springframework.web.client.RestClient$RequestBodyUriSpec.uri(String, Object[])" because the return value of "org.springframework.web.client.RestClient.post()" is null
-2026-06-25T06:14:53.042-04:00  WARN 12336 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de eliminar usuario inexistente: id=99
-2026-06-25T06:14:53.046-04:00  INFO 12336 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario encontrado: id=1, username=oldName
-2026-06-25T06:14:53.046-04:00  INFO 12336 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario actualizado: id=1, username=newName
-2026-06-25T06:14:53.049-04:00  INFO 12336 --- [user-service] [main] c.e.userservice.service.UserService      : Obtenidos 2 usuarios
-2026-06-25T06:14:53.051-04:00  INFO 12336 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario eliminado: id=1
-2026-06-25T06:14:53.052-04:00  INFO 12336 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario encontrado: id=1, username=gamer1
-2026-06-25T06:14:53.060-04:00  INFO 12336 --- [user-service] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.userservice.UserServiceApplicationTests]: UserServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-06-25T06:14:53.068-04:00  INFO 12336 --- [user-service] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.userservice.UserServiceApplication for test class com.example.userservice.UserServiceApplicationTests
-2026-06-25T06:14:53.103-04:00  INFO 12336 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Starting UserServiceApplicationTests using Java 21.0.11 with PID 12336 (started by mipip in C:\Users\mipip\IdeaProjects\Arena-Gamer-2da-parte\user-service)
-2026-06-25T06:14:53.103-04:00 DEBUG 12336 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-06-25T06:14:53.103-04:00  INFO 12336 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : The following 1 profile is active: "h2"
-2026-06-25T06:14:53.580-04:00  INFO 12336 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-25T06:14:53.636-04:00  INFO 12336 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 1 JPA repository interface.
-2026-06-25T06:14:54.014-04:00  INFO 12336 --- [user-service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-06-25T06:14:54.144-04:00  INFO 12336 --- [user-service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
-2026-06-25T06:14:54.198-04:00  INFO 12336 --- [user-service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-06-25T06:14:54.360-04:00  INFO 12336 --- [user-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-25T06:14:54.400-04:00  INFO 12336 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-06-25T06:14:54.740-04:00  INFO 12336 --- [user-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db_users user=SA
-2026-06-25T06:14:54.742-04:00  INFO 12336 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-06-25T06:14:54.782-04:00  WARN 12336 --- [user-service] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-06-25T06:14:55.595-04:00  INFO 12336 --- [user-service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-25T06:14:55.648-04:00  INFO 12336 --- [user-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-25T06:14:56.122-04:00  WARN 12336 --- [user-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-06-25T06:14:56.206-04:00  INFO 12336 --- [user-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4fdcff18, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7db2b057, org.springframework.security.web.context.SecurityContextHolderFilter@1c61f327, org.springframework.security.web.header.HeaderWriterFilter@af644de, org.springframework.web.filter.CorsFilter@7e2e0b34, org.springframework.security.web.authentication.logout.LogoutFilter@314a5f5a, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@590d7a3e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@248984c1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@274f7bca, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2c591408, org.springframework.security.web.session.SessionManagementFilter@75ce14ad, org.springframework.security.web.access.ExceptionTranslationFilter@3b3a4f9c, org.springframework.security.web.access.intercept.AuthorizationFilter@2c0fd54c]
-2026-06-25T06:14:56.412-04:00  INFO 12336 --- [user-service] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:db_users'
-2026-06-25T06:14:56.461-04:00  INFO 12336 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Started UserServiceApplicationTests in 3.389 seconds (process running for 8.153)
-2026-06-25T06:14:56.774-04:00  INFO 12336 --- [user-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-06-25T06:14:56.926-04:00  INFO 12336 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-06-25T06:14:56.928-04:00  INFO 12336 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-06-25T06:15:39.387-04:00  INFO 20824 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Starting UserControllerTest using Java 21.0.11 with PID 20824 (started by mipip in C:\Users\mipip\IdeaProjects\Arena-Gamer-2da-parte\user-service)
-2026-06-25T06:15:39.387-04:00 DEBUG 20824 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-06-25T06:15:39.389-04:00  INFO 20824 --- [user-service] [main] c.e.u.controller.UserControllerTest      : The following 1 profile is active: "h2"
-2026-06-25T06:15:41.531-04:00  WARN 20824 --- [user-service] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+2026-07-13T00:18:59.243-04:00  INFO 13636 --- [user-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@46f43f50, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2cf073da, org.springframework.security.web.context.SecurityContextHolderFilter@75564689, org.springframework.security.web.header.HeaderWriterFilter@319428ba, org.springframework.web.filter.CorsFilter@6e1ef044, org.springframework.security.web.csrf.CsrfFilter@1467dcd0, org.springframework.security.web.authentication.logout.LogoutFilter@7b0a864e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6d95b51d, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@5bb0122, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@3c92f2f9, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2dfdea3a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5f7e2ca8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d07fb2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5b7b5484, org.springframework.security.web.access.ExceptionTranslationFilter@223ed38f, org.springframework.security.web.access.intercept.AuthorizationFilter@1ab6a093]
+2026-07-13T00:18:59.539-04:00  INFO 13636 --- [user-service] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-13T00:18:59.539-04:00  INFO 13636 --- [user-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-13T00:18:59.553-04:00  INFO 13636 --- [user-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 5 ms
+2026-07-13T00:19:00.170-04:00  INFO 13636 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Started UserControllerTest in 15.16 seconds (process running for 18.445)
+2026-07-13T00:19:00.634-04:00  WARN 13636 --- [user-service] [main] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/users/1' (previous null). Performing CorsConfiguration lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-07-13T00:19:02.232-04:00  WARN 13636 --- [user-service] [main] c.e.u.exception.GlobalExceptionHandler   : 404 NOT_FOUND: Usuario no encontrado
+2026-07-13T00:19:04.013-04:00  WARN 13636 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de crear usuario con email existente: gamer1@test.com
+2026-07-13T00:19:04.066-04:00  INFO 13636 --- [user-service] [main] c.e.userservice.service.UserService      : Usuarios activos: 1
+2026-07-13T00:19:04.085-04:00  WARN 13636 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de crear usuario con username existente: gamer1
+2026-07-13T00:19:04.098-04:00  INFO 13636 --- [user-service] [main] c.e.userservice.service.UserService      : Usuarios con role PLAYER: 1
+2026-07-13T00:19:04.129-04:00  INFO 13636 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario creado: id=1, username=gamer1
+2026-07-13T00:19:04.134-04:00 ERROR 13636 --- [user-service] [main] c.e.userservice.service.UserService      : Error al notificar creación de usuario: Cannot invoke "org.springframework.web.client.RestClient$RequestBodyUriSpec.uri(String, Object[])" because the return value of "org.springframework.web.client.RestClient.post()" is null
+2026-07-13T00:19:04.154-04:00  WARN 13636 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de eliminar usuario inexistente: id=99
+2026-07-13T00:19:04.176-04:00  INFO 13636 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario encontrado: id=1, username=oldName
+2026-07-13T00:19:04.176-04:00  INFO 13636 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario actualizado: id=1, username=newName
+2026-07-13T00:19:04.187-04:00  INFO 13636 --- [user-service] [main] c.e.userservice.service.UserService      : Obtenidos 2 usuarios
+2026-07-13T00:19:04.201-04:00  INFO 13636 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario eliminado: id=1
+2026-07-13T00:19:04.210-04:00  INFO 13636 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario encontrado: id=1, username=gamer1
+2026-07-13T00:19:04.247-04:00  INFO 13636 --- [user-service] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.userservice.UserServiceApplicationTests]: UserServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-13T00:19:04.294-04:00  INFO 13636 --- [user-service] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.userservice.UserServiceApplication for test class com.example.userservice.UserServiceApplicationTests
+2026-07-13T00:19:04.452-04:00  INFO 13636 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Starting UserServiceApplicationTests using Java 21.0.10 with PID 13636 (started by Lenovo in C:\Users\Lenovo\IdeaProjects\user-service)
+2026-07-13T00:19:04.452-04:00 DEBUG 13636 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-13T00:19:04.452-04:00  INFO 13636 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : The following 1 profile is active: "h2"
+2026-07-13T00:19:06.219-04:00  INFO 13636 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-13T00:19:06.363-04:00  INFO 13636 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 130 ms. Found 1 JPA repository interface.
+2026-07-13T00:19:07.718-04:00  INFO 13636 --- [user-service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-13T00:19:08.059-04:00  INFO 13636 --- [user-service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-07-13T00:19:08.237-04:00  INFO 13636 --- [user-service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-13T00:19:08.882-04:00  INFO 13636 --- [user-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-13T00:19:09.027-04:00  INFO 13636 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-13T00:19:10.407-04:00  INFO 13636 --- [user-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db_users user=SA
+2026-07-13T00:19:10.414-04:00  INFO 13636 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-13T00:19:10.605-04:00  WARN 13636 --- [user-service] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-07-13T00:19:13.875-04:00  INFO 13636 --- [user-service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-13T00:19:14.088-04:00  INFO 13636 --- [user-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13T00:19:16.111-04:00  WARN 13636 --- [user-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-13T00:19:16.486-04:00  INFO 13636 --- [user-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1ba9111b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@19c019d7, org.springframework.security.web.context.SecurityContextHolderFilter@5bcf89cf, org.springframework.security.web.header.HeaderWriterFilter@4037f80d, org.springframework.web.filter.CorsFilter@7bd11ac4, org.springframework.security.web.authentication.logout.LogoutFilter@50dcf1c4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4ba92859, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@24c7f52b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5d132276, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@33e94a06, org.springframework.security.web.session.SessionManagementFilter@7cead524, org.springframework.security.web.access.ExceptionTranslationFilter@78cbf937, org.springframework.security.web.access.intercept.AuthorizationFilter@2ccc9797]
+2026-07-13T00:19:17.363-04:00  INFO 13636 --- [user-service] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:db_users'
+2026-07-13T00:19:17.606-04:00  INFO 13636 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Started UserServiceApplicationTests in 13.29 seconds (process running for 35.881)
+2026-07-13T00:19:20.200-04:00  INFO 13636 --- [user-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13T00:19:20.899-04:00  INFO 13636 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-07-13T00:19:20.899-04:00  INFO 13636 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-07-13T00:34:31.034-04:00  INFO 8184 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Starting UserControllerTest using Java 21.0.10 with PID 8184 (started by Lenovo in C:\Users\Lenovo\IdeaProjects\user-service)
+2026-07-13T00:34:31.038-04:00 DEBUG 8184 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-13T00:34:31.039-04:00  INFO 8184 --- [user-service] [main] c.e.u.controller.UserControllerTest      : The following 1 profile is active: "h2"
+2026-07-13T00:34:38.927-04:00  WARN 8184 --- [user-service] [main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 94302fd6-eca1-4555-8921-8b984a67f679
+Using generated security password: fe2d1fe3-9f24-4bc6-b2b7-8f0066cb85e1
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2026-06-25T06:15:41.730-04:00  INFO 20824 --- [user-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@25d73ca6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7902b006, org.springframework.security.web.context.SecurityContextHolderFilter@232e4e1d, org.springframework.security.web.header.HeaderWriterFilter@402d443d, org.springframework.web.filter.CorsFilter@5ee63d9, org.springframework.security.web.csrf.CsrfFilter@2fc72df3, org.springframework.security.web.authentication.logout.LogoutFilter@2e5337d8, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@79dcd7f1, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@543895d2, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@3b68a50c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7231c423, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3e93ee71, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1cfa5e46, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@27c68ccb, org.springframework.security.web.access.ExceptionTranslationFilter@3d2e1d18, org.springframework.security.web.access.intercept.AuthorizationFilter@1e23e1ef]
-2026-06-25T06:15:41.823-04:00  INFO 20824 --- [user-service] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-06-25T06:15:41.823-04:00  INFO 20824 --- [user-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-06-25T06:15:41.825-04:00  INFO 20824 --- [user-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2026-06-25T06:15:41.855-04:00  INFO 20824 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Started UserControllerTest in 2.884 seconds (process running for 3.975)
-2026-06-25T06:15:41.953-04:00  WARN 20824 --- [user-service] [main] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/users/1' (previous null). Performing CorsConfiguration lookup. This is logged once only at WARN level, and every time at TRACE.
-2026-06-25T06:15:42.353-04:00  WARN 20824 --- [user-service] [main] c.e.u.exception.GlobalExceptionHandler   : 404 NOT_FOUND: Usuario no encontrado
-2026-06-25T06:15:42.769-04:00  WARN 20824 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de crear usuario con email existente: gamer1@test.com
-2026-06-25T06:15:42.783-04:00  INFO 20824 --- [user-service] [main] c.e.userservice.service.UserService      : Usuarios activos: 1
-2026-06-25T06:15:42.787-04:00  WARN 20824 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de crear usuario con username existente: gamer1
-2026-06-25T06:15:42.789-04:00  INFO 20824 --- [user-service] [main] c.e.userservice.service.UserService      : Usuarios con role PLAYER: 1
-2026-06-25T06:15:42.794-04:00  INFO 20824 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario creado: id=1, username=gamer1
-2026-06-25T06:15:42.795-04:00 ERROR 20824 --- [user-service] [main] c.e.userservice.service.UserService      : Error al notificar creación de usuario: Cannot invoke "org.springframework.web.client.RestClient$RequestBodyUriSpec.uri(String, Object[])" because the return value of "org.springframework.web.client.RestClient.post()" is null
-2026-06-25T06:15:42.798-04:00  WARN 20824 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de eliminar usuario inexistente: id=99
-2026-06-25T06:15:42.801-04:00  INFO 20824 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario encontrado: id=1, username=oldName
-2026-06-25T06:15:42.802-04:00  INFO 20824 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario actualizado: id=1, username=newName
-2026-06-25T06:15:42.804-04:00  INFO 20824 --- [user-service] [main] c.e.userservice.service.UserService      : Obtenidos 2 usuarios
-2026-06-25T06:15:42.806-04:00  INFO 20824 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario eliminado: id=1
-2026-06-25T06:15:42.809-04:00  INFO 20824 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario encontrado: id=1, username=gamer1
-2026-06-25T06:15:42.818-04:00  INFO 20824 --- [user-service] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.userservice.UserServiceApplicationTests]: UserServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-06-25T06:15:42.825-04:00  INFO 20824 --- [user-service] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.userservice.UserServiceApplication for test class com.example.userservice.UserServiceApplicationTests
-2026-06-25T06:15:42.873-04:00  INFO 20824 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Starting UserServiceApplicationTests using Java 21.0.11 with PID 20824 (started by mipip in C:\Users\mipip\IdeaProjects\Arena-Gamer-2da-parte\user-service)
-2026-06-25T06:15:42.874-04:00 DEBUG 20824 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-06-25T06:15:42.874-04:00  INFO 20824 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : The following 1 profile is active: "h2"
-2026-06-25T06:15:43.269-04:00  INFO 20824 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-25T06:15:43.304-04:00  INFO 20824 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 1 JPA repository interface.
-2026-06-25T06:15:43.680-04:00  INFO 20824 --- [user-service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-06-25T06:15:43.746-04:00  INFO 20824 --- [user-service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
-2026-06-25T06:15:43.780-04:00  INFO 20824 --- [user-service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-06-25T06:15:43.904-04:00  INFO 20824 --- [user-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-25T06:15:43.935-04:00  INFO 20824 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-06-25T06:15:44.197-04:00  INFO 20824 --- [user-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db_users user=SA
-2026-06-25T06:15:44.199-04:00  INFO 20824 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-06-25T06:15:44.227-04:00  WARN 20824 --- [user-service] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-06-25T06:15:45.065-04:00  INFO 20824 --- [user-service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-25T06:15:45.113-04:00  INFO 20824 --- [user-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-25T06:15:45.560-04:00  WARN 20824 --- [user-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-06-25T06:15:45.657-04:00  INFO 20824 --- [user-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@180cae29, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1b6073d1, org.springframework.security.web.context.SecurityContextHolderFilter@220dce84, org.springframework.security.web.header.HeaderWriterFilter@58107cbb, org.springframework.web.filter.CorsFilter@5a56cd6a, org.springframework.security.web.authentication.logout.LogoutFilter@49fd4ef6, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2ce5f148, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@79a38bda, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@569048c9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4f0cfc00, org.springframework.security.web.session.SessionManagementFilter@248ef0ae, org.springframework.security.web.access.ExceptionTranslationFilter@6efd0f14, org.springframework.security.web.access.intercept.AuthorizationFilter@3ba5dd55]
-2026-06-25T06:15:45.882-04:00  INFO 20824 --- [user-service] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:db_users'
-2026-06-25T06:15:45.937-04:00  INFO 20824 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Started UserServiceApplicationTests in 3.105 seconds (process running for 8.058)
-2026-06-25T06:15:46.204-04:00  INFO 20824 --- [user-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-06-25T06:15:46.374-04:00  INFO 20824 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-06-25T06:15:46.376-04:00  INFO 20824 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-07-13T00:34:39.412-04:00  INFO 8184 --- [user-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@8872669, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@14b53f58, org.springframework.security.web.context.SecurityContextHolderFilter@2aee0173, org.springframework.security.web.header.HeaderWriterFilter@358caf3a, org.springframework.web.filter.CorsFilter@1e23e1ef, org.springframework.security.web.csrf.CsrfFilter@765650e4, org.springframework.security.web.authentication.logout.LogoutFilter@c5dc3db, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@20395afe, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@3f35d13d, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@79dcd7f1, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@545bc8e1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6c758c74, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5a32ab89, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@485902cd, org.springframework.security.web.access.ExceptionTranslationFilter@5bb0122, org.springframework.security.web.access.intercept.AuthorizationFilter@20c5b5f8]
+2026-07-13T00:34:39.645-04:00  INFO 8184 --- [user-service] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-13T00:34:39.645-04:00  INFO 8184 --- [user-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-13T00:34:39.648-04:00  INFO 8184 --- [user-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2026-07-13T00:34:39.738-04:00  INFO 8184 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Started UserControllerTest in 10.523 seconds (process running for 15.26)
+2026-07-13T00:34:40.056-04:00  WARN 8184 --- [user-service] [main] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/users/1' (previous null). Performing CorsConfiguration lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-07-13T00:34:41.232-04:00  WARN 8184 --- [user-service] [main] c.e.u.exception.GlobalExceptionHandler   : 404 NOT_FOUND: Usuario no encontrado
+2026-07-13T00:34:42.873-04:00  WARN 8184 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de crear usuario con email existente: gamer1@test.com
+2026-07-13T00:34:42.918-04:00  INFO 8184 --- [user-service] [main] c.e.userservice.service.UserService      : Usuarios activos: 1
+2026-07-13T00:34:42.930-04:00  WARN 8184 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de crear usuario con username existente: gamer1
+2026-07-13T00:34:42.940-04:00  INFO 8184 --- [user-service] [main] c.e.userservice.service.UserService      : Usuarios con role PLAYER: 1
+2026-07-13T00:34:42.964-04:00  INFO 8184 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario creado: id=1, username=gamer1
+2026-07-13T00:34:42.967-04:00 ERROR 8184 --- [user-service] [main] c.e.userservice.service.UserService      : Error al notificar creación de usuario: Cannot invoke "org.springframework.web.client.RestClient$RequestBodyUriSpec.uri(String, Object[])" because the return value of "org.springframework.web.client.RestClient.post()" is null
+2026-07-13T00:34:42.981-04:00  WARN 8184 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de eliminar usuario inexistente: id=99
+2026-07-13T00:34:42.994-04:00  INFO 8184 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario encontrado: id=1, username=oldName
+2026-07-13T00:34:42.996-04:00  INFO 8184 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario actualizado: id=1, username=newName
+2026-07-13T00:34:43.011-04:00  INFO 8184 --- [user-service] [main] c.e.userservice.service.UserService      : Obtenidos 2 usuarios
+2026-07-13T00:34:43.021-04:00  INFO 8184 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario eliminado: id=1
+2026-07-13T00:34:43.034-04:00  INFO 8184 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario encontrado: id=1, username=gamer1
+2026-07-13T00:34:43.067-04:00  INFO 8184 --- [user-service] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.userservice.UserServiceApplicationTests]: UserServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-13T00:34:43.100-04:00  INFO 8184 --- [user-service] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.userservice.UserServiceApplication for test class com.example.userservice.UserServiceApplicationTests
+2026-07-13T00:34:43.226-04:00  INFO 8184 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Starting UserServiceApplicationTests using Java 21.0.10 with PID 8184 (started by Lenovo in C:\Users\Lenovo\IdeaProjects\user-service)
+2026-07-13T00:34:43.227-04:00 DEBUG 8184 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-13T00:34:43.229-04:00  INFO 8184 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : The following 1 profile is active: "h2"
+2026-07-13T00:34:44.707-04:00  INFO 8184 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-13T00:34:44.835-04:00  INFO 8184 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 105 ms. Found 1 JPA repository interface.
+2026-07-13T00:34:45.820-04:00  INFO 8184 --- [user-service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-13T00:34:46.112-04:00  INFO 8184 --- [user-service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-07-13T00:34:46.245-04:00  INFO 8184 --- [user-service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-13T00:34:46.673-04:00  INFO 8184 --- [user-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-13T00:34:46.756-04:00  INFO 8184 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-13T00:34:47.788-04:00  INFO 8184 --- [user-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db_users user=SA
+2026-07-13T00:34:47.793-04:00  INFO 8184 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-13T00:34:47.882-04:00  WARN 8184 --- [user-service] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-07-13T00:34:49.861-04:00  INFO 8184 --- [user-service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-13T00:34:49.980-04:00  INFO 8184 --- [user-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13T00:34:51.134-04:00  WARN 8184 --- [user-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-13T00:34:51.415-04:00  INFO 8184 --- [user-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6007487a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@12f8cda3, org.springframework.security.web.context.SecurityContextHolderFilter@b99dcd3, org.springframework.security.web.header.HeaderWriterFilter@195b9fb7, org.springframework.web.filter.CorsFilter@6a7cacc3, org.springframework.security.web.authentication.logout.LogoutFilter@31ecbd0c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2debecdd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4e7a5c30, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6dbed05, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@629a40b2, org.springframework.security.web.session.SessionManagementFilter@3b6922c5, org.springframework.security.web.access.ExceptionTranslationFilter@418e39d2, org.springframework.security.web.access.intercept.AuthorizationFilter@34d78731]
+2026-07-13T00:34:52.052-04:00  INFO 8184 --- [user-service] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:db_users'
+2026-07-13T00:34:52.197-04:00  INFO 8184 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Started UserServiceApplicationTests in 9.069 seconds (process running for 27.718)
+2026-07-13T00:34:53.735-04:00  INFO 8184 --- [user-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13T00:34:54.085-04:00  INFO 8184 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-07-13T00:34:54.088-04:00  INFO 8184 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-07-13T00:41:06.322-04:00  INFO 20060 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Starting UserControllerTest using Java 21.0.10 with PID 20060 (started by Lenovo in C:\Users\Lenovo\IdeaProjects\user-service)
+2026-07-13T00:41:06.326-04:00 DEBUG 20060 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-13T00:41:06.347-04:00  INFO 20060 --- [user-service] [main] c.e.u.controller.UserControllerTest      : The following 1 profile is active: "h2"
+2026-07-13T00:41:15.157-04:00  WARN 20060 --- [user-service] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: a09aefac-d81a-4dab-b474-f657cd063e5d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-07-13T00:41:15.697-04:00  INFO 20060 --- [user-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5d6e77a4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5bf9bb2, org.springframework.security.web.context.SecurityContextHolderFilter@3d2e1d18, org.springframework.security.web.header.HeaderWriterFilter@7b0a864e, org.springframework.web.filter.CorsFilter@76c5599b, org.springframework.security.web.csrf.CsrfFilter@794c22cd, org.springframework.security.web.authentication.logout.LogoutFilter@5b628376, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@545bc8e1, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@222557fc, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@7231c423, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4c97e3d5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@402d443d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@32e0b990, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5c4c4e96, org.springframework.security.web.access.ExceptionTranslationFilter@482652f7, org.springframework.security.web.access.intercept.AuthorizationFilter@685e8e17]
+2026-07-13T00:41:15.955-04:00  INFO 20060 --- [user-service] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-13T00:41:15.956-04:00  INFO 20060 --- [user-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-13T00:41:15.961-04:00  INFO 20060 --- [user-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 5 ms
+2026-07-13T00:41:16.038-04:00  INFO 20060 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Started UserControllerTest in 11.07 seconds (process running for 13.684)
+2026-07-13T00:41:16.502-04:00  WARN 20060 --- [user-service] [main] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/users/1' (previous null). Performing CorsConfiguration lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-07-13T00:41:18.085-04:00  WARN 20060 --- [user-service] [main] c.e.u.exception.GlobalExceptionHandler   : 404 NOT_FOUND: Usuario no encontrado
+2026-07-13T00:41:19.245-04:00  WARN 20060 --- [user-service] [main] c.e.u.exception.GlobalExceptionHandler   : 404 NOT_FOUND: Usuario no encontrado
+2026-07-13T00:41:19.253-04:00 ERROR 20060 --- [user-service] [main] c.e.u.exception.GlobalExceptionHandler   : Excepción no capturada
+
+java.lang.RuntimeException: Error inesperado
+	at com.example.userservice.exception.GlobalExceptionHandlerTest.handleGeneric_shouldReturn500(GlobalExceptionHandlerTest.java:61) ~[test-classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.1.jar:1.10.1]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56) ~[surefire-junit-platform-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184) ~[surefire-junit-platform-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148) ~[surefire-junit-platform-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122) ~[surefire-junit-platform-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385) ~[surefire-booter-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) ~[surefire-booter-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507) ~[surefire-booter-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495) ~[surefire-booter-3.1.2.jar:3.1.2]
+
+2026-07-13T00:41:19.322-04:00  WARN 20060 --- [user-service] [main] c.e.u.exception.GlobalExceptionHandler   : Acceso denegado: Sin permisos
+2026-07-13T00:41:19.328-04:00  WARN 20060 --- [user-service] [main] c.e.u.exception.GlobalExceptionHandler   : Validación fallida: Dato inválido
+2026-07-13T00:41:21.088-04:00  WARN 20060 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de crear usuario con email existente: gamer1@test.com
+2026-07-13T00:41:21.142-04:00  INFO 20060 --- [user-service] [main] c.e.userservice.service.UserService      : Usuarios activos: 1
+2026-07-13T00:41:21.161-04:00  WARN 20060 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de crear usuario con username existente: gamer1
+2026-07-13T00:41:21.173-04:00  INFO 20060 --- [user-service] [main] c.e.userservice.service.UserService      : Usuarios con role PLAYER: 1
+2026-07-13T00:41:21.191-04:00  INFO 20060 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario creado: id=1, username=gamer1
+2026-07-13T00:41:21.193-04:00 ERROR 20060 --- [user-service] [main] c.e.userservice.service.UserService      : Error al notificar creación de usuario: Cannot invoke "org.springframework.web.client.RestClient$RequestBodyUriSpec.uri(String, Object[])" because the return value of "org.springframework.web.client.RestClient.post()" is null
+2026-07-13T00:41:21.212-04:00  WARN 20060 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de eliminar usuario inexistente: id=99
+2026-07-13T00:41:21.233-04:00  INFO 20060 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario encontrado: id=1, username=oldName
+2026-07-13T00:41:21.234-04:00  INFO 20060 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario actualizado: id=1, username=newName
+2026-07-13T00:41:21.252-04:00  INFO 20060 --- [user-service] [main] c.e.userservice.service.UserService      : Obtenidos 2 usuarios
+2026-07-13T00:41:21.268-04:00  INFO 20060 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario eliminado: id=1
+2026-07-13T00:41:21.278-04:00  INFO 20060 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario encontrado: id=1, username=gamer1
+2026-07-13T00:41:21.329-04:00  INFO 20060 --- [user-service] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.userservice.UserServiceApplicationTests]: UserServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-13T00:41:21.383-04:00  INFO 20060 --- [user-service] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.userservice.UserServiceApplication for test class com.example.userservice.UserServiceApplicationTests
+2026-07-13T00:41:21.559-04:00  INFO 20060 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Starting UserServiceApplicationTests using Java 21.0.10 with PID 20060 (started by Lenovo in C:\Users\Lenovo\IdeaProjects\user-service)
+2026-07-13T00:41:21.560-04:00 DEBUG 20060 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-13T00:41:21.560-04:00  INFO 20060 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : The following 1 profile is active: "h2"
+2026-07-13T00:41:23.248-04:00  INFO 20060 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-13T00:41:23.402-04:00  INFO 20060 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 119 ms. Found 1 JPA repository interface.
+2026-07-13T00:41:24.587-04:00  INFO 20060 --- [user-service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-13T00:41:24.817-04:00  INFO 20060 --- [user-service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-07-13T00:41:24.949-04:00  INFO 20060 --- [user-service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-13T00:41:25.375-04:00  INFO 20060 --- [user-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-13T00:41:25.472-04:00  INFO 20060 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-13T00:41:26.514-04:00  INFO 20060 --- [user-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db_users user=SA
+2026-07-13T00:41:26.520-04:00  INFO 20060 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-13T00:41:26.631-04:00  WARN 20060 --- [user-service] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-07-13T00:41:28.837-04:00  INFO 20060 --- [user-service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-13T00:41:29.010-04:00  INFO 20060 --- [user-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13T00:41:30.224-04:00  WARN 20060 --- [user-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-13T00:41:30.499-04:00  INFO 20060 --- [user-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3712a0e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6a178850, org.springframework.security.web.context.SecurityContextHolderFilter@118f2ce4, org.springframework.security.web.header.HeaderWriterFilter@7243397d, org.springframework.web.filter.CorsFilter@7968afa3, org.springframework.security.web.authentication.logout.LogoutFilter@4e692416, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@57a7c51d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7aec7779, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2912523c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@214882a, org.springframework.security.web.session.SessionManagementFilter@7a4eb75a, org.springframework.security.web.access.ExceptionTranslationFilter@81c76c9, org.springframework.security.web.access.intercept.AuthorizationFilter@43ff70b]
+2026-07-13T00:41:31.074-04:00  INFO 20060 --- [user-service] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:db_users'
+2026-07-13T00:41:31.222-04:00  INFO 20060 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Started UserServiceApplicationTests in 9.817 seconds (process running for 28.868)
+2026-07-13T00:41:32.717-04:00  INFO 20060 --- [user-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13T00:41:33.057-04:00  INFO 20060 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-07-13T00:41:33.061-04:00  INFO 20060 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-07-13T00:48:02.097-04:00  INFO 14800 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Starting UserControllerTest using Java 21.0.10 with PID 14800 (started by Lenovo in C:\Users\Lenovo\IdeaProjects\user-service)
+2026-07-13T00:48:02.101-04:00 DEBUG 14800 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-13T00:48:02.103-04:00  INFO 14800 --- [user-service] [main] c.e.u.controller.UserControllerTest      : The following 1 profile is active: "h2"
+2026-07-13T00:48:10.320-04:00  WARN 14800 --- [user-service] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 2a85ee12-31c0-4d11-9ba9-bc24fdd2c87f
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-07-13T00:48:10.811-04:00  INFO 14800 --- [user-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@72a4f3f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3dfef314, org.springframework.security.web.context.SecurityContextHolderFilter@36b5dbdf, org.springframework.security.web.header.HeaderWriterFilter@29e40db1, org.springframework.web.filter.CorsFilter@7edab945, org.springframework.security.web.csrf.CsrfFilter@5f7e2ca8, org.springframework.security.web.authentication.logout.LogoutFilter@21e72fb2, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4691e2f5, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7f6ba409, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@533d28aa, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6b351a54, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@482652f7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@63f9c2cd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6bbd645, org.springframework.security.web.access.ExceptionTranslationFilter@2693b289, org.springframework.security.web.access.intercept.AuthorizationFilter@6dbfd081]
+2026-07-13T00:48:11.010-04:00  INFO 14800 --- [user-service] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-13T00:48:11.010-04:00  INFO 14800 --- [user-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-13T00:48:11.015-04:00  INFO 14800 --- [user-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 4 ms
+2026-07-13T00:48:11.088-04:00  INFO 14800 --- [user-service] [main] c.e.u.controller.UserControllerTest      : Started UserControllerTest in 10.68 seconds (process running for 13.721)
+2026-07-13T00:48:11.383-04:00  WARN 14800 --- [user-service] [main] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/users/1' (previous null). Performing CorsConfiguration lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-07-13T00:48:12.665-04:00  WARN 14800 --- [user-service] [main] c.e.u.exception.GlobalExceptionHandler   : 404 NOT_FOUND: Usuario no encontrado
+2026-07-13T00:48:13.492-04:00  WARN 14800 --- [user-service] [main] c.e.u.exception.GlobalExceptionHandler   : 404 NOT_FOUND: Usuario no encontrado
+2026-07-13T00:48:13.497-04:00 ERROR 14800 --- [user-service] [main] c.e.u.exception.GlobalExceptionHandler   : Excepción no capturada
+
+java.lang.RuntimeException: Error inesperado
+	at com.example.userservice.exception.GlobalExceptionHandlerTest.handleGeneric_shouldReturn500(GlobalExceptionHandlerTest.java:61) ~[test-classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.1.jar:1.10.1]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.1.jar:5.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47) ~[junit-platform-launcher-1.10.1.jar:1.10.1]
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56) ~[surefire-junit-platform-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184) ~[surefire-junit-platform-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148) ~[surefire-junit-platform-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122) ~[surefire-junit-platform-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385) ~[surefire-booter-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) ~[surefire-booter-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507) ~[surefire-booter-3.1.2.jar:3.1.2]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495) ~[surefire-booter-3.1.2.jar:3.1.2]
+
+2026-07-13T00:48:13.521-04:00  WARN 14800 --- [user-service] [main] c.e.u.exception.GlobalExceptionHandler   : Acceso denegado: Sin permisos
+2026-07-13T00:48:13.529-04:00  WARN 14800 --- [user-service] [main] c.e.u.exception.GlobalExceptionHandler   : Validación fallida: Dato inválido
+2026-07-13T00:48:14.544-04:00  WARN 14800 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de crear usuario con email existente: gamer1@test.com
+2026-07-13T00:48:14.572-04:00  INFO 14800 --- [user-service] [main] c.e.userservice.service.UserService      : Usuarios activos: 1
+2026-07-13T00:48:14.585-04:00  WARN 14800 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de crear usuario con username existente: gamer1
+2026-07-13T00:48:14.594-04:00  INFO 14800 --- [user-service] [main] c.e.userservice.service.UserService      : Usuarios con role PLAYER: 1
+2026-07-13T00:48:14.613-04:00  INFO 14800 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario creado: id=1, username=gamer1
+2026-07-13T00:48:14.615-04:00 ERROR 14800 --- [user-service] [main] c.e.userservice.service.UserService      : Error al notificar creación de usuario: Cannot invoke "org.springframework.web.client.RestClient$RequestBodyUriSpec.uri(String, Object[])" because the return value of "org.springframework.web.client.RestClient.post()" is null
+2026-07-13T00:48:14.628-04:00  WARN 14800 --- [user-service] [main] c.e.userservice.service.UserService      : Intento de eliminar usuario inexistente: id=99
+2026-07-13T00:48:14.640-04:00  INFO 14800 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario encontrado: id=1, username=oldName
+2026-07-13T00:48:14.641-04:00  INFO 14800 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario actualizado: id=1, username=newName
+2026-07-13T00:48:14.655-04:00  INFO 14800 --- [user-service] [main] c.e.userservice.service.UserService      : Obtenidos 2 usuarios
+2026-07-13T00:48:14.662-04:00  INFO 14800 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario eliminado: id=1
+2026-07-13T00:48:14.673-04:00  INFO 14800 --- [user-service] [main] c.e.userservice.service.UserService      : Usuario encontrado: id=1, username=gamer1
+2026-07-13T00:48:14.709-04:00  INFO 14800 --- [user-service] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.userservice.UserServiceApplicationTests]: UserServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-13T00:48:14.752-04:00  INFO 14800 --- [user-service] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.userservice.UserServiceApplication for test class com.example.userservice.UserServiceApplicationTests
+2026-07-13T00:48:14.864-04:00  INFO 14800 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Starting UserServiceApplicationTests using Java 21.0.10 with PID 14800 (started by Lenovo in C:\Users\Lenovo\IdeaProjects\user-service)
+2026-07-13T00:48:14.865-04:00 DEBUG 14800 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-13T00:48:14.866-04:00  INFO 14800 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : The following 1 profile is active: "h2"
+2026-07-13T00:48:16.234-04:00  INFO 14800 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-13T00:48:16.371-04:00  INFO 14800 --- [user-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 114 ms. Found 1 JPA repository interface.
+2026-07-13T00:48:17.932-04:00  INFO 14800 --- [user-service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-13T00:48:18.269-04:00  INFO 14800 --- [user-service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-07-13T00:48:18.417-04:00  INFO 14800 --- [user-service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-13T00:48:18.967-04:00  INFO 14800 --- [user-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-13T00:48:19.064-04:00  INFO 14800 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-13T00:48:19.922-04:00  INFO 14800 --- [user-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db_users user=SA
+2026-07-13T00:48:19.928-04:00  INFO 14800 --- [user-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-13T00:48:20.053-04:00  WARN 14800 --- [user-service] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-07-13T00:48:22.357-04:00  INFO 14800 --- [user-service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-13T00:48:22.502-04:00  INFO 14800 --- [user-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13T00:48:23.845-04:00  WARN 14800 --- [user-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-13T00:48:24.097-04:00  INFO 14800 --- [user-service] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@28229b68, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@605058c5, org.springframework.security.web.context.SecurityContextHolderFilter@5feb63af, org.springframework.security.web.header.HeaderWriterFilter@4bbe1bd1, org.springframework.web.filter.CorsFilter@5900307b, org.springframework.security.web.authentication.logout.LogoutFilter@6a10ba1c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@a985455, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@64309b10, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2fa3d956, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@76ec1975, org.springframework.security.web.session.SessionManagementFilter@713616c0, org.springframework.security.web.access.ExceptionTranslationFilter@2f580c1, org.springframework.security.web.access.intercept.AuthorizationFilter@478d09df]
+2026-07-13T00:48:24.726-04:00  INFO 14800 --- [user-service] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:db_users'
+2026-07-13T00:48:24.870-04:00  INFO 14800 --- [user-service] [main] c.e.u.UserServiceApplicationTests        : Started UserServiceApplicationTests in 10.101 seconds (process running for 27.502)
+2026-07-13T00:48:26.407-04:00  INFO 14800 --- [user-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13T00:48:26.884-04:00  INFO 14800 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-07-13T00:48:26.887-04:00  INFO 14800 --- [user-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
