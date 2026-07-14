@@ -1,145 +1,21 @@
-2026-05-19T00:16:35.465-04:00  WARN 19416 --- [session-service] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h29m8s198ms573µs100ns).
-2026-05-19T00:17:16.043-04:00  INFO 19416 --- [session-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-05-19T00:17:16.058-04:00  INFO 19416 --- [session-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-05-19T00:17:16.184-04:00  INFO 19416 --- [session-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-05-19T17:20:59.598-04:00  INFO 15220 --- [session-service] [restartedMain] c.e.s.SessionServiceApplication          : Starting SessionServiceApplication using Java 21.0.10 with PID 15220 (C:\Users\Lenovo\Arena-Gamer\session-service\target\classes started by Lenovo in C:\Users\Lenovo\Arena-Gamer\session-service)
-2026-05-19T17:20:59.602-04:00 DEBUG 15220 --- [session-service] [restartedMain] c.e.s.SessionServiceApplication          : Running with Spring Boot v4.0.6, Spring v7.0.7
-2026-05-19T17:20:59.608-04:00  INFO 15220 --- [session-service] [restartedMain] c.e.s.SessionServiceApplication          : The following 1 profile is active: "h2"
-2026-05-19T17:20:59.732-04:00  INFO 15220 --- [session-service] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-05-19T17:20:59.735-04:00  INFO 15220 --- [session-service] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-05-19T17:21:01.216-04:00  INFO 15220 --- [session-service] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-05-19T17:21:01.327-04:00  INFO 15220 --- [session-service] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 92 ms. Found 1 JPA repository interface.
-2026-05-19T17:21:02.279-04:00  INFO 15220 --- [session-service] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
-2026-05-19T17:21:02.311-04:00  INFO 15220 --- [session-service] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-05-19T17:21:02.311-04:00  INFO 15220 --- [session-service] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
-2026-05-19T17:21:02.400-04:00  INFO 15220 --- [session-service] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2664 ms
-2026-05-19T17:21:02.818-04:00  INFO 15220 --- [session-service] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-05-19T17:21:02.999-04:00  INFO 15220 --- [session-service] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
-2026-05-19T17:21:04.145-04:00  INFO 15220 --- [session-service] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-05-19T17:21:04.196-04:00  INFO 15220 --- [session-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-05-19T17:21:04.559-04:00  INFO 15220 --- [session-service] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db_sessions user=SA
-2026-05-19T17:21:04.563-04:00  INFO 15220 --- [session-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-05-19T17:21:04.607-04:00  WARN 15220 --- [session-service] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-05-19T17:21:04.655-04:00  INFO 15220 --- [session-service] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [jdbc:h2:mem:db_sessions]
-	Database driver: H2 JDBC Driver
-	Database dialect: H2Dialect
-	Database version: 2.4.240
-	Default catalog/schema: DB_SESSIONS/PUBLIC
-	Autocommit mode: undefined/unknown
-	Isolation level: READ_COMMITTED [default READ_COMMITTED]
-	JDBC fetch size: 100
-	Pool: DataSourceConnectionProvider
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2026-05-19T17:21:06.463-04:00  INFO 15220 --- [session-service] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-05-19T17:21:06.546-04:00  INFO 15220 --- [session-service] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-05-19T17:21:06.591-04:00  WARN 15220 --- [session-service] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'stationClient' defined in file [C:\Users\Lenovo\Arena-Gamer\session-service\target\classes\com\example\sessionservice\client\StationClient.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'org.springframework.web.client.RestClient$Builder' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2026-05-19T17:21:06.593-04:00  INFO 15220 --- [session-service] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-05-19T17:21:06.593-04:00  WARN 15220 --- [session-service] [restartedMain] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
-Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-240]
-2026-05-19T17:21:06.593-04:00  INFO 15220 --- [session-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-05-19T17:21:06.609-04:00  INFO 15220 --- [session-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-05-19T17:21:06.613-04:00  INFO 15220 --- [session-service] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2026-05-19T17:21:06.627-04:00  INFO 15220 --- [session-service] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2026-05-19T17:21:06.664-04:00 ERROR 15220 --- [session-service] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Parameter 0 of constructor in com.example.sessionservice.client.StationClient required a bean of type 'org.springframework.web.client.RestClient$Builder' that could not be found.
-
-
-Action:
-
-Consider defining a bean of type 'org.springframework.web.client.RestClient$Builder' in your configuration.
-
-2026-05-19T17:27:02.443-04:00  INFO 13704 --- [session-service] [restartedMain] c.e.s.SessionServiceApplication          : Starting SessionServiceApplication using Java 21.0.10 with PID 13704 (C:\Users\Lenovo\Arena-Gamer\session-service\target\classes started by Lenovo in C:\Users\Lenovo\Arena-Gamer\session-service)
-2026-05-19T17:27:02.448-04:00 DEBUG 13704 --- [session-service] [restartedMain] c.e.s.SessionServiceApplication          : Running with Spring Boot v4.0.6, Spring v7.0.7
-2026-05-19T17:27:02.448-04:00  INFO 13704 --- [session-service] [restartedMain] c.e.s.SessionServiceApplication          : The following 1 profile is active: "h2"
-2026-05-19T17:27:02.591-04:00  INFO 13704 --- [session-service] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-05-19T17:27:02.593-04:00  INFO 13704 --- [session-service] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-05-19T17:27:04.050-04:00  INFO 13704 --- [session-service] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-05-19T17:27:04.156-04:00  INFO 13704 --- [session-service] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90 ms. Found 1 JPA repository interface.
-2026-05-19T17:27:05.155-04:00  INFO 13704 --- [session-service] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8082 (http)
-2026-05-19T17:27:05.196-04:00  INFO 13704 --- [session-service] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-05-19T17:27:05.196-04:00  INFO 13704 --- [session-service] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
-2026-05-19T17:27:05.282-04:00  INFO 13704 --- [session-service] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2689 ms
-2026-05-19T17:27:05.599-04:00  INFO 13704 --- [session-service] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-05-19T17:27:05.694-04:00  INFO 13704 --- [session-service] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
-2026-05-19T17:27:06.584-04:00  INFO 13704 --- [session-service] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-05-19T17:27:06.659-04:00  INFO 13704 --- [session-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-05-19T17:27:07.011-04:00  INFO 13704 --- [session-service] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db_sessions user=SA
-2026-05-19T17:27:07.015-04:00  INFO 13704 --- [session-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-05-19T17:27:07.059-04:00  WARN 13704 --- [session-service] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-05-19T17:27:07.106-04:00  INFO 13704 --- [session-service] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [jdbc:h2:mem:db_sessions]
-	Database driver: H2 JDBC Driver
-	Database dialect: H2Dialect
-	Database version: 2.4.240
-	Default catalog/schema: DB_SESSIONS/PUBLIC
-	Autocommit mode: undefined/unknown
-	Isolation level: READ_COMMITTED [default READ_COMMITTED]
-	JDBC fetch size: 100
-	Pool: DataSourceConnectionProvider
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2026-05-19T17:27:08.825-04:00  INFO 13704 --- [session-service] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-05-19T17:27:08.904-04:00  INFO 13704 --- [session-service] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-05-19T17:27:08.968-04:00  WARN 13704 --- [session-service] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'stationClient' defined in file [C:\Users\Lenovo\Arena-Gamer\session-service\target\classes\com\example\sessionservice\client\StationClient.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'org.springframework.web.client.RestClient$Builder' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
-2026-05-19T17:27:08.968-04:00  INFO 13704 --- [session-service] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-05-19T17:27:08.984-04:00  WARN 13704 --- [session-service] [restartedMain] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
-Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-240]
-2026-05-19T17:27:08.984-04:00  INFO 13704 --- [session-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-05-19T17:27:09.000-04:00  INFO 13704 --- [session-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-05-19T17:27:09.004-04:00  INFO 13704 --- [session-service] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2026-05-19T17:27:09.027-04:00  INFO 13704 --- [session-service] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2026-05-19T17:27:09.069-04:00 ERROR 13704 --- [session-service] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Parameter 0 of constructor in com.example.sessionservice.client.StationClient required a bean of type 'org.springframework.web.client.RestClient$Builder' that could not be found.
-
-
-Action:
-
-Consider defining a bean of type 'org.springframework.web.client.RestClient$Builder' in your configuration.
-
-2026-05-19T17:49:29.368-04:00  INFO 20760 --- [session-service] [restartedMain] c.e.s.SessionServiceApplication          : Starting SessionServiceApplication using Java 21.0.10 with PID 20760 (C:\Users\Lenovo\Arena-Gamer\session-service\target\classes started by Lenovo in C:\Users\Lenovo\Arena-Gamer\session-service)
-2026-05-19T17:49:29.380-04:00 DEBUG 20760 --- [session-service] [restartedMain] c.e.s.SessionServiceApplication          : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-05-19T17:49:29.392-04:00  INFO 20760 --- [session-service] [restartedMain] c.e.s.SessionServiceApplication          : The following 1 profile is active: "h2"
-2026-05-19T17:49:30.332-04:00  INFO 20760 --- [session-service] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-05-19T17:49:30.358-04:00  INFO 20760 --- [session-service] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-05-19T17:49:37.703-04:00  INFO 20760 --- [session-service] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-05-19T17:49:38.188-04:00  INFO 20760 --- [session-service] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 421 ms. Found 1 JPA repository interface.
-2026-05-19T17:49:43.978-04:00  INFO 20760 --- [session-service] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
-2026-05-19T17:49:44.138-04:00  INFO 20760 --- [session-service] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-05-19T17:49:44.204-04:00  INFO 20760 --- [session-service] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
-2026-05-19T17:49:45.122-04:00  INFO 20760 --- [session-service] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-05-19T17:49:45.150-04:00  INFO 20760 --- [session-service] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 14766 ms
-2026-05-19T17:49:45.712-04:00  INFO 20760 --- [session-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-05-19T17:49:47.216-04:00  INFO 20760 --- [session-service] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db_sessions user=SA
-2026-05-19T17:49:47.235-04:00  INFO 20760 --- [session-service] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-05-19T17:49:47.303-04:00  INFO 20760 --- [session-service] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:db_sessions'
-2026-05-19T17:49:49.266-04:00  INFO 20760 --- [session-service] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-05-19T17:49:49.784-04:00  INFO 20760 --- [session-service] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
-2026-05-19T17:49:50.588-04:00  INFO 20760 --- [session-service] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-05-19T17:49:52.801-04:00  INFO 20760 --- [session-service] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-05-19T17:49:52.966-04:00  WARN 20760 --- [session-service] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-05-19T17:49:57.737-04:00  INFO 20760 --- [session-service] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-05-19T17:49:58.046-04:00  INFO 20760 --- [session-service] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-05-19T17:50:00.911-04:00  WARN 20760 --- [session-service] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-05-19T17:50:02.174-04:00  INFO 20760 --- [session-service] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2026-05-19T17:50:02.300-04:00  INFO 20760 --- [session-service] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path ''
-2026-05-19T17:50:02.326-04:00  INFO 20760 --- [session-service] [restartedMain] c.e.s.SessionServiceApplication          : Started SessionServiceApplication in 36.256 seconds (process running for 38.553)
+2026-07-13T21:15:19.586-04:00  INFO 1612 --- [session-service] [main] c.e.s.SessionServiceApplicationTests     : Starting SessionServiceApplicationTests using Java 21.0.10 with PID 1612 (started by pc gamer in C:\Users\pc gamer\Documents\Arena-Gamer\session-service)
+2026-07-13T21:15:19.592-04:00 DEBUG 1612 --- [session-service] [main] c.e.s.SessionServiceApplicationTests     : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-13T21:15:19.593-04:00  INFO 1612 --- [session-service] [main] c.e.s.SessionServiceApplicationTests     : The following 1 profile is active: "h2"
+2026-07-13T21:15:20.757-04:00  INFO 1612 --- [session-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-13T21:15:20.820-04:00  INFO 1612 --- [session-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 1 JPA repository interface.
+2026-07-13T21:15:21.434-04:00  INFO 1612 --- [session-service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-13T21:15:21.509-04:00  INFO 1612 --- [session-service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-07-13T21:15:21.563-04:00  INFO 1612 --- [session-service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-13T21:15:21.707-04:00  INFO 1612 --- [session-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-13T21:15:21.745-04:00  INFO 1612 --- [session-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-13T21:15:22.118-04:00  INFO 1612 --- [session-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:db_sessions user=SA
+2026-07-13T21:15:22.120-04:00  INFO 1612 --- [session-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-13T21:15:22.170-04:00  WARN 1612 --- [session-service] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-07-13T21:15:22.961-04:00  INFO 1612 --- [session-service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-13T21:15:23.006-04:00  INFO 1612 --- [session-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13T21:15:23.853-04:00  WARN 1612 --- [session-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-13T21:15:24.256-04:00  INFO 1612 --- [session-service] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:db_sessions'
+2026-07-13T21:15:24.326-04:00  INFO 1612 --- [session-service] [main] c.e.s.SessionServiceApplicationTests     : Started SessionServiceApplicationTests in 5.258 seconds (process running for 8.473)
+2026-07-13T21:15:24.881-04:00  INFO 1612 --- [session-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13T21:15:25.054-04:00  INFO 1612 --- [session-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-07-13T21:15:25.056-04:00  INFO 1612 --- [session-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

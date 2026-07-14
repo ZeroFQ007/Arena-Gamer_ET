@@ -1,0 +1,2 @@
+com\cybergamer\apigateway\ApiGatewayApplication.class
+com\cybergamer\apigateway\filter\GlobalErrorFilter.class

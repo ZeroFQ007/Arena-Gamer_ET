@@ -1,164 +1,45 @@
-2026-05-19T00:31:15.766-04:00  INFO 32836 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : Starting ArenaInventoryApplicationTests using Java 25 with PID 32836 (started by mipip in C:\Users\mipip\IdeaProjects\Arena-Gamer\arena-inventory)
-2026-05-19T00:31:15.767-04:00 DEBUG 32836 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-05-19T00:31:15.768-04:00  INFO 32836 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : The following 1 profile is active: "h2"
-2026-05-19T00:31:16.832-04:00  INFO 32836 --- [arena-inventory] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-05-19T00:31:16.879-04:00  INFO 32836 --- [arena-inventory] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 1 JPA repository interface.
-2026-05-19T00:31:17.314-04:00  INFO 32836 --- [arena-inventory] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=3108835c-0ff1-3e75-8941-6fc0329932c3
-2026-05-19T00:31:17.988-04:00  INFO 32836 --- [arena-inventory] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-05-19T00:31:18.157-04:00  INFO 32836 --- [arena-inventory] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
-2026-05-19T00:31:18.239-04:00  INFO 32836 --- [arena-inventory] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-05-19T00:31:18.651-04:00  INFO 32836 --- [arena-inventory] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-05-19T00:31:18.675-04:00  INFO 32836 --- [arena-inventory] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-05-19T00:31:18.848-04:00  INFO 32836 --- [arena-inventory] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:inventory_db user=SA
-2026-05-19T00:31:18.851-04:00  INFO 32836 --- [arena-inventory] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-05-19T00:31:18.873-04:00  WARN 32836 --- [arena-inventory] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-05-19T00:31:19.569-04:00  INFO 32836 --- [arena-inventory] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-05-19T00:31:19.626-04:00  INFO 32836 --- [arena-inventory] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-05-19T00:31:20.781-04:00  WARN 32836 --- [arena-inventory] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-05-19T00:31:22.603-04:00  INFO 32836 --- [arena-inventory] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:inventory_db'
-2026-05-19T00:31:22.908-04:00  INFO 32836 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : Started ArenaInventoryApplicationTests in 7.574 seconds (process running for 8.397)
-2026-05-19T00:31:23.788-04:00  INFO 32836 --- [arena-inventory] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-05-19T00:31:23.790-04:00  INFO 32836 --- [arena-inventory] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-05-19T00:31:23.795-04:00  INFO 32836 --- [arena-inventory] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-05-19T01:54:45.754-04:00  INFO 9020 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : Starting ArenaInventoryApplicationTests using Java 21.0.11 with PID 9020 (started by mipip in C:\Users\mipip\IdeaProjects\Arena-Gamer\arena-inventory)
-2026-05-19T01:54:45.755-04:00 DEBUG 9020 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-05-19T01:54:45.755-04:00  INFO 9020 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : The following 1 profile is active: "h2"
-2026-05-19T01:54:46.262-04:00  INFO 9020 --- [arena-inventory] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-05-19T01:54:46.295-04:00  INFO 9020 --- [arena-inventory] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 1 JPA repository interface.
-2026-05-19T01:54:46.462-04:00  INFO 9020 --- [arena-inventory] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=3108835c-0ff1-3e75-8941-6fc0329932c3
-2026-05-19T01:54:46.842-04:00  INFO 9020 --- [arena-inventory] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-05-19T01:54:46.895-04:00  INFO 9020 --- [arena-inventory] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
-2026-05-19T01:54:46.922-04:00  INFO 9020 --- [arena-inventory] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-05-19T01:54:47.079-04:00  INFO 9020 --- [arena-inventory] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-05-19T01:54:47.094-04:00  INFO 9020 --- [arena-inventory] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-05-19T01:54:47.207-04:00  INFO 9020 --- [arena-inventory] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:inventory_db user=SA
-2026-05-19T01:54:47.208-04:00  INFO 9020 --- [arena-inventory] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-05-19T01:54:47.223-04:00  WARN 9020 --- [arena-inventory] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-05-19T01:54:47.694-04:00  INFO 9020 --- [arena-inventory] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-05-19T01:54:47.741-04:00  INFO 9020 --- [arena-inventory] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-05-19T01:54:48.171-04:00  WARN 9020 --- [arena-inventory] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-05-19T01:54:48.603-04:00  INFO 9020 --- [arena-inventory] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:inventory_db'
-2026-05-19T01:54:48.737-04:00  INFO 9020 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : Started ArenaInventoryApplicationTests in 3.242 seconds (process running for 3.846)
-2026-05-19T01:54:49.336-04:00  INFO 9020 --- [arena-inventory] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-05-19T01:54:49.338-04:00  INFO 9020 --- [arena-inventory] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-05-19T01:54:49.339-04:00  INFO 9020 --- [arena-inventory] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-05-19T17:50:04.299-04:00  INFO 7508 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : Starting ArenaInventoryApplication using Java 21.0.10 with PID 7508 (C:\Users\Lenovo\Arena-Gamer\arena-inventory\target\classes started by Lenovo in C:\Users\Lenovo\Arena-Gamer\arena-inventory)
-2026-05-19T17:50:04.304-04:00 DEBUG 7508 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-05-19T17:50:04.309-04:00  INFO 7508 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : The following 1 profile is active: "h2"
-2026-05-19T17:50:04.490-04:00  INFO 7508 --- [arena-inventory] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-05-19T17:50:04.502-04:00  INFO 7508 --- [arena-inventory] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-05-19T17:50:07.371-04:00  INFO 7508 --- [arena-inventory] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-05-19T17:50:07.560-04:00  INFO 7508 --- [arena-inventory] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 162 ms. Found 1 JPA repository interface.
-2026-05-19T17:50:08.560-04:00  INFO 7508 --- [arena-inventory] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=6aa2a029-6586-341e-ab4c-0aa321694aec
-2026-05-19T17:50:11.216-04:00  INFO 7508 --- [arena-inventory] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9001 (http)
-2026-05-19T17:50:11.250-04:00  INFO 7508 --- [arena-inventory] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-05-19T17:50:11.252-04:00  INFO 7508 --- [arena-inventory] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
-2026-05-19T17:50:11.462-04:00  INFO 7508 --- [arena-inventory] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-05-19T17:50:11.464-04:00  INFO 7508 --- [arena-inventory] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6957 ms
-2026-05-19T17:50:11.641-04:00  INFO 7508 --- [arena-inventory] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-05-19T17:50:12.306-04:00  INFO 7508 --- [arena-inventory] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:inventory_db user=SA
-2026-05-19T17:50:12.313-04:00  INFO 7508 --- [arena-inventory] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-05-19T17:50:12.358-04:00  INFO 7508 --- [arena-inventory] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:inventory_db'
-2026-05-19T17:50:12.950-04:00  INFO 7508 --- [arena-inventory] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-05-19T17:50:13.155-04:00  INFO 7508 --- [arena-inventory] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
-2026-05-19T17:50:13.285-04:00  INFO 7508 --- [arena-inventory] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-05-19T17:50:14.273-04:00  INFO 7508 --- [arena-inventory] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-05-19T17:50:14.445-04:00  WARN 7508 --- [arena-inventory] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-05-19T17:50:17.230-04:00  INFO 7508 --- [arena-inventory] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-05-19T17:50:17.523-04:00  INFO 7508 --- [arena-inventory] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-05-19T17:50:19.127-04:00  WARN 7508 --- [arena-inventory] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-05-19T17:50:21.683-04:00  WARN 7508 --- [arena-inventory] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
-2026-05-19T17:50:22.817-04:00  INFO 7508 --- [arena-inventory] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
-2026-05-19T17:50:23.092-04:00  INFO 7508 --- [arena-inventory] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9001 (http) with context path ''
-2026-05-19T17:50:24.108-04:00  INFO 7508 --- [arena-inventory] [restartedMain] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
-2026-05-19T17:50:24.119-04:00  INFO 7508 --- [arena-inventory] [restartedMain] c.e.a.ArenaInventoryApplication          : Started ArenaInventoryApplication in 24.342 seconds (process running for 26.564)
-2026-06-25T06:15:48.696-04:00  INFO 27908 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : Starting ArenaInventoryApplicationTests using Java 21.0.11 with PID 27908 (started by mipip in C:\Users\mipip\IdeaProjects\Arena-Gamer-2da-parte\arena-inventory)
-2026-06-25T06:15:48.697-04:00 DEBUG 27908 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-06-25T06:15:48.698-04:00  INFO 27908 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : The following 1 profile is active: "h2"
-2026-06-25T06:15:49.334-04:00  INFO 27908 --- [arena-inventory] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-25T06:15:49.367-04:00  INFO 27908 --- [arena-inventory] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 1 JPA repository interface.
-2026-06-25T06:15:49.656-04:00  INFO 27908 --- [arena-inventory] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f621f6b8-6fc7-375c-8d89-fb39a1233cf1
-2026-06-25T06:15:50.042-04:00  INFO 27908 --- [arena-inventory] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-06-25T06:15:50.096-04:00  INFO 27908 --- [arena-inventory] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
-2026-06-25T06:15:50.122-04:00  INFO 27908 --- [arena-inventory] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-06-25T06:15:50.294-04:00  INFO 27908 --- [arena-inventory] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-25T06:15:50.310-04:00  INFO 27908 --- [arena-inventory] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-06-25T06:15:50.430-04:00  INFO 27908 --- [arena-inventory] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:inventory_db user=SA
-2026-06-25T06:15:50.431-04:00  INFO 27908 --- [arena-inventory] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-06-25T06:15:50.447-04:00  WARN 27908 --- [arena-inventory] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-06-25T06:15:50.961-04:00  INFO 27908 --- [arena-inventory] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-25T06:15:50.999-04:00  INFO 27908 --- [arena-inventory] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-25T06:15:51.673-04:00  WARN 27908 --- [arena-inventory] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-06-25T06:15:52.437-04:00  INFO 27908 --- [arena-inventory] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:inventory_db'
-2026-06-25T06:15:52.631-04:00  INFO 27908 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : Started ArenaInventoryApplicationTests in 4.217 seconds (process running for 4.858)
-2026-06-25T06:15:53.291-04:00  INFO 27908 --- [arena-inventory] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.arenainventory.controller.ProductoControllerTest]: ProductoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-06-25T06:15:53.310-04:00  INFO 27908 --- [arena-inventory] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.arenainventory.ArenaInventoryApplication for test class com.example.arenainventory.controller.ProductoControllerTest
-2026-06-25T06:15:53.312-04:00  INFO 27908 --- [arena-inventory] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
-2026-06-25T06:15:53.343-04:00  INFO 27908 --- [arena-inventory] [main] c.e.a.controller.ProductoControllerTest  : Starting ProductoControllerTest using Java 21.0.11 with PID 27908 (started by mipip in C:\Users\mipip\IdeaProjects\Arena-Gamer-2da-parte\arena-inventory)
-2026-06-25T06:15:53.344-04:00 DEBUG 27908 --- [arena-inventory] [main] c.e.a.controller.ProductoControllerTest  : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-06-25T06:15:53.344-04:00  INFO 27908 --- [arena-inventory] [main] c.e.a.controller.ProductoControllerTest  : The following 1 profile is active: "h2"
-2026-06-25T06:15:53.750-04:00  INFO 27908 --- [arena-inventory] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-06-25T06:15:53.750-04:00  INFO 27908 --- [arena-inventory] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-06-25T06:15:53.752-04:00  INFO 27908 --- [arena-inventory] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2026-06-25T06:15:53.760-04:00  INFO 27908 --- [arena-inventory] [main] c.e.a.controller.ProductoControllerTest  : Started ProductoControllerTest in 0.448 seconds (process running for 5.987)
-2026-06-25T06:15:54.360-04:00  WARN 27908 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Intento de actualizar stock con cantidad inválida: null
-2026-06-25T06:15:54.362-04:00  WARN 27908 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Intento de eliminar producto inexistente: id=99
-2026-06-25T06:15:54.370-04:00  INFO 27908 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Listando todos los productos: 2 registros
-2026-06-25T06:15:54.374-04:00  INFO 27908 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Productos filtrados por categoria CONSOLA: 1
-2026-06-25T06:15:54.377-04:00  INFO 27908 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Stock actualizado: producto id=1, nuevo stock=8
-2026-06-25T06:15:54.379-04:00  INFO 27908 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Producto actualizado: id=1, nombre=PS5 Pro
-2026-06-25T06:15:54.381-04:00  INFO 27908 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Producto eliminado: id=1
-2026-06-25T06:15:54.383-04:00  INFO 27908 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Producto obtenido: id=1
-2026-06-25T06:15:54.384-04:00  WARN 27908 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Intento de crear producto con stock negativo
-2026-06-25T06:15:54.386-04:00  WARN 27908 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Intento de actualizar stock con cantidad inválida: 0
-2026-06-25T06:15:54.387-04:00  WARN 27908 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Stock insuficiente para producto id=1: disponible=2, requerido=5
-2026-06-25T06:15:54.389-04:00  WARN 27908 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Categoría inválida ingresada: INVALIDA
-2026-06-25T06:15:54.390-04:00  INFO 27908 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Producto creado: id=1, nombre=PS5
-2026-06-25T06:15:54.409-04:00  INFO 27908 --- [arena-inventory] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-06-25T06:15:54.411-04:00  INFO 27908 --- [arena-inventory] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-06-25T06:15:54.414-04:00  INFO 27908 --- [arena-inventory] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-06-25T06:16:57.247-04:00  INFO 29468 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : Starting ArenaInventoryApplicationTests using Java 21.0.11 with PID 29468 (started by mipip in C:\Users\mipip\IdeaProjects\Arena-Gamer-2da-parte\arena-inventory)
-2026-06-25T06:16:57.247-04:00 DEBUG 29468 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-06-25T06:16:57.248-04:00  INFO 29468 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : The following 1 profile is active: "h2"
-2026-06-25T06:16:57.869-04:00  INFO 29468 --- [arena-inventory] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-25T06:16:57.908-04:00  INFO 29468 --- [arena-inventory] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 1 JPA repository interface.
-2026-06-25T06:16:58.095-04:00  INFO 29468 --- [arena-inventory] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f621f6b8-6fc7-375c-8d89-fb39a1233cf1
-2026-06-25T06:16:58.491-04:00  INFO 29468 --- [arena-inventory] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-06-25T06:16:58.544-04:00  INFO 29468 --- [arena-inventory] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
-2026-06-25T06:16:58.569-04:00  INFO 29468 --- [arena-inventory] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-06-25T06:16:58.761-04:00  INFO 29468 --- [arena-inventory] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-25T06:16:58.782-04:00  INFO 29468 --- [arena-inventory] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-06-25T06:16:58.897-04:00  INFO 29468 --- [arena-inventory] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:inventory_db user=SA
-2026-06-25T06:16:58.899-04:00  INFO 29468 --- [arena-inventory] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-06-25T06:16:58.914-04:00  WARN 29468 --- [arena-inventory] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-06-25T06:16:59.441-04:00  INFO 29468 --- [arena-inventory] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-25T06:16:59.481-04:00  INFO 29468 --- [arena-inventory] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-25T06:17:00.167-04:00  WARN 29468 --- [arena-inventory] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-06-25T06:17:00.885-04:00  INFO 29468 --- [arena-inventory] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:inventory_db'
-2026-06-25T06:17:01.085-04:00  INFO 29468 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : Started ArenaInventoryApplicationTests in 4.101 seconds (process running for 4.783)
-2026-06-25T06:17:01.768-04:00  INFO 29468 --- [arena-inventory] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.arenainventory.controller.ProductoControllerTest]: ProductoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-06-25T06:17:01.785-04:00  INFO 29468 --- [arena-inventory] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.arenainventory.ArenaInventoryApplication for test class com.example.arenainventory.controller.ProductoControllerTest
-2026-06-25T06:17:01.788-04:00  INFO 29468 --- [arena-inventory] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
-2026-06-25T06:17:01.821-04:00  INFO 29468 --- [arena-inventory] [main] c.e.a.controller.ProductoControllerTest  : Starting ProductoControllerTest using Java 21.0.11 with PID 29468 (started by mipip in C:\Users\mipip\IdeaProjects\Arena-Gamer-2da-parte\arena-inventory)
-2026-06-25T06:17:01.821-04:00 DEBUG 29468 --- [arena-inventory] [main] c.e.a.controller.ProductoControllerTest  : Running with Spring Boot v3.2.0, Spring v6.1.1
-2026-06-25T06:17:01.821-04:00  INFO 29468 --- [arena-inventory] [main] c.e.a.controller.ProductoControllerTest  : The following 1 profile is active: "h2"
-2026-06-25T06:17:02.250-04:00  INFO 29468 --- [arena-inventory] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-06-25T06:17:02.250-04:00  INFO 29468 --- [arena-inventory] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-06-25T06:17:02.251-04:00  INFO 29468 --- [arena-inventory] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2026-06-25T06:17:02.260-04:00  INFO 29468 --- [arena-inventory] [main] c.e.a.controller.ProductoControllerTest  : Started ProductoControllerTest in 0.472 seconds (process running for 5.96)
-2026-06-25T06:17:02.861-04:00  WARN 29468 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Intento de actualizar stock con cantidad inválida: null
-2026-06-25T06:17:02.864-04:00  WARN 29468 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Intento de eliminar producto inexistente: id=99
-2026-06-25T06:17:02.870-04:00  INFO 29468 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Listando todos los productos: 2 registros
-2026-06-25T06:17:02.874-04:00  INFO 29468 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Productos filtrados por categoria CONSOLA: 1
-2026-06-25T06:17:02.877-04:00  INFO 29468 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Stock actualizado: producto id=1, nuevo stock=8
-2026-06-25T06:17:02.879-04:00  INFO 29468 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Producto actualizado: id=1, nombre=PS5 Pro
-2026-06-25T06:17:02.880-04:00  INFO 29468 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Producto eliminado: id=1
-2026-06-25T06:17:02.882-04:00  INFO 29468 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Producto obtenido: id=1
-2026-06-25T06:17:02.883-04:00  WARN 29468 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Intento de crear producto con stock negativo
-2026-06-25T06:17:02.884-04:00  WARN 29468 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Intento de actualizar stock con cantidad inválida: 0
-2026-06-25T06:17:02.887-04:00  WARN 29468 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Stock insuficiente para producto id=1: disponible=2, requerido=5
-2026-06-25T06:17:02.888-04:00  WARN 29468 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Categoría inválida ingresada: INVALIDA
-2026-06-25T06:17:02.890-04:00  INFO 29468 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Producto creado: id=1, nombre=PS5
-2026-06-25T06:17:02.908-04:00  INFO 29468 --- [arena-inventory] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-06-25T06:17:02.910-04:00  INFO 29468 --- [arena-inventory] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-06-25T06:17:02.913-04:00  INFO 29468 --- [arena-inventory] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-07-13T21:15:55.988-04:00  INFO 12460 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : Starting ArenaInventoryApplicationTests using Java 21.0.10 with PID 12460 (started by pc gamer in C:\Users\pc gamer\Documents\Arena-Gamer\arena-inventory)
+2026-07-13T21:15:55.992-04:00 DEBUG 12460 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-13T21:15:55.993-04:00  INFO 12460 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : The following 1 profile is active: "h2"
+2026-07-13T21:15:56.800-04:00  INFO 12460 --- [arena-inventory] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-13T21:15:56.850-04:00  INFO 12460 --- [arena-inventory] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 1 JPA repository interface.
+2026-07-13T21:15:57.111-04:00  INFO 12460 --- [arena-inventory] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f621f6b8-6fc7-375c-8d89-fb39a1233cf1
+2026-07-13T21:15:57.571-04:00  INFO 12460 --- [arena-inventory] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-13T21:15:57.626-04:00  INFO 12460 --- [arena-inventory] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-07-13T21:15:57.655-04:00  INFO 12460 --- [arena-inventory] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-13T21:15:57.866-04:00  INFO 12460 --- [arena-inventory] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-13T21:15:57.889-04:00  INFO 12460 --- [arena-inventory] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-13T21:15:58.040-04:00  INFO 12460 --- [arena-inventory] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:inventory_db user=SA
+2026-07-13T21:15:58.041-04:00  INFO 12460 --- [arena-inventory] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-13T21:15:58.060-04:00  WARN 12460 --- [arena-inventory] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-07-13T21:15:58.689-04:00  INFO 12460 --- [arena-inventory] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-13T21:15:58.736-04:00  INFO 12460 --- [arena-inventory] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13T21:15:59.475-04:00  WARN 12460 --- [arena-inventory] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-13T21:16:00.304-04:00  INFO 12460 --- [arena-inventory] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:inventory_db'
+2026-07-13T21:16:00.515-04:00  INFO 12460 --- [arena-inventory] [main] c.e.a.ArenaInventoryApplicationTests     : Started ArenaInventoryApplicationTests in 4.861 seconds (process running for 5.761)
+2026-07-13T21:16:01.260-04:00  INFO 12460 --- [arena-inventory] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.arenainventory.controller.ProductoControllerTest]: ProductoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-13T21:16:01.280-04:00  INFO 12460 --- [arena-inventory] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.arenainventory.ArenaInventoryApplication for test class com.example.arenainventory.controller.ProductoControllerTest
+2026-07-13T21:16:01.283-04:00  INFO 12460 --- [arena-inventory] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2026-07-13T21:16:01.335-04:00  INFO 12460 --- [arena-inventory] [main] c.e.a.controller.ProductoControllerTest  : Starting ProductoControllerTest using Java 21.0.10 with PID 12460 (started by pc gamer in C:\Users\pc gamer\Documents\Arena-Gamer\arena-inventory)
+2026-07-13T21:16:01.335-04:00 DEBUG 12460 --- [arena-inventory] [main] c.e.a.controller.ProductoControllerTest  : Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-07-13T21:16:01.335-04:00  INFO 12460 --- [arena-inventory] [main] c.e.a.controller.ProductoControllerTest  : The following 1 profile is active: "h2"
+2026-07-13T21:16:01.830-04:00  INFO 12460 --- [arena-inventory] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-13T21:16:01.832-04:00  INFO 12460 --- [arena-inventory] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-13T21:16:01.833-04:00  INFO 12460 --- [arena-inventory] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-13T21:16:01.846-04:00  INFO 12460 --- [arena-inventory] [main] c.e.a.controller.ProductoControllerTest  : Started ProductoControllerTest in 0.563 seconds (process running for 7.092)
+2026-07-13T21:16:02.455-04:00  WARN 12460 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Intento de actualizar stock con cantidad inválida: null
+2026-07-13T21:16:02.458-04:00  WARN 12460 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Intento de eliminar producto inexistente: id=99
+2026-07-13T21:16:02.466-04:00  INFO 12460 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Listando todos los productos: 2 registros
+2026-07-13T21:16:02.473-04:00  INFO 12460 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Productos filtrados por categoria CONSOLA: 1
+2026-07-13T21:16:02.476-04:00  INFO 12460 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Stock actualizado: producto id=1, nuevo stock=8
+2026-07-13T21:16:02.478-04:00  INFO 12460 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Producto actualizado: id=1, nombre=PS5 Pro
+2026-07-13T21:16:02.481-04:00  INFO 12460 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Producto eliminado: id=1
+2026-07-13T21:16:02.484-04:00  INFO 12460 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Producto obtenido: id=1
+2026-07-13T21:16:02.487-04:00  WARN 12460 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Intento de crear producto con stock negativo
+2026-07-13T21:16:02.490-04:00  WARN 12460 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Intento de actualizar stock con cantidad inválida: 0
+2026-07-13T21:16:02.494-04:00  WARN 12460 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Stock insuficiente para producto id=1: disponible=2, requerido=5
+2026-07-13T21:16:02.496-04:00  WARN 12460 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Categoría inválida ingresada: INVALIDA
+2026-07-13T21:16:02.499-04:00  INFO 12460 --- [arena-inventory] [main] c.e.a.service.ProductoService            : Producto creado: id=1, nombre=PS5
+2026-07-13T21:16:02.612-04:00  INFO 12460 --- [arena-inventory] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-13T21:16:02.614-04:00  INFO 12460 --- [arena-inventory] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-07-13T21:16:02.617-04:00  INFO 12460 --- [arena-inventory] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

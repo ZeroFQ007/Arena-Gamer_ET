@@ -1,0 +1,319 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: arena-gamer-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: arena_gamer_db
+      MYSQL_USER: arena
+      MYSQL_PASSWORD: arena123
+      MYSQL_ROOT_PASSWORD: root123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - arena-network
+
+  eureka-server:
+    build:
+      context: ./eureka-server
+    container_name: eureka-server
+    ports: ["8761:8761"]
+    environment:
+      - EUREKA_HOSTNAME=eureka-server
+    networks:
+      - arena-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==========================================
+  # SERVICIOS BASE (No dependen de otros MS)
+  # ==========================================
+  user-service:
+    build:
+      context: ./user-service
+    container_name: user-service
+    ports: ["8081:8081"]
+    environment:
+      - SPRING_PROFILES_ACTIVE=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=arena_gamer_db
+      - DB_USER=arena
+      - DB_PASSWORD=arena123
+      - EUREKA_URI=http://eureka-server:8761/eureka/
+    depends_on:
+      mysql:
+        condition: service_started
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - arena-network
+
+  station-service:
+    build:
+      context: ./station-service
+    container_name: station-service
+    ports: ["8083:8083"]
+    environment:
+      - SPRING_PROFILES_ACTIVE=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=arena_gamer_db
+      - DB_USER=arena
+      - DB_PASSWORD=arena123
+      - EUREKA_URI=http://eureka-server:8761/eureka/
+    depends_on:
+      mysql:
+        condition: service_started
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - arena-network
+
+  notification-service:
+    build:
+      context: ./notification-service
+    container_name: notification-service
+    ports: ["8089:8089"]
+    environment:
+      - SPRING_PROFILES_ACTIVE=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=arena_gamer_db
+      - DB_USER=arena
+      - DB_PASSWORD=arena123
+      - EUREKA_URI=http://eureka-server:8761/eureka/
+    depends_on:
+      mysql:
+        condition: service_started
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - arena-network
+
+  loyalty-service:
+    build:
+      context: ./loyalty-service
+    container_name: loyalty-service
+    ports: ["8087:8087"]
+    environment:
+      - SPRING_PROFILES_ACTIVE=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=arena_gamer_db
+      - DB_USER=arena
+      - DB_PASSWORD=arena123
+      - EUREKA_URI=http://eureka-server:8761/eureka/
+    depends_on:
+      mysql:
+        condition: service_started
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - arena-network
+
+  arena-inventory:
+    build:
+      context: ./arena-inventory
+    container_name: arena-inventory
+    ports: ["9001:9001"]
+    environment:
+      - SPRING_PROFILES_ACTIVE=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=arena_gamer_db
+      - DB_USER=arena
+      - DB_PASSWORD=arena123
+      - EUREKA_URI=http://eureka-server:8761/eureka/
+    depends_on:
+      mysql:
+        condition: service_started
+      eureka-server:
+        condition: service_healthy
+    networks:
+      - arena-network
+
+  # ==========================================
+  # SERVICIOS CON DEPENDENCIAS
+  # ==========================================
+  arena-wallet:
+    build:
+      context: ./arena-wallet
+    container_name: arena-wallet
+    ports: ["8085:8085"]
+    environment:
+      - SPRING_PROFILES_ACTIVE=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=arena_gamer_db
+      - DB_USER=arena
+      - DB_PASSWORD=arena123
+      - EUREKA_URI=http://eureka-server:8761/eureka/
+    depends_on:
+      mysql:
+        condition: service_started
+      eureka-server:
+        condition: service_healthy
+      user-service:
+        condition: service_started
+    networks:
+      - arena-network
+
+  arena-reservas:
+    build:
+      context: ./arena-reservas
+    container_name: arena-reservas
+    ports: ["9000:9000"]
+    environment:
+      - SPRING_PROFILES_ACTIVE=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=arena_gamer_db
+      - DB_USER=arena
+      - DB_PASSWORD=arena123
+      - EUREKA_URI=http://eureka-server:8761/eureka/
+    depends_on:
+      mysql:
+        condition: service_started
+      eureka-server:
+        condition: service_healthy
+      arena-inventory:
+        condition: service_started
+    networks:
+      - arena-network
+
+  session-service:
+    build:
+      context: ./session-service
+    container_name: session-service
+    ports: ["8082:8082"]
+    environment:
+      - SPRING_PROFILES_ACTIVE=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=arena_gamer_db
+      - DB_USER=arena
+      - DB_PASSWORD=arena123
+      - EUREKA_URI=http://eureka-server:8761/eureka/
+      - SERVICES_USER_SERVICE_URL=http://user-service:8081
+      - SERVICES_STATION_SERVICE_URL=http://station-service:8083
+      - SERVICES_WALLET_SERVICE_URL=http://arena-wallet:8085
+      - SERVICES_LOYALTY_SERVICE_URL=http://loyalty-service:8087
+    depends_on:
+      mysql:
+        condition: service_started
+      eureka-server:
+        condition: service_healthy
+      user-service:
+        condition: service_started
+      station-service:
+        condition: service_started
+      arena-wallet:
+        condition: service_started
+      loyalty-service:
+        condition: service_started
+    networks:
+      - arena-network
+
+  hardware-monitor:
+    build:
+      context: ./hardware-monitor
+    container_name: hardware-monitor
+    ports: ["8090:8090"]
+    environment:
+      - SPRING_PROFILES_ACTIVE=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=arena_gamer_db
+      - DB_USER=arena
+      - DB_PASSWORD=arena123
+      - EUREKA_URI=http://eureka-server:8761/eureka/
+    depends_on:
+      mysql:
+        condition: service_started
+      eureka-server:
+        condition: service_healthy
+      notification-service:
+        condition: service_started
+    networks:
+      - arena-network
+
+  tournament-service:
+    build:
+      context: ./tournament-service
+    container_name: tournament-service
+    ports: ["8088:8088"]
+    environment:
+      - SPRING_PROFILES_ACTIVE=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=arena_gamer_db
+      - DB_USER=arena
+      - DB_PASSWORD=arena123
+      - EUREKA_URI=http://eureka-server:8761/eureka/
+    depends_on:
+      mysql:
+        condition: service_started
+      eureka-server:
+        condition: service_healthy
+      user-service:
+        condition: service_started
+      notification-service:
+        condition: service_started
+    networks:
+      - arena-network
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+    container_name: api-gateway
+    ports: ["8080:8080"]
+    environment:
+      - EUREKA_URI=http://eureka-server:8761/eureka/
+      - USER_SERVICE_URL=http://user-service:8081
+      - STATION_SERVICE_URL=http://station-service:8083
+      - SESSION_SERVICE_URL=http://session-service:8082
+      - INVENTORY_SERVICE_URL=http://arena-inventory:9001
+      - RESERVAS_SERVICE_URL=http://arena-reservas:9000
+      - WALLET_SERVICE_URL=http://arena-wallet:8085
+      - LOYALTY_SERVICE_URL=http://loyalty-service:8087
+      - HARDWARE_SERVICE_URL=http://hardware-monitor:8090
+      - NOTIFICATION_SERVICE_URL=http://notification-service:8089
+      - TOURNAMENT_SERVICE_URL=http://tournament-service:8088
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+      user-service:
+        condition: service_started
+      station-service:
+        condition: service_started
+      session-service:
+        condition: service_started
+      arena-inventory:
+        condition: service_started
+      arena-reservas:
+        condition: service_started
+      arena-wallet:
+        condition: service_started
+      loyalty-service:
+        condition: service_started
+      hardware-monitor:
+        condition: service_started
+      notification-service:
+        condition: service_started
+      tournament-service:
+        condition: service_started
+    networks:
+      - arena-network
+
+networks:
+  arena-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
